@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://www.playframework.com/documentation/2.1.1/JavaGuide4 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>JavaGuide4</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width,maximum-scale=1">
+        <style type="text/css">
+        @import "/assets/lib/prettify/ecd4a5d6c0cbee10b168f6aa000c64ea-prettify.css";
+        </style>
+        <link href="./PlayAuhentication_files/css" rel="stylesheet" type="text/css">
+        <link href="./PlayAuhentication_files/css(1)" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+        <link rel="stylesheet" href="https://www.playframework.com/assets/css/43a7b40035011e5ad60668dab1be2245-main.min.css">
+        <link rel="shortcut icon" href="https://www.playframework.com/assets/images/61c6258130a63b29b78806e97b1deb6c-favicon.ico">
+        <meta name="globalsign-domain-verification" content="wISFsU3SjLaCmI4hF3fuBebFOs4shuuBnKV7fGALYz">
+        <meta name="google-site-verification" content="lmdBkIxpA3f3R1ihq2dHTweu7htj64s3S3eGx9wY3S0">
+
+        <!--[if lt IE 9]>
+        <script src="/assets/lib/html5shiv/3044234175ac91f49b03ff999c592b85-html5shiv.min.js"></script>
+        <![endif]-->
+        <script type="text/javascript" async="" src="./PlayAuhentication_files/munchkin.js"></script><script async="" src="./PlayAuhentication_files/analytics.js"></script><script type="text/javascript" async="" src="./PlayAuhentication_files/ga.js"></script><script src="./PlayAuhentication_files/0b6ecf17e30037994d3ffee51b525914-jquery.min.js"></script>
+        <script src="./PlayAuhentication_files/5b571785ef2bcffe11c818d8642928fb-main.js"></script>
+        <script type="application/ld+json">
+        {
+          "@context" : "http://schema.org",
+          "@type" : "WebSite",
+          "name" : "Play Framework",
+          "alternateName" : "The High Velocity Web Framework for Java and Scala",
+          "url" : "https://playframework.com"
+        }
+        </script>
+    <script type="text/javascript" async="" src="./PlayAuhentication_files/munchkin(1).js"></script></head>
+    <body class="documentation">
+        <!--[if lt IE 7]>
+            <p class="outdated">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="//www.google.com/chrome/browser/">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <header id="navigation">
+            <div class="wrapper">
+                <a href="https://www.playframework.com/" id="logo">Lightbend</a>
+                <nav id="sections">
+                    <a href="https://www.playframework.com/download">Download</a>
+                    <a href="https://www.playframework.com/documentation">Documentation</a>
+                    <a href="https://www.playframework.com/get-involved">Get Involved</a>
+                </nav>
+                <nav id="social">
+                    <a href="https://groups.google.com/forum/#!forum/play-framework"><span>Mailing list</span></a>
+                    <a href="https://twitter.com/playframework"><span>Twitter</span></a>
+                    <a href="https://plus.google.com/106233335814246022600"><span>Google+</span></a>
+                    <a href="https://www.facebook.com/pages/Play-Framework/50884087887"><span>Facebook</span></a>
+                    <a href="https://github.com/playframework/playframework"><span>Github</span></a>
+                    <a href="https://stackoverflow.com/questions/tagged/playframework"><span>Stackoverflow</span></a>
+                </nav>
+            </div>
+        </header>
+
+        <div id="getLogo">
+            <div class="pan">
+                <q>Is that what you're looking for?</q>
+                <figure>
+                    <img src="./PlayAuhentication_files/play_full_color.svg">
+                     <figcaption>
+                        <a href="./PlayAuhentication_files/play_full_color.svg">(svg)</a>
+                        <a href="https://www.playframework.com/assets/images/logos/play_full_color.png">(png)</a>
+                     </figcaption>
+                </figure>
+                <figure>
+                    <img src="./PlayAuhentication_files/play_icon_full_color.svg">
+                     <figcaption>
+                        <a href="./PlayAuhentication_files/play_icon_full_color.svg">(svg)</a>
+                        <a href="https://www.playframework.com/assets/images/logos/play_icon_full_color.png">(png)</a>
+                     </figcaption>
+                </figure>
+                <figure class="reverse">
+                    <img src="./PlayAuhentication_files/play_reverse.svg">
+                     <figcaption>
+                        <a href="./PlayAuhentication_files/play_reverse.svg">(svg)</a>
+                        <a href="https://www.playframework.com/assets/images/logos/play_reverse.png">(png)</a>
+                     </figcaption>
+                </figure>
+                <figure class="reverse">
+                    <img src="./PlayAuhentication_files/play_icon_reverse.svg">
+                     <figcaption>
+                        <a href="./PlayAuhentication_files/play_icon_reverse.svg">(svg)</a>
+                        <a href="https://www.playframework.com/assets/images/logos/play_icon_reverse.png">(png)</a>
+                     </figcaption>
+                </figure>
+            </div>
+        </div>
+
+
+
+
+        
+
+    <header id="top">
+        <div class="wrapper">
+            <h1>Documentation</h1>
+        </div>
+    </header>
+
+    <section id="content">
+        <button id="extend">extend</button>
+
+        
+
+    <aside>
+
+        
+
+
+
+<nav id="toolbar">
+    <h3>Browse versions</h3>
+    <div class="switch">
+        
+            <a href="https://www.playframework.com/documentation/switch/2.5.x/JavaGuide4">2.5.x</a>
+        
+        <dl class="dropdown">
+            <dt>▾</dt>
+            <dd>
+            
+                <a href="https://www.playframework.com/documentation/switch/2.6.x/JavaGuide4">2.6.x</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/2.5.x/JavaGuide4">2.5.x</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/2.5.3/JavaGuide4">2.5.3</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/2.5.2/JavaGuide4">2.5.2</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/2.5.1/JavaGuide4">2.5.1</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/2.5.0/JavaGuide4">2.5.0</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/2.4.x/JavaGuide4">2.4.x</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/2.3.x/JavaGuide4">2.3.x</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/2.2.x/JavaGuide4">2.2.x</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/2.1.x/JavaGuide4">2.1.x</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/2.0.x/JavaGuide4">2.0.x</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/1.4.x/JavaGuide4">1.4.x</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/1.3.x/JavaGuide4">1.3.x</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/1.2.x/JavaGuide4">1.2.x</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/1.1.1/JavaGuide4">1.1.1</a>
+            
+                <a href="https://www.playframework.com/documentation/switch/1.0.3.2/JavaGuide4">1.0.3.2</a>
+            
+            </dd>
+        </dl>
+    </div>
+
+    
+        <h3>Browse APIs</h3>
+        <div class="switch">
+        
+            <a href="https://www.playframework.com/documentation/2.1.1/api/scala/index.html">Scala</a>
+        
+            <a href="https://www.playframework.com/documentation/2.1.1/api/java/index.html">Java</a>
+        
+        </div>
+    
+
+    <h3>Language</h3>
+    <div class="switch">
+        
+    <a href="https://www.playframework.com/preferredLang/en?path=%2Fdocumentation%2F2.1.1%2FJavaGuide4">English</a>
+
+        <dl class="dropdown">
+            <dt>▾</dt>
+            <dd>
+            
+                
+    <a href="https://www.playframework.com/preferredLang/en?path=%2Fdocumentation%2F2.1.1%2FJavaGuide4">English</a>
+
+            
+                
+    <a href="https://www.playframework.com/preferredLang/ja?path=%2Fdocumentation%2Fja%2F2.1.x%2FJavaGuide4">日本語</a>
+
+            
+                
+    <a href="https://www.playframework.com/preferredLang/tr?path=%2Fdocumentation%2Ftr%2Flatest%2FHome">Türkçe</a>
+
+            
+            </dd>
+        </dl>
+    </div>
+
+</nav>
+
+
+        <ul>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide1">Starting up the project</a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide2">A first iteration for the data model</a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide3">Building the first screen</a></li>
+  <li><a href="./PlayAuhentication_files/PlayAuhentication.html">Adding authentication</a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide5">Adding some AJAX actions</a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide6">Invoking actions from Javascript</a></li>
+</ul><h3><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#main-concepts" name="main-concepts">Main concepts</a></h3>
+<ul>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaActions">HTTP programming </a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaAsync">Asynchronous HTTP programming </a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaTemplates">The template engine </a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaForms">HTTP form submission and validation </a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaJsonRequests">Working with JSON </a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaXmlRequests">Working with XML </a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaFileUpload">Handling file upload </a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaDatabase">Accessing an SQL database </a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaCache">Using the Cache </a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaWS">Calling web services </a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaAkka">Integrating with Akka </a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaI18N">Internationalization </a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaGlobal">The application Global object </a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaTest">Testing your application </a></li>
+</ul><h3><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#tutorials" name="tutorials">Tutorials</a></h3>
+<ul>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaTodoList">Your first application </a></li>
+  <li><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide1">Zentask </a></li>
+</ul>
+
+        <h3>Books</h3>
+        <p><a title="Play in Practice" href="http://shop.oreilly.com/product/0636920035718.do"><img src="./PlayAuhentication_files/0acf34d79e681e1dc559ea01c38a5c87-play-in-practice.gif"></a></p>
+        <p><a title="Play Framework Essentials" href="http://www.typesafe.com/resources/e-book/play-framework-essentials"><img width="180" height="236" src="./PlayAuhentication_files/6e18005ab31a05c8efc886c6a21574c9-play-framework-essentials-cover.jpg"></a></p>
+        <p><a title="Reactive Web Applications with Play" href="http://info.typesafe.com/EBK-20XX-Reactive-Web-Applications-with-Play_L.html?lst=PPS&lsd=EBK-20XX-Reactive-Web-Applications-with-Play"><img src="./PlayAuhentication_files/851a003864f9eee22b2ba16274533768-Reactive-Web-App-with-Play-Cover.jpg"></a></p>
+        <p><a title="Play for Scala" href="http://typesafe.com/resources/e-book/play-for-scala"><img src="./PlayAuhentication_files/dff5bdcf197b3ee6c8d0c429558c8c74-play-for-scala-cover.jpg"></a></p>
+        <p><a title="Play for Java" href="http://typesafe.com/resources/e-book/play-for-java"><img src="./PlayAuhentication_files/fd8771fc65686fbb3acfe3f7c7f46d5d-play-for-java-cover.jpg"></a></p>
+        <p><a title="Learning Play! Framework 2" href="http://www.packtpub.com/learning-play-framework-2/book"><img src="./PlayAuhentication_files/facdb2ff2a72e4d7507e0e5085cd4d54-learning-play-cover.jpg"></a></p>
+    </aside>
+
+    <article>
+        
+            
+
+
+
+  <div id="version-header">
+    You are viewing the documentation for the <a href="./PlayAuhentication_files/PlayAuhentication.html">2.1.1</a> release in the <a href="https://www.playframework.com/documentation/2.1.x/JavaGuide4">2.1.x</a> series of releases. The latest stable release series is <a href="https://www.playframework.com/documentation/2.5.x/JavaGuide4">2.5.x</a>.
+  </div>
+
+
+
+            
+                <form id="search">
+                    <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Search 2.1.1 documentation" autofocus="" class="aa-input" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Arial; font-size: 22px; font-style: normal; font-variant: normal; font-weight: normal; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="aa-dropdown-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;"><div class="aa-dataset-0"></div></span></span>
+                    <button type="submit">Search</button>
+                </form>
+            
+
+            
+
+            <h1 id="Adding-authentication"><a class="section-marker" href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#Adding-authentication">§</a><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#adding-authentication" name="adding-authentication">Adding authentication</a></h1>
+<p>We can now display a dashboard, but before we can go on to allow users to create, work on and assign tasks, we need a way for users to identify themselves.</p><h2 id="Implementing-a-login-screen"><a class="section-marker" href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#Implementing-a-login-screen">§</a><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#implementing-a-login-screen" name="implementing-a-login-screen">Implementing a login screen</a></h2>
+<p>To start off, let’s implement a screen that allows a user to login. Create a new route in <code>conf/routes</code> for the login screen:</p>
+<pre class="prettyprint prettyprinted"><code><span class="pln">GET     </span><span class="pun">/</span><span class="pln">login                  controllers</span><span class="pun">.</span><span class="typ">Application</span><span class="pun">.</span><span class="pln">login</span><span class="pun">()</span></code><button class="copy-button"></button></pre>
+<p>And now add the login action to <code>app/controllers/Application.java</code>:</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="typ">Result</span><span class="pln"> login</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> ok</span><span class="pun">(</span><span class="pln">
+        login</span><span class="pun">.</span><span class="pln">render</span><span class="pun">()</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<p>In our action we have referred to a new login template, let’s write a skeleton for that template now, in <code>app/views/login.scala.html</code>:</p>
+<pre class="prettyprint prettyprinted"><code class="language-html"><span class="tag">&lt;html&gt;</span><span class="pln">
+    </span><span class="tag">&lt;head&gt;</span><span class="pln">
+        </span><span class="tag">&lt;title&gt;</span><span class="pln">Zentasks</span><span class="tag">&lt;/title&gt;</span><span class="pln">
+        </span><span class="tag">&lt;link</span><span class="pln"> </span><span class="atn">rel</span><span class="pun">=</span><span class="atv">"shortcut icon"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"image/png"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"@routes.Assets.at("</span><span class="atn">images</span><span class="pun">/</span><span class="atn">favicon</span><span class="pln">.</span><span class="atn">png</span><span class="atv">")"</span><span class="tag">&gt;</span><span class="pln">
+        </span><span class="tag">&lt;link</span><span class="pln"> </span><span class="atn">rel</span><span class="pun">=</span><span class="atv">"stylesheet"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text/css"</span><span class="pln"> </span><span class="atn">media</span><span class="pun">=</span><span class="atv">"screen"</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"@routes.Assets.at("</span><span class="atn">stylesheets</span><span class="pun">/</span><span class="atn">login</span><span class="pln">.</span><span class="atn">css</span><span class="atv">")"</span><span class="tag">&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/head&gt;</span><span class="pln">
+    </span><span class="tag">&lt;body&gt;</span><span class="pln">
+        </span><span class="tag">&lt;header&gt;</span><span class="pln">
+            </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"@routes.Application.index"</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"logo"</span><span class="tag">&gt;&lt;span&gt;</span><span class="pln">Zen</span><span class="tag">&lt;/span&gt;</span><span class="pln">tasks</span><span class="tag">&lt;/a&gt;</span><span class="pln">
+        </span><span class="tag">&lt;/header&gt;</span><span class="pln">
+    
+    </span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></code><button class="copy-button"></button></pre>
+<p>Now visit <code>&lt;http://localhost:9000/login&gt;</code> in your browser to check that our route is working. Apart from the title, the page should be blank.</p><h3 id="Adding-a-form"><a class="section-marker" href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#Adding-a-form">§</a><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#adding-a-form" name="adding-a-form">Adding a form</a></h3>
+<p>Our login page needs to contain a form, which will of course, hold an email address (username) and password.</p>
+<p>Play provides a forms API for handling the rendering, decoding and validation of forms. Let’s start off by implementing our form as a Java object. Open the <code>app/controllers/Application.java</code> class, and declare a static inner class called <code>Login</code> at the end of it:</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Login</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> email</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> password</span><span class="pun">;</span><span class="pln">
+
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<p>Now we need to pass this form into our template, to render. Modify the <code>login</code> method in <code>app/controllers/Application.java</code> to pass this form to the template:</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="pln">    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="typ">Result</span><span class="pln"> login</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> ok</span><span class="pun">(</span><span class="pln">
+            login</span><span class="pun">.</span><span class="pln">render</span><span class="pun">(</span><span class="pln">form</span><span class="pun">(</span><span class="typ">Login</span><span class="pun">.</span><span class="kwd">class</span><span class="pun">))</span><span class="pln">
+        </span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<p>And now declare the form as a parameter for the login template to accept, in <code>app/views/login.scala.html</code>:</p>
+<pre class="prettyprint prettyprinted"><code class="language-html"><span class="pun">@(</span><span class="pln">form</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Form</span><span class="pun">[</span><span class="typ">Application</span><span class="pun">.</span><span class="typ">Login</span><span class="pun">]</span><span class="pln">
+
+</span><span class="str">&lt;html&gt;</span><span class="pln">
+</span><span class="pun">...</span></code><button class="copy-button"></button></pre>
+<p>Now we need to render our form. Add the form to the login template:</p>
+<pre class="prettyprint prettyprinted"><code class="language-html"><span class="lit">@helper</span><span class="pun">.</span><span class="pln">form</span><span class="pun">(</span><span class="pln">routes</span><span class="pun">.</span><span class="typ">Application</span><span class="pun">.</span><span class="pln">authenticate</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="str">&lt;h1&gt;</span><span class="typ">Sign</span><span class="pln"> </span><span class="kwd">in</span><span class="pun">&lt;/</span><span class="pln">h1</span><span class="pun">&gt;</span><span class="pln">
+
+   </span><span class="str">&lt;p&gt;</span><span class="pln">
+       </span><span class="pun">&lt;</span><span class="pln">input type</span><span class="pun">=</span><span class="str">"email"</span><span class="pln"> name</span><span class="pun">=</span><span class="str">"email"</span><span class="pln"> placeholder</span><span class="pun">=</span><span class="str">"Email"</span><span class="pln"> value</span><span class="pun">=</span><span class="str">"@form("</span><span class="pln">email</span><span class="str">").value"</span><span class="pun">&gt;</span><span class="pln">
+   </span><span class="pun">&lt;/</span><span class="pln">p</span><span class="pun">&gt;</span><span class="pln">
+   </span><span class="str">&lt;p&gt;</span><span class="pln">
+       </span><span class="pun">&lt;</span><span class="pln">input type</span><span class="pun">=</span><span class="str">"password"</span><span class="pln"> name</span><span class="pun">=</span><span class="str">"password"</span><span class="pln"> placeholder</span><span class="pun">=</span><span class="str">"Password"</span><span class="pun">&gt;</span><span class="pln">
+   </span><span class="pun">&lt;/</span><span class="pln">p</span><span class="pun">&gt;</span><span class="pln">
+   </span><span class="str">&lt;p&gt;</span><span class="pln">
+       </span><span class="pun">&lt;</span><span class="pln">button type</span><span class="pun">=</span><span class="str">"submit"</span><span class="pun">&gt;</span><span class="typ">Login</span><span class="pun">&lt;/</span><span class="pln">button</span><span class="pun">&gt;</span><span class="pln">
+   </span><span class="pun">&lt;/</span><span class="pln">p</span><span class="pun">&gt;</span><span class="pln">
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<p>The important thing to notice here is the <code>@helper.form</code> call. We have passed to it a route, <code>routes.Application.authenticate</code>. This tells Play where this form should be submitted to. Notice that there are no hard coded URLs here? This means we can change our URL structure without silently breaking our application.</p>
+<blockquote>
+  <p>Play actually offers a much richer set of form tags, but they are overkill for our login form. We will look at those later in the tutorial.</p>
+</blockquote>
+<p>Of course, the <code>authenticate</code> route hasn’t been implemented yet, so let’s implement it now. First of all, add the route to <code>conf/routes</code>:</p>
+<pre class="prettyprint prettyprinted"><code><span class="pln">POST    </span><span class="pun">/</span><span class="pln">login                      controllers</span><span class="pun">.</span><span class="typ">Application</span><span class="pun">.</span><span class="pln">authenticate</span><span class="pun">()</span></code><button class="copy-button"></button></pre>
+<p>Now implement the method in <code>app/controllers/Application.java</code>:</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="typ">Result</span><span class="pln"> authenticate</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Form</span><span class="pun">&lt;</span><span class="typ">Login</span><span class="pun">&gt;</span><span class="pln"> loginForm </span><span class="pun">=</span><span class="pln"> form</span><span class="pun">(</span><span class="typ">Login</span><span class="pun">.</span><span class="kwd">class</span><span class="pun">).</span><span class="pln">bindFromRequest</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> ok</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<blockquote>
+  <p>Make sure you add an import statement for <code>play.data.*</code> to <code>Application.java</code></p>
+</blockquote><h3 id="Validating-a-form"><a class="section-marker" href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#Validating-a-form">§</a><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#validating-a-form" name="validating-a-form">Validating a form</a></h3>
+<p>Currently, our <code>authenticate</code> action is doing nothing but reading our form. The next thing we want to do is validate the form, and there is only one thing we are concerned with in the validation, is the username and password correct? To implement this validation, we are going to write a <code>validate</code> method on the <code>Login</code> class in <code>app/controllers/Application.java</code>.</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="kwd">public</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> validate</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="typ">User</span><span class="pun">.</span><span class="pln">authenticate</span><span class="pun">(</span><span class="pln">email</span><span class="pun">,</span><span class="pln"> password</span><span class="pun">)</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="kwd">return</span><span class="pln"> </span><span class="str">"Invalid user or password"</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<p>As you can see, this method is able to do any arbitrary validation, in our case, using the <code>User.authenticate</code> method that we’ve already implemented, and if validation fails, it returns a <code>String</code> with the error message, otherwise <code>null</code> if validation passes.</p>
+<p>We can now use this validation by using the <code>hasErrors()</code> method on our <code>Form</code> object in the <code>authenticate</code> action:</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="typ">Result</span><span class="pln"> authenticate</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Form</span><span class="pun">&lt;</span><span class="typ">Login</span><span class="pun">&gt;</span><span class="pln"> loginForm </span><span class="pun">=</span><span class="pln"> form</span><span class="pun">(</span><span class="typ">Login</span><span class="pun">.</span><span class="kwd">class</span><span class="pun">).</span><span class="pln">bindFromRequest</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">loginForm</span><span class="pun">.</span><span class="pln">hasErrors</span><span class="pun">())</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> badRequest</span><span class="pun">(</span><span class="pln">login</span><span class="pun">.</span><span class="pln">render</span><span class="pun">(</span><span class="pln">loginForm</span><span class="pun">));</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        session</span><span class="pun">().</span><span class="pln">clear</span><span class="pun">();</span><span class="pln">
+        session</span><span class="pun">(</span><span class="str">"email"</span><span class="pun">,</span><span class="pln"> loginForm</span><span class="pun">.</span><span class="kwd">get</span><span class="pun">().</span><span class="pln">email</span><span class="pun">);</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> redirect</span><span class="pun">(</span><span class="pln">
+            routes</span><span class="pun">.</span><span class="typ">Application</span><span class="pun">.</span><span class="pln">index</span><span class="pun">()</span><span class="pln">
+        </span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<p>This code introduces a number of new concepts. Firstly, if validation fails, we return a status of <code>400 Bad Request</code>, rendering the login page with our form that had the failed validation. By passing this form back, we can extract any validation errors from the form, and the values the user entered, and render them back to the user.</p>
+<p>If the validation was successful, then we put an attribute into the session. We call this attribute <code>email</code>, and it’s value is the email address of the user that just successfully logged in. We will use this session attribute later to find out the currently logged in user.</p>
+<p>After setting the user in the session, we issue an HTTP redirect to the dashboard. You can see that we’ve used the reverse router, in the same way that we include assets in templates, to refer to the dashboard action.</p>
+<p>We are almost finished with validation. The one thing left to do is to display the error message when validation fails. You saw before that we passed the invalid form back to the template, we will use this to get the error message. Place the following code in <code>app/views/login.scala.html</code>, just below the Sign In heading:</p>
+<pre class="prettyprint prettyprinted"><code class="language-html"><span class="lit">@if</span><span class="pun">(</span><span class="pln">form</span><span class="pun">.</span><span class="pln">hasGlobalErrors</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="pun">&lt;</span><span class="pln">p </span><span class="kwd">class</span><span class="pun">=</span><span class="str">"error"</span><span class="pun">&gt;</span><span class="pln">
+        </span><span class="lit">@form</span><span class="pun">.</span><span class="pln">globalError</span><span class="pun">.</span><span class="pln">message
+    </span><span class="pun">&lt;/</span><span class="pln">p</span><span class="pun">&gt;</span><span class="pln">
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<p>Now try and log in with an invalid password. You should see something like this:</p>
+<p><a href="./PlayAuhentication_files/loginfail.png"><img src="./PlayAuhentication_files/loginfail.png"></a></p>
+<p>Now reenter the valid password (<code>secret</code>), and login. You should be taken to the dashboard.</p><h2 id="Testing-your-action"><a class="section-marker" href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#Testing-your-action">§</a><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#testing-your-action" name="testing-your-action">Testing your action</a></h2>
+<p>Now is a good time for us to start writing tests for our actions. We’ve written an action that provides the ability to log in, let’s check that it works. Start by creating a skeleton test class called <code>test/controllers/LoginTest.java</code>:</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="kwd">package</span><span class="pln"> controllers</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">junit</span><span class="pun">.*;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">junit</span><span class="pun">.</span><span class="typ">Assert</span><span class="pun">.*;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.*;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> play</span><span class="pun">.</span><span class="pln">mvc</span><span class="pun">.*;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> play</span><span class="pun">.</span><span class="pln">libs</span><span class="pun">.*;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> play</span><span class="pun">.</span><span class="pln">test</span><span class="pun">.*;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> play</span><span class="pun">.</span><span class="pln">test</span><span class="pun">.</span><span class="typ">Helpers</span><span class="pun">.*;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> com</span><span class="pun">.</span><span class="pln">avaje</span><span class="pun">.</span><span class="pln">ebean</span><span class="pun">.</span><span class="typ">Ebean</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> com</span><span class="pun">.</span><span class="pln">google</span><span class="pun">.</span><span class="pln">common</span><span class="pun">.</span><span class="pln">collect</span><span class="pun">.</span><span class="typ">ImmutableMap</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">LoginTest</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">WithApplication</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="lit">@Before</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> setUp</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        start</span><span class="pun">(</span><span class="pln">fakeApplication</span><span class="pun">(</span><span class="pln">inMemoryDatabase</span><span class="pun">(),</span><span class="pln"> fakeGlobal</span><span class="pun">()));</span><span class="pln">
+        </span><span class="typ">Ebean</span><span class="pun">.</span><span class="pln">save</span><span class="pun">((</span><span class="typ">List</span><span class="pun">)</span><span class="pln"> </span><span class="typ">Yaml</span><span class="pun">.</span><span class="pln">load</span><span class="pun">(</span><span class="str">"test-data.yml"</span><span class="pun">));</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<blockquote>
+  <p>Notice that this time we’ve passed a <code>fakeGlobal()</code> to the fake application when we set it up. In fact, since creating our “real” <code>Global.java</code>, the <code>ModelsTest</code> we wrote earlier has been broken because it is loading the initial data when the test starts. So it too should be updated to use <code>fakeGlobal()</code>.</p>
+</blockquote>
+<p>Now let’s write a test that tests what happens when we authenticate successfully:</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="lit">@Test</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> authenticateSuccess</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Result</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> callAction</span><span class="pun">(</span><span class="pln">
+        controllers</span><span class="pun">.</span><span class="pln">routes</span><span class="pun">.</span><span class="kwd">ref</span><span class="pun">.</span><span class="typ">Application</span><span class="pun">.</span><span class="pln">authenticate</span><span class="pun">(),</span><span class="pln">
+        fakeRequest</span><span class="pun">().</span><span class="pln">withFormUrlEncodedBody</span><span class="pun">(</span><span class="typ">ImmutableMap</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">
+            </span><span class="str">"email"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"bob@example.com"</span><span class="pun">,</span><span class="pln">
+            </span><span class="str">"password"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"secret"</span><span class="pun">))</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+    assertEquals</span><span class="pun">(</span><span class="lit">302</span><span class="pun">,</span><span class="pln"> status</span><span class="pun">(</span><span class="pln">result</span><span class="pun">));</span><span class="pln">
+    assertEquals</span><span class="pun">(</span><span class="str">"bob@example.com"</span><span class="pun">,</span><span class="pln"> session</span><span class="pun">(</span><span class="pln">result</span><span class="pun">).</span><span class="kwd">get</span><span class="pun">(</span><span class="str">"email"</span><span class="pun">));</span><span class="pln">
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<p>There are a few new concepts introduced here. The first is the user of Plays “ref” reverse router. This allows us to get a reference to an action, which we then pass to <code>callAction</code> to invoke. In our case, we’ve got a reference to the <code>Application.authenticate</code> action.</p>
+<p>We are also creating a fake request. We are giving this a form body with the email and password to authenticate with.</p>
+<p>Finally, we are using the <code>status</code> and <code>session</code> helper methods to get the status and the session of the result. We ensure that the successful login occurred with Bob’s email address being added to the session. There are other helper methods available to get access to other parts of the result, such as the headers and the body. You might wonder why we can’t just directly get the result. The reason for this is that the result may, for example, be asynchronous, and so Play needs to unwrap it if necessary in order to access it.</p>
+<p>Run the test to make sure it passes. Now let’s write another test, this time to ensure that if an invalid email and password are supplied, that we don’t get logged in.</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="lit">@Test</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> authenticateFailure</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Result</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> callAction</span><span class="pun">(</span><span class="pln">
+        controllers</span><span class="pun">.</span><span class="pln">routes</span><span class="pun">.</span><span class="kwd">ref</span><span class="pun">.</span><span class="typ">Application</span><span class="pun">.</span><span class="pln">authenticate</span><span class="pun">(),</span><span class="pln">
+        fakeRequest</span><span class="pun">().</span><span class="pln">withFormUrlEncodedBody</span><span class="pun">(</span><span class="typ">ImmutableMap</span><span class="pun">.</span><span class="pln">of</span><span class="pun">(</span><span class="pln">
+            </span><span class="str">"email"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"bob@example.com"</span><span class="pun">,</span><span class="pln">
+            </span><span class="str">"password"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"badpassword"</span><span class="pun">))</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+    assertEquals</span><span class="pun">(</span><span class="lit">400</span><span class="pun">,</span><span class="pln"> status</span><span class="pun">(</span><span class="pln">result</span><span class="pun">));</span><span class="pln">
+    assertNull</span><span class="pun">(</span><span class="pln">session</span><span class="pun">(</span><span class="pln">result</span><span class="pun">).</span><span class="kwd">get</span><span class="pun">(</span><span class="str">"email"</span><span class="pun">));</span><span class="pln">
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<p>Run this test to ensure it passes.</p><h2 id="Implementing-authenticators"><a class="section-marker" href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#Implementing-authenticators">§</a><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#implementing-authenticators" name="implementing-authenticators">Implementing authenticators</a></h2>
+<p>Now that we are able to login, we can start protecting actions with authentication. Play allows us to do this using action composition. Action composition is the ability to compose multiple actions together in a chain. Each action can do something to the request before delegating to the next action, and can also modify the result. An action can also decide not to pass the request onto the next action, and instead generate the result itself.</p>
+<p>Play already comes with a built in authenticator action, which we will extend to add our logic. We will call this authenticator <code>Secured</code>. Open <code>app/controllers/Secured.java</code>, and implement this class.</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="kwd">package</span><span class="pln"> controllers</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> play</span><span class="pun">.*;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> play</span><span class="pun">.</span><span class="pln">mvc</span><span class="pun">.*;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> play</span><span class="pun">.</span><span class="pln">mvc</span><span class="pun">.</span><span class="typ">Http</span><span class="pun">.*;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> models</span><span class="pun">.*;</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Secured</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">Security</span><span class="pun">.</span><span class="typ">Authenticator</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+    </span><span class="lit">@Override</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">String</span><span class="pln"> getUsername</span><span class="pun">(</span><span class="typ">Context</span><span class="pln"> ctx</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> ctx</span><span class="pun">.</span><span class="pln">session</span><span class="pun">().</span><span class="kwd">get</span><span class="pun">(</span><span class="str">"email"</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="lit">@Override</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">Result</span><span class="pln"> onUnauthorized</span><span class="pun">(</span><span class="typ">Context</span><span class="pln"> ctx</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> redirect</span><span class="pun">(</span><span class="pln">routes</span><span class="pun">.</span><span class="typ">Application</span><span class="pun">.</span><span class="pln">login</span><span class="pun">());</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<p>We have implemented two methods here. <code>getUsername</code> is used to get the username of the current logged in user. In our case this is the email address, that we set in the <code>email</code> attribute in the session when the user logged in. If this method returns a value, then the authenticator considers the user to be logged in, and lets the request proceed. If however the method returns <code>null</code>, then the authenticator will block the request, and instead invoke <code>onUnathorized</code>, which we have implemented to redirect to our login screen.</p>
+<p>Now let’s use this authenticator on the dashboard. In <code>app/controllers/Application.java</code>, add the <code>@Security.Authenticated</code> annotation with our authenticator to the <code>index</code> method:</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="lit">@Security</span><span class="pun">.</span><span class="typ">Authenticated</span><span class="pun">(</span><span class="typ">Secured</span><span class="pun">.</span><span class="kwd">class</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="typ">Result</span><span class="pln"> index</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="pun">...</span></code><button class="copy-button"></button></pre><h3 id="Testing-the-authenticator"><a class="section-marker" href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#Testing-the-authenticator">§</a><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#testing-the-authenticator" name="testing-the-authenticator">Testing the authenticator</a></h3>
+<p>Let’s write a test for the authenticator now, to make sure it works, in <code>test/controllers/LoginTest.java</code>:</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="lit">@Test</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> authenticated</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Result</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> callAction</span><span class="pun">(</span><span class="pln">
+        controllers</span><span class="pun">.</span><span class="pln">routes</span><span class="pun">.</span><span class="kwd">ref</span><span class="pun">.</span><span class="typ">Application</span><span class="pun">.</span><span class="pln">index</span><span class="pun">(),</span><span class="pln">
+        fakeRequest</span><span class="pun">().</span><span class="pln">withSession</span><span class="pun">(</span><span class="str">"email"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"bob@example.com"</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+    assertEquals</span><span class="pun">(</span><span class="lit">200</span><span class="pun">,</span><span class="pln"> status</span><span class="pun">(</span><span class="pln">result</span><span class="pun">));</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">    </span></code><button class="copy-button"></button></pre>
+<p>Of course, the more important thing to test is that the request is blocked when you are not authenticated, so let’s check that:</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="lit">@Test</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> notAuthenticated</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Result</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> callAction</span><span class="pun">(</span><span class="pln">
+        controllers</span><span class="pun">.</span><span class="pln">routes</span><span class="pun">.</span><span class="kwd">ref</span><span class="pun">.</span><span class="typ">Application</span><span class="pun">.</span><span class="pln">index</span><span class="pun">(),</span><span class="pln">
+        fakeRequest</span><span class="pun">()</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+    assertEquals</span><span class="pun">(</span><span class="lit">303</span><span class="pun">,</span><span class="pln"> status</span><span class="pun">(</span><span class="pln">result</span><span class="pun">));</span><span class="pln">
+    assertEquals</span><span class="pun">(</span><span class="str">"/login"</span><span class="pun">,</span><span class="pln"> header</span><span class="pun">(</span><span class="str">"Location"</span><span class="pun">,</span><span class="pln"> result</span><span class="pun">));</span><span class="pln">
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<p>Run the tests to make sure that the authenticator works.</p><h2 id="Logging-out"><a class="section-marker" href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#Logging-out">§</a><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#logging-out" name="logging-out">Logging out</a></h2>
+<p>Now try and visit the dashboard in a web browser. If you logged in successfully before, you’re probably now on the dashboard, the authenticator hasn’t blocked you because you were already logged in. You could close your browser and reopen it to log out, but now is as good a time as any for us to implement a log out action. As always, start with the route:</p>
+<pre class="prettyprint prettyprinted"><code><span class="pln">GET     </span><span class="pun">/</span><span class="pln">logout                     controllers</span><span class="pun">.</span><span class="typ">Application</span><span class="pun">.</span><span class="pln">logout</span><span class="pun">()</span></code><button class="copy-button"></button></pre>
+<p>And then implement the action in <code>app/controllers/Application.java</code>:</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="typ">Result</span><span class="pln"> logout</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    session</span><span class="pun">().</span><span class="pln">clear</span><span class="pun">();</span><span class="pln">
+    flash</span><span class="pun">(</span><span class="str">"success"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"You've been logged out"</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> redirect</span><span class="pun">(</span><span class="pln">
+        routes</span><span class="pun">.</span><span class="typ">Application</span><span class="pun">.</span><span class="pln">login</span><span class="pun">()</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<p>You can see we have cleared the session, this will log the user out. There is one new concept here. After clearing the session, we added an attribute to the flash scope, a success message. The flash scope is similar to the session, except that the flash scope lasts only until the next request comes in. This will allow us to render the success message in the login template when the redirected request comes in. Let’s add the message to <code>app/views/login.scala.html</code>, just as we did for the error message:</p>
+<pre class="prettyprint prettyprinted"><code class="language-html"><span class="lit">@if</span><span class="pun">(</span><span class="pln">flash</span><span class="pun">.</span><span class="pln">contains</span><span class="pun">(</span><span class="str">"success"</span><span class="pun">))</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="pun">&lt;</span><span class="pln">p </span><span class="kwd">class</span><span class="pun">=</span><span class="str">"success"</span><span class="pun">&gt;</span><span class="pln">
+        </span><span class="lit">@flash</span><span class="pun">.</span><span class="kwd">get</span><span class="pun">(</span><span class="str">"success"</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">&lt;/</span><span class="pln">p</span><span class="pun">&gt;</span><span class="pln">
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<p>Finally lets add a logout link to the main template, <code>app/views/main.scala.html</code>, inside the header section:</p>
+<pre class="prettyprint prettyprinted"><code class="language-html"><span class="tag">&lt;header&gt;</span><span class="pln">
+    </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"@routes.Application.index"</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"logo"</span><span class="tag">&gt;&lt;span&gt;</span><span class="pln">Zen</span><span class="tag">&lt;/span&gt;</span><span class="pln">tasks</span><span class="tag">&lt;/a&gt;</span><span class="pln">
+    </span><span class="tag">&lt;dl</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"user"</span><span class="tag">&gt;</span><span class="pln">
+        </span><span class="tag">&lt;dt&gt;</span><span class="pln">User</span><span class="tag">&lt;/dt&gt;</span><span class="pln">
+        </span><span class="tag">&lt;dd&gt;</span><span class="pln">
+            </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"@routes.Application.logout()"</span><span class="tag">&gt;</span><span class="pln">Logout</span><span class="tag">&lt;/a&gt;</span><span class="pln">
+        </span><span class="tag">&lt;/dd&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/dl&gt;</span><span class="pln">
+</span><span class="tag">&lt;/header&gt;</span></code><button class="copy-button"></button></pre>
+<p>Now go to the dashboard in your browser, try logging out, and then visiting the dashboard again. You should be unable to view the dashboard, it will redirect to the login screen. Login, and you should be able to see the dashboard again.</p><h2 id="Using-the-current-user"><a class="section-marker" href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#Using-the-current-user">§</a><a href="https://www.playframework.com/documentation/2.1.1/JavaGuide4#using-the-current-user" name="using-the-current-user">Using the current user</a></h2>
+<p>There is one last thing that we want to do. We can currently block access to an action based on whether we are logged in, but how can we access the currently logged in user? The answer is through the <code>request.username()</code> method. This will give us the email address of the current user.</p>
+<p>Let’s put the name of the user in the main template next to the logout link. To get the name, we’ll actually have to load the whole user from the database. Let’s also limit the projects to the one that the user is a member of, and the tasks to the ones that the user is assigned to, using the methods that we’ve already implemented on our models:</p>
+<p>Start by loading the user in the <code>index</code> method in <code>app/controllers/Application.java</code>:</p>
+<pre class="prettyprint prettyprinted"><code class="language-java"><span class="lit">@Security</span><span class="pun">.</span><span class="typ">Authenticated</span><span class="pun">(</span><span class="typ">Secured</span><span class="pun">.</span><span class="kwd">class</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="typ">Result</span><span class="pln"> index</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> ok</span><span class="pun">(</span><span class="pln">index</span><span class="pun">.</span><span class="pln">render</span><span class="pun">(</span><span class="pln">
+        </span><span class="typ">Project</span><span class="pun">.</span><span class="pln">findInvolving</span><span class="pun">(</span><span class="pln">request</span><span class="pun">().</span><span class="pln">username</span><span class="pun">()),</span><span class="pln"> 
+        </span><span class="typ">Task</span><span class="pun">.</span><span class="pln">findTodoInvolving</span><span class="pun">(</span><span class="pln">request</span><span class="pun">().</span><span class="pln">username</span><span class="pun">()),</span><span class="pln">
+        </span><span class="typ">User</span><span class="pun">.</span><span class="pln">find</span><span class="pun">.</span><span class="pln">byId</span><span class="pun">(</span><span class="pln">request</span><span class="pun">().</span><span class="pln">username</span><span class="pun">())</span><span class="pln">
+    </span><span class="pun">));</span><span class="pln"> 
+</span><span class="pun">}</span></code><button class="copy-button"></button></pre>
+<p>We’ve passed an additional parameter to the index template, so let’s declare that parameter in <code>app/views/index.scala.html</code>, and pass it to the main template:</p>
+<pre class="prettyprint prettyprinted"><code class="language-html"><span class="pun">@(</span><span class="pln">projects</span><span class="pun">:</span><span class="pln"> </span><span class="typ">List</span><span class="pun">[</span><span class="typ">Project</span><span class="pun">],</span><span class="pln"> todoTasks</span><span class="pun">:</span><span class="pln"> </span><span class="typ">List</span><span class="pun">[</span><span class="typ">Task</span><span class="pun">],</span><span class="pln"> user</span><span class="pun">:</span><span class="pln"> </span><span class="typ">User</span><span class="pun">)</span><span class="pln">
+
+</span><span class="lit">@main</span><span class="pun">(</span><span class="pln">projects</span><span class="pun">,</span><span class="pln"> user</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="pun">...</span></code><button class="copy-button"></button></pre>
+<p>And of course, we’ll have to add it to our <code>app/views/main.scala.html</code> parameter declaration:</p>
+<pre class="prettyprint prettyprinted"><code class="language-html"><span class="pun">@(</span><span class="pln">projects</span><span class="pun">:</span><span class="pln"> </span><span class="typ">List</span><span class="pun">[</span><span class="typ">Project</span><span class="pun">],</span><span class="pln"> user</span><span class="pun">:</span><span class="pln"> </span><span class="typ">User</span><span class="pun">)(</span><span class="pln">body</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Html</span><span class="pun">)</span></code><button class="copy-button"></button></pre>
+<p>Now we can use it in the header, add it before the logout link we just added:</p>
+<pre class="prettyprint prettyprinted"><code class="language-html"><span class="tag">&lt;dl</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"user"</span><span class="tag">&gt;</span><span class="pln">
+    </span><span class="tag">&lt;dt&gt;</span><span class="pln">@user.name </span><span class="tag">&lt;span&gt;</span><span class="pln">(@user.email)</span><span class="tag">&lt;/span&gt;&lt;/dt&gt;</span><span class="pln">
+    </span><span class="tag">&lt;dd&gt;</span><span class="pln">
+        </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"@routes.Application.logout()"</span><span class="tag">&gt;</span><span class="pln">Logout</span><span class="tag">&lt;/a&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/dd&gt;</span><span class="pln">
+</span><span class="tag">&lt;/dl&gt;</span></code><button class="copy-button"></button></pre>
+<p>Now visit the dashboard again, ensuring you are logged in.</p>
+<p><a href="./PlayAuhentication_files/dashboardloggedin.png"><img src="./PlayAuhentication_files/dashboardloggedin.png"></a></p>
+<p>We can now see the currently logged in user, and only the projects that the user has access to and the tasks they have assigned to them.</p>
+<p>As always, commit your work to git.</p>
+<blockquote>
+  <p>Go to the <a href="https://www.playframework.com/documentation/2.1.1/JavaGuide5">next part</a></p>
+</blockquote>
+
+            
+        
+    </article>
+
+
+        <hr class="clear">
+
+        <script type="text/javascript">
+            // On start, check if flex mod is enabled
+            if (localStorage && localStorage['flex'] == "true" ) document.body.className += " flex"
+        </script>
+
+        
+          
+
+<script type="text/javascript" src="./PlayAuhentication_files/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+    apiKey: 'a0b34e68c804cf96e76adcb02d47159b',
+    indexName: 'playframework',
+    inputSelector: '#search-input',
+    algoliaOptions: {
+        'facetFilters': [
+            
+              "version: 2.1.1",
+            
+            "tags: en"
+        ]
+    }
+});
+</script>
+
+        
+    </section>
+
+
+        <footer>
+            <div id="support">
+                <article class="community">
+                    <h3>Community support</h3>
+                    <ul>
+                        <li><a href="https://groups.google.com/forum/#!forum/play-framework">Mailing list</a></li>
+                        <li><a href="https://stackoverflow.com/questions/tagged/playframework">Stackoverflow</a></li>
+                    </ul>
+                </article>
+                <article class="professional">
+                    <h3>Professional support</h3>
+                    <ul>
+                        <li><a href="https://www.lightbend.com/services/expert-support">Lightbend Subscription</a></li>
+                        <li><a href="https://www.lightbend.com/services/training">Training</a></li>
+                        <li><a href="https://www.lightbend.com/services/consulting">Consulting</a></li>
+                    </ul>
+                </article>
+            </div>
+            <div class="wrapper">
+                <div>
+                    <h3>Play Framework</h3>
+                    <ul>
+                        <li><a href="https://www.playframework.com/download">Download</a></li>
+                        <li><a href="https://www.playframework.com/documentation/latest/Tutorials">Tutorials</a></li>
+                        <li><a href="https://www.playframework.com/documentation">Documentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Community links</h3>
+                    <ul>
+                        <li><a href="https://www.eventbrite.com/directory/?q=play+framework&loc=Worldwide">Events <em>via Eventbrite</em></a></li>
+                        <li><a href="http://www.indeed.com/jobs?q=%22play+framework%22&l=">Jobs <em>via Indeed</em></a></li>
+                        <li><a href="http://www.scoop.it/playframework">Blogs <em>via Scoop.it</em></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Code &amp; contribution</h3>
+                    <ul>
+                        <li><a href="https://www.playframework.com/code">Code &amp; contributors</a></li>
+                        <li><a href="https://github.com/playframework/playframework/issues">Bug tracker <em>GitHub</em></a></li>
+                        <li><a href="https://www.playframework.com/get-involved">Get involved</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Social networks</h3>
+                    <ul>
+                        <li><a href="https://twitter.com/playframework"><span>Twitter</span></a></li>
+                        <li><a href="https://plus.google.com/106233335814246022600"><span>Google+</span></a></li>
+                        <li><a href="https://www.facebook.com/pages/Play-Framework/50884087887"><span>Facebook</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="credits">
+                <a href="https://www.playframework.com/" class="logo"><img src="./PlayAuhentication_files/play_reverse.svg"></a>
+                <a href="https://lightbend.com/" class="partner"><img src="./PlayAuhentication_files/lightbend-reverse.svg"></a>
+                <a href="http://zengularity.com/" class="partner"><img src="./PlayAuhentication_files/zengularity.png"></a>
+                <p>
+                    Play Framework is released under the Apache 2 License
+                </p>
+            </div>
+        </footer>
+
+        <a href="http://www.reactivemanifesto.org/" id="reactive_ribbon">
+            <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src="./PlayAuhentication_files/we-are-reactive-black-right.png">
+        </a>
+
+        <script type="text/javascript">
+        (function() {
+          var didInit = false;
+          function initMunchkin() {
+            if(didInit === false) {
+              didInit = true;
+              Munchkin.init('558-NCX-702');
+            }
+          }
+          var s = document.createElement('script');
+          s.type = 'text/javascript';
+          s.async = true;
+          s.src = '//munchkin.marketo.net/munchkin.js';
+          s.onreadystatechange = function() {
+            if (this.readyState == 'complete' || this.readyState == 'loaded') {
+              initMunchkin();
+            }
+          };
+          s.onload = initMunchkin;
+          document.getElementsByTagName('head')[0].appendChild(s);
+        })();
+        </script>
+    
+
+
+
+
+<script type="text/javascript" charset="utf-8" src="./PlayAuhentication_files/d435ff18c832044c3ddf7a0cf826eb72-prettify.js"></script>
+<script type="text/javascript" charset="utf-8" src="./PlayAuhentication_files/d3bd091d7b84099d91e889bc7c0770cb-lang-scala.js"></script>
+<script type="text/javascript">
+$(function(){
+window.prettyPrint && prettyPrint()
+});
+</script>
+<script type="text/javascript" charset="utf-8" src="./PlayAuhentication_files/55db0ff82a3b6b247844ae0d07d85fc6-clipboard.min.js"></script>
+<script type="text/javascript">
+(function(){
+    var pre = document.getElementsByClassName('prettyprint');
+    for (var i = 0; i < pre.length; i++) {
+        var button = document.createElement('button');
+        button.className = 'copy-button';
+
+        pre[i].appendChild(button);
+    }
+
+    // Run Clipboard
+    var copyCode = new Clipboard('.copy-button', {
+        target: function(trigger) {
+            return trigger.previousElementSibling;
+        }
+    });
+
+    // On success:
+    copyCode.on('success', function(event) {
+        event.clearSelection();
+        event.trigger.textContent = ' Success';
+        window.setTimeout(function() {
+            event.trigger.textContent = '';
+        }, 2000);
+    });
+
+    // On error (Safari):
+    // - Change the  "Press Ctrl+C to copy"
+    // - Swap it to "Copy" in 2s.
+    copyCode.on('error', function(event) {
+        event.trigger.textContent = 'Press "Ctrl + C" to copy';
+        window.setTimeout(function() {
+            event.trigger.textContent = '';
+        }, 5000);
+    });
+
+})();
+</script>
+
+
+</body></html>
