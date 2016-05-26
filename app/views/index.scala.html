@@ -1,20 +1,19 @@
 @*
- * This template takes a single argument, a String containing a
- * message to display.
- *@
-@(message: String)
-
-@*
- * Call the `main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
- *@
-@main("Welcome to Play") {
-
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
-    @play20.welcome(message, style = "Java")
-
-}
+* This template takes a single argument, a String containing the
+* application name to display.
+*@
+@(application_name: String)
+<html>
+	<head>
+		<title>@application_name's Home</title>
+	</head>
+	<body>
+		<h1>@application_name</h1>
+		<a href="/login">Administration page</a>
+		@if(flash.contains("success")) {
+		<p class="success">
+			@flash.get("success")
+		</p>
+		}
+	</body>
+</html>
