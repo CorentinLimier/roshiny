@@ -2,7 +2,6 @@ package controllers;
 
 import play.mvc.*;
 
-import static play.data.Form.*;
 import play.data.*;
 
 import views.html.*;
@@ -20,36 +19,8 @@ public class Application extends Controller {
 	 * <code>GET</code> request with a path of <code>/</code>.
 	 */
 
-	public static class Login {
-		public String password;
-		public String validate() {
-			if (!password.equals("secret")){
-				return "Invalid user or password";
-			}
-			return null;
-		}
-	}
-
 	public Result index() {
 		return ok(index.render("Default Name"));
-	}
-
-	public Result login() {
-		return ok(login.render("Default Name", form(Login.class)));
-	}
-
-	public Result authenticate() {
-		Form<Login> loginForm = form(Login.class).bindFromRequest();
-		if (loginForm.hasErrors()) {
-			return badRequest(login.render("Default Name", loginForm));
-		} 
-		else {
-			session().clear();
-			session("user", "admin");
-			return redirect(
-					routes.Admin.index()
-					);
-		}
 	}
 }
 

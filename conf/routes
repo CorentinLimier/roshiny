@@ -4,11 +4,12 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.Application.index
-GET 	/login						controllers.Application.login
-POST    /login                      controllers.Application.authenticate
+
+GET 	/login						controllers.LoginAdmin.login
+POST    /login                      controllers.LoginAdmin.authenticate
+GET		/logout						controllers.LoginAdmin.logout
 
 GET		/admin						controllers.Admin.index
-GET		/logout						controllers.Admin.logout
 
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
