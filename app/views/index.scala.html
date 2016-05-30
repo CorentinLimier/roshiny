@@ -24,10 +24,12 @@
 	<body>
 		@navbar(application_name)
 		@if(flash.contains("success")) {
-		<p class="success">
-			@flash.get("success")
-		</p>
+		<div class="alert alert-success">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>@flash.get("success")</strong>
+		</div>
 		}
+		<h1>Home</h1>
 		@lorem(10)
 	</body>
 </html>

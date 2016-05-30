@@ -20,20 +20,23 @@
 	<body>
 		@navbar(application_name)
 		@helper.form(routes.LoginAdmin.authenticate) {
+		<div class="text-center">
 		<h1>Sign in</h1>
 
 		@if(form.hasGlobalErrors) {
-		<p class="error">
-			@form.globalError.message
-		</p>
+		<div class="alert alert-danger">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>@form.globalError.message</strong>
+		</div>
 		}
-
+		<br/>
 		<p>
 			<input type="password" name="password" placeholder="Password" />
 		</p>
 		<p>
-			<button type="submit">Login</button>
+			<button class="btn btn-default" type="submit">Login</button>
 		</p>
+		</div>
 		}
 	</body>
 </html>
