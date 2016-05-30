@@ -14,6 +14,9 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li class="active"><a href="/">Home</a></li>
 			<li><a href="/admin">Admin</a></li>
+			@if(session.get("user") == "admin"){
+				<li><a href="/logout">Logout</a></li>
+			}
 		</ul>
 	</div>
 </div>
