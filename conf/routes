@@ -10,6 +10,8 @@ POST    /login                      controllers.Application.authenticate
 GET		/admin						controllers.Admin.index
 GET		/logout						controllers.Admin.logout
 
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
 

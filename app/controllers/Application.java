@@ -35,13 +35,13 @@ public class Application extends Controller {
 	}
 
 	public Result login() {
-		return ok(login.render(form(Login.class)));
+		return ok(login.render("Default Name", form(Login.class)));
 	}
 
 	public Result authenticate() {
 		Form<Login> loginForm = form(Login.class).bindFromRequest();
 		if (loginForm.hasErrors()) {
-			return badRequest(login.render(loginForm));
+			return badRequest(login.render("Default Name", loginForm));
 		} 
 		else {
 			session().clear();

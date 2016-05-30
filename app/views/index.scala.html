@@ -5,15 +5,29 @@
 @(application_name: String)
 <html>
 	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta name="description" content="Home page">
+		<meta name="author" content="Corentin Limier">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+
 		<title>@application_name's Home</title>
+
+		<link href="@routes.Assets.at("libs/bootstrap/css/bootstrap.min.css")" rel="stylesheet"></script>
+		<link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet"></script>
+
+		<script src="@routes.Assets.at("libs/jquery.min.js")"></script>
+		<script src="@routes.Assets.at("libs/bootstrap/js/bootstrap.min.js")"></script>
 	</head>
 	<body>
-		<h1>@application_name</h1>
-		<a href="/login">Administration page</a>
+		@navbar(application_name)
 		@if(flash.contains("success")) {
 		<p class="success">
 			@flash.get("success")
 		</p>
 		}
+		@lorem(10)
 	</body>
 </html>
