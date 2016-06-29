@@ -4,6 +4,7 @@ import play.mvc.*;
 
 import play.data.*;
 
+import models.ProjectSettings;
 import views.html.*;
 
 /**
@@ -20,7 +21,8 @@ public class Application extends Controller {
 	 */
 
 	public Result index() {
-		return ok(index.render("Default Name"));
+		String applicationName_l = ProjectSettings.getApplicationName();
+		return ok(index.render(applicationName_l));
 	}
 }
 
