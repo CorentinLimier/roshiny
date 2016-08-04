@@ -1,3 +1,7 @@
 #sidebar-wrapper{
 	position: fixed;
 }
+
+#content{
+	margin-left: 270px;
+}

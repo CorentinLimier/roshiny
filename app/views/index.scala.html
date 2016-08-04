@@ -27,18 +27,16 @@
 	</head>
 	<body>
 		@navbar(application_name)
-			<div class="row">
-				@sidebar()
-				<div class="col-sm-9 col-lg-10">
-				@if(flash.contains("success")) {
-				<div class="alert alert-success">
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					<strong>@flash.get("success")</strong>
-				</div>
-				}
-				<h1>Home</h1>
-				@lorem(10)
-				</div>
+		@sidebar()
+		<div id="content">
+			@if(flash.contains("success")) {
+			<div class="alert alert-success">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>@flash.get("success")</strong>
 			</div>
+			}
+			<h1>Home</h1>
+			@lorem(10)
+		</div>
 	</body>
 </html>
