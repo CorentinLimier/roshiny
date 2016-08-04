@@ -1,5 +1,15 @@
 package models;
 
+import play.*;
+
+import java.io.File;
+import java.io.IOException;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 /* Singleton */
 public class ProjectSettings
 {	
@@ -21,5 +31,23 @@ public class ProjectSettings
 
 	public static String getAdminPassword(){
 		return adminPassword_m;
+	}
+
+	public static void readJsonFile(String path_p)
+	{
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			JsonNode root = mapper.readTree(new File(path_p));
+		
+			setApplicationName(root.findPath("applicationName").textValue());
+			setAdminPassword(root.findPath("adminPassword").textValue());
+		}
+		catch(Exception e)
+		{
+			Logger.error(e.toString());
+		}
+	}
+
+	public static void writeJsonFile(String content_p, String path_p){
 	}
 }
