@@ -2,15 +2,15 @@ package controllers;
 
 import play.mvc.*;
 
-import models.ProjectSettings;
+import models.*;
 import views.html.*;
 
 public class Admin extends Controller {
 
 	@Security.Authenticated(Secured.class)
 	public Result index() {
-		String applicationName_l = ProjectSettings.getApplicationName();
-		return ok(admin.render(applicationName_l));
+		Setting projectName = Setting.find.byId("projectName"); 
+		return ok(admin.render(projectName.value));
 	}
 }
 

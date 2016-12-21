@@ -5,7 +5,7 @@ import play.mvc.*;
 import static play.data.Form.*;
 import play.data.*;
 
-import models.ProjectSettings;
+import models.*;
 import views.html.*;
 
 public class LoginAdmin extends Controller {
@@ -14,8 +14,8 @@ public class LoginAdmin extends Controller {
 		public String password;
 
 		public String validate() {
-			String adminPassword_l = ProjectSettings.getAdminPassword();
-			if (!password.equals(adminPassword_l)){
+			String adminPassword = User.find.all().get(0).password;
+			if (!password.equals(adminPassword)){
 				return "Invalid password";
 			}
 			return null;
@@ -23,15 +23,15 @@ public class LoginAdmin extends Controller {
 	}
 
 	public Result login() {
-		String applicationName_l = ProjectSettings.getApplicationName();
-		return ok(login.render(applicationName_l, form(Login.class)));
+		Setting projectName = Setting.find.byId("projectName"); 
+		return ok(login.render(projectName.value, form(Login.class)));
 	}
 
 	public Result authenticate() {
-		Form<Login> loginForm_l = form(Login.class).bindFromRequest();
-		String applicationName_l = ProjectSettings.getApplicationName();
-		if (loginForm_l.hasErrors()) {
-			return badRequest(login.render(applicationName_l, loginForm_l));
+		Form<Login> loginForm = form(Login.class).bindFromRequest();
+		Setting projectName = Setting.find.byId("projectName"); 
+		if (loginForm.hasErrors()) {
+			return badRequest(login.render(projectName.value, loginForm));
 		} 
 		else {
 			session().clear();
