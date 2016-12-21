@@ -12,6 +12,9 @@ public class SecuredAdmin extends Security.Authenticator {
 	public String getUsername(Context ctx) {
 		String userName = ctx.session().get("user");
 		User user = User.find.where().eq("name", ctx.session().get("user")).findUnique();
+		if(user == null){
+			return null;
+		}
 		if(user.role.name.equals("admin")){
 			return userName;
 		}
