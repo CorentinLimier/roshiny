@@ -14,7 +14,7 @@ public class LoginAdmin extends Controller {
 		public String password;
 
 		public String validate() {
-			String adminPassword = User.find.all().get(0).password;
+			String adminPassword = User.find.where().eq("name", "admin").findUnique().password;
 			if (!password.equals(adminPassword)){
 				return "Invalid password";
 			}
