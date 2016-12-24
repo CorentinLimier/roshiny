@@ -1,5 +1,6 @@
 package controllers;
 
+import play.Logger;
 import play.mvc.*;
 
 import static play.data.Form.*;
@@ -23,17 +24,21 @@ public class LoginAdmin extends Controller {
 	}
 
 	public Result login() {
+		Logger.info("LoginAdmin.login()");
 		Setting projectName = Setting.find.byId("projectName"); 
 		return ok(login.render(projectName.value, form(Login.class)));
 	}
 
 	public Result authenticate() {
+		Logger.info("LoginAdmin.authenticate()");
 		Form<Login> loginForm = form(Login.class).bindFromRequest();
 		Setting projectName = Setting.find.byId("projectName"); 
 		if (loginForm.hasErrors()) {
+			Logger.info("LoginAdmin: invalid password");
 			return badRequest(login.render(projectName.value, loginForm));
 		} 
 		else {
+			Logger.info("LoginAdmin: password OK");
 			session().clear();
 			session("user", "admin");
 			return redirect(
@@ -43,6 +48,7 @@ public class LoginAdmin extends Controller {
 	}
 
 	public Result logout() {
+		Logger.info("LoginAdmin.logout()");
 		session().clear();
 		flash("success", "Vous avez été déconnecté");
 		return redirect(

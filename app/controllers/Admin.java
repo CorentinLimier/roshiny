@@ -11,6 +11,7 @@ import views.html.*;
 public class Admin extends Controller {
 
 	public Result index() {
+		Logger.info("Admin.index()");
 		Setting projectName = Setting.find.byId("projectName"); 
 		return ok(admin.render(projectName.value));
 	}
@@ -19,6 +20,7 @@ public class Admin extends Controller {
 		try{
 			DynamicForm form = Form.form().bindFromRequest();	
 			String newName = form.get("app_name");
+			Logger.info("Admin.setApplicationName(): " + newName);
 			Setting projectName = Setting.find.byId("projectName"); 
 			projectName.value = newName;
 			projectName.update();
@@ -31,6 +33,7 @@ public class Admin extends Controller {
 	}
 
 	public Result setPassword() {
+		Logger.info("Admin.setPassword()");
 		return ok("OK");
 	}
 }

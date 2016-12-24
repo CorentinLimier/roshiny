@@ -16,6 +16,7 @@ import java.util.List;
 public class Application extends Controller {
 
 	public Result index() {
+		Logger.info("Application.index()");
 		Setting projectName = Setting.find.byId("projectName"); 
 		return ok(index.render(projectName.value));
 	}
