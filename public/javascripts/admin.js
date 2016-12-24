@@ -27,10 +27,42 @@
 		});
 	};
 
+	var addRow = function(button){
+		var trButton = button.closest("tr");
+		var table = button.closest("table");
+		var trTable = $(document.createElement('TR'));
+		var tdTable, input, i, span;
+
+		for(i=0; i<2; i++){
+			tdTable = $(document.createElement('TD'));
+			input = $(document.createElement('INPUT'))
+				.attr("class", "form-control");
+
+			tdTable.append(input);
+			trTable.append(tdTable);
+		};
+
+		for(i=0; i<2; i++){
+			tdTable = $(document.createElement('TD'));
+			input = $(document.createElement('INPUT'))
+				.attr("type", "checkbox")
+				.attr("class", "checkbox-disabled");
+			span = $(document.createElement('SPAN'))
+				.attr("class", "little-margin")
+				.html("Activer");
+			tdTable.append(input);
+			tdTable.append(span);
+			trTable.append(tdTable);
+		};
+
+		trButton.before(trTable);
+	}
+
 	// Wait until dom is ready
 	$(function(){
 		$("#appname_form").on('submit', function(e){sendForm(e, $(this))});
 		$("#pswd_form").on('submit', function(e){sendForm(e, $(this))});
+		$(".add-row").on('click', function(e){addRow($(this))});
 	});
 
 }());

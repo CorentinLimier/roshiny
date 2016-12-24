@@ -51,15 +51,24 @@
 				</div>
 			</form>
 			<h2>Paramètres de l'engine</h2>
-			<form>
+			<form id="form_engine_path" action="/admin/enginepath" method="post" class="form-inline">
+				<div class="form-group">
+					<label for="engine_path">Chemin du script de l'engine</label><br />
+					<input type="text" class="form-control" id="engine_path" name="engine_path">
+					<button type="submit" class="btn btn-default">Valider</button>
+				</div>
+			</form>
+			<form id="form_scenarii_path" action="/admin/scenariipath" method="post" class="form-inline">
+				<div class="form-group">
+					<label for="scenarii_path">Chemin du répertoire des scénarii</label><br />
+					<input type="text" class="form-control" id="scenarii_path" name="scenarii_path">
+					<button type="submit" class="btn btn-default">Valider</button>
+				</div>
 			</form>
 			<h2>Fichiers d'entrée</h2>
-			<form>
-			</form>
-
+			@admin_data_files()
 			<h2>Fichiers de sortie</h2>
-			<form>
-			</form>
+			@admin_data_files()
 		</div>
 	</body>
 </html>
