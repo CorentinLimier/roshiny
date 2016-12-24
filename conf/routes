@@ -8,8 +8,12 @@ GET 	/login						controllers.LoginAdmin.login
 POST    /login                      controllers.LoginAdmin.authenticate
 GET		/logout						controllers.LoginAdmin.logout
 
+# Admin dashboard
 GET		/admin						controllers.Admin.index
+POST	/admin/appname				controllers.Admin.setApplicationName
+POST	/admin/password				controllers.Admin.setPassword
 
+# Files
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 # Map static resources from the /public folder to the /assets URL path

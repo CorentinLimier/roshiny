@@ -16,8 +16,8 @@ import java.util.List;
 public class Application extends Controller {
 
 	public Result index() {
-		List<Setting> projectName = Setting.find.all();//byId("projectName"); 
-		return ok(index.render(projectName.get(0).value));
+		Setting projectName = Setting.find.byId("projectName"); 
+		return ok(index.render(projectName.value));
 	}
 }
 

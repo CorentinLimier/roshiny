@@ -16,7 +16,7 @@ public class LoginAdmin extends Controller {
 		public String validate() {
 			String adminPassword = User.find.where().eq("name", "admin").findUnique().password;
 			if (!password.equals(adminPassword)){
-				return "Invalid password";
+				return "Mot de passe invalide";
 			}
 			return null;
 		}
@@ -44,7 +44,7 @@ public class LoginAdmin extends Controller {
 
 	public Result logout() {
 		session().clear();
-		flash("success", "You've been logged out");
+		flash("success", "Vous avez été déconnecté");
 		return redirect(
 				routes.Application.index()
 		);
