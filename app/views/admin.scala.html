@@ -35,18 +35,18 @@
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>
-			<form action="/admin/password" method="post" class="form-inline">
+			<form id="pswd_form" action="/admin/password" method="post" class="form-inline">
 				<div class="form-group">
 					<label for="act_pswd">Mot de passe actuel</label><br />
-					<input type="password" class="form-control" id="act-pswd">
+					<input type="password" class="form-control" id="act_pswd" name="act_pswd">
 				</div>
 				<div class="form-group">
-					<label for="set_pswd">Nouveau mot de passe</label><br />
-					<input type="password" class="form-control" id="set_pswd">
+					<label for="new_pswd">Nouveau mot de passe</label><br />
+					<input type="password" class="form-control" id="new_pswd" name="new_pswd">
 				</div>
 				<div class="form-group">
 					<label for="conf_pswd">Confirmer le mot de passe</label><br />
-					<input type="password" class="form-control" id="conf_pswd">
+					<input type="password" class="form-control" id="conf_pswd" name="conf_pswd">
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>

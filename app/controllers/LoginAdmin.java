@@ -33,18 +33,16 @@ public class LoginAdmin extends Controller {
 		Logger.info("LoginAdmin.authenticate()");
 		Form<Login> loginForm = form(Login.class).bindFromRequest();
 		Setting projectName = Setting.find.byId("projectName"); 
+
 		if (loginForm.hasErrors()) {
-			Logger.info("LoginAdmin: invalid password");
+			Logger.info("LoginAdmin.authenticate(): invalid password");
 			return badRequest(login.render(projectName.value, loginForm));
 		} 
-		else {
-			Logger.info("LoginAdmin: password OK");
-			session().clear();
-			session("user", "admin");
-			return redirect(
-					routes.Admin.index()
-					);
-		}
+
+		Logger.info("LoginAdmin.authenticate(): password OK");
+		session().clear();
+		session("user", "admin");
+		return redirect(routes.Admin.index());
 	}
 
 	public Result logout() {

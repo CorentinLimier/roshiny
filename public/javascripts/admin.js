@@ -30,6 +30,7 @@
 	// Wait until dom is ready
 	$(function(){
 		$("#appname_form").on('submit', function(e){sendForm(e, $(this))});
+		$("#pswd_form").on('submit', function(e){sendForm(e, $(this))});
 	});
 
 }());
