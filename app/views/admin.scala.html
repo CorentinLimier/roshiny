@@ -51,17 +51,17 @@
 				</div>
 			</form>
 			<h2>Paramètres de l'engine</h2>
-			<form id="form_engine_path" action="/admin/enginepath" method="post" class="form-inline">
+			<form id="engine_path_form" action="/admin/enginepath" method="post" class="form-inline">
 				<div class="form-group">
 					<label for="engine_path">Chemin du script de l'engine</label><br />
-					<input type="text" class="form-control" id="engine_path" name="engine_path">
+					<input type="text" class="form-control" id="engine_path" name="path" value=@settings("enginePath")>
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>
-			<form id="form_scenarii_path" action="/admin/scenariipath" method="post" class="form-inline">
+			<form id="scenarii_path_form" action="/admin/scenariipath" method="post" class="form-inline">
 				<div class="form-group">
 					<label for="scenarii_path">Chemin du répertoire des scénarii</label><br />
-					<input type="text" class="form-control" id="scenarii_path" name="scenarii_path">
+					<input type="text" class="form-control" id="scenarii_path" name="path" value=@settings("scenariiPath")>
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>

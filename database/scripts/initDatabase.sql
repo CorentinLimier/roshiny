@@ -1,3 +1,4 @@
+/*
 create table role (
   id                            integer not null,
   name                          varchar(255),
@@ -23,3 +24,32 @@ create table user (
 );
 
 insert into user values (1, 1, "admin", "");
+*/
+
+create table data_file (
+  id                            integer not null,
+  file_id                       integer,
+  csv_viz                       integer(1),
+  data_viz                      integer(1),
+  constraint uq_data_file_file_id unique (file_id),
+  constraint pk_data_file primary key (id)
+);
+
+create table file (
+  id                            integer not null,
+  path                          varchar(255),
+  constraint pk_file primary key (id)
+);
+
+insert into file values (1, "");
+insert into file values (2, "");
+
+create table parameter_file (
+  parameter                     varchar(255) not null,
+  file_id                       integer,
+  constraint uq_parameter_file_file_id unique (file_id),
+  constraint pk_parameter_file primary key (parameter)
+);
+
+insert into parameter_file values ("enginePath", 1);
+insert into parameter_file values ("scenariiPath", 2);

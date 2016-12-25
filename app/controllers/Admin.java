@@ -1,5 +1,8 @@
 package controllers;
 
+import java.io.File;
+import java.util.HashMap;
+
 import play.Logger;
 import play.data.*;
 import static play.data.Form.*;
@@ -28,17 +31,34 @@ public class Admin extends Controller {
 		}
 	}
 
+	public static class FileValidation{
+		public String path;
+
+		public String validate() {
+			File f = new File(path);
+			if(f.exists()){
+				return null;
+			}
+			else{
+				return "Path does not exist";
+			}
+		}
+	}
+
 	public Result index() {
 		Logger.info("Admin.index()");
-		Setting projectName = Setting.find.byId("projectName"); 
-		return ok(admin.render(projectName.value));
+		HashMap<String, String> settings = new HashMap<String, String>();
+		settings.put("projectName", Setting.find.byId("projectName").value);
+		settings.put("enginePath", ParameterFile.find.byId("enginePath").file.path);
+		settings.put("scenariiPath", ParameterFile.find.byId("scenariiPath").file.path);
+		return ok(admin.render(settings));
 	}
 
 	public Result setApplicationName() {
 		try{
 			DynamicForm form = Form.form().bindFromRequest();	
 			String newName = form.get("app_name");
-			Logger.info("Admin.setApplicationName(): " + newName);
+			Logger.error("Admin.setApplicationName(): " + newName);
 			Setting projectName = Setting.find.byId("projectName"); 
 			projectName.value = newName;
 			projectName.update();
@@ -55,7 +75,7 @@ public class Admin extends Controller {
 		Form<Password> passwordForm = form(Password.class).bindFromRequest();
 
 		if (passwordForm.hasErrors()) {
-			Logger.info("Admin.setPassword(): "+passwordForm.globalError().message());
+			Logger.error("Admin.setPassword(): "+passwordForm.globalError().message());
 			return badRequest(passwordForm.globalError().message());
 		} 
 
@@ -64,6 +84,46 @@ public class Admin extends Controller {
 		admin.update();
 
 		Logger.info("Admin.setPassword(): password updated");
+
+		return ok("OK");
+	}
+
+	public Result setEnginePath() {
+		Logger.info("Admin.setEnginePath()");
+		Form<FileValidation> fileForm = form(FileValidation.class).bindFromRequest();
+
+		if (fileForm.hasErrors()) {
+			Logger.error("Admin.setEnginePath(): " + fileForm.globalError().message());
+			return badRequest(fileForm.globalError().message());
+		} 
+
+		String newPath = fileForm.get().path;
+
+		models.File engineFile = ParameterFile.find.byId("enginePath").file;
+		engineFile.path = newPath;
+		engineFile.update();
+
+		Logger.info("Admin.setEnginePath(): " + newPath);
+
+		return ok("OK");
+	}
+
+	public Result setScenariiPath() {
+		Logger.info("Admin.setScenariiPath()");
+		Form<FileValidation> fileForm = form(FileValidation.class).bindFromRequest();
+
+		if (fileForm.hasErrors()) {
+			Logger.error("Admin.setScenariiPath(): " + fileForm.globalError().message());
+			return badRequest(fileForm.globalError().message());
+		} 
+
+		String newPath = fileForm.get().path;
+
+		models.File scenariiFile = ParameterFile.find.byId("scenariiPath").file;
+		scenariiFile.path = newPath;
+		scenariiFile.update();
+
+		Logger.info("Admin.setScenariiPath(): " + newPath);
 
 		return ok("OK");
 	}

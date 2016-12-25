@@ -12,6 +12,8 @@ GET		/logout						controllers.LoginAdmin.logout
 GET		/admin						controllers.Admin.index
 POST	/admin/appname				controllers.Admin.setApplicationName
 POST	/admin/password				controllers.Admin.setPassword
+POST	/admin/enginepath			controllers.Admin.setEnginePath
+POST	/admin/scenariipath			controllers.Admin.setScenariiPath
 
 # Files
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
