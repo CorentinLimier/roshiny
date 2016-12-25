@@ -1,4 +1,4 @@
-@(application_name: String, form: Form[LoginAdmin.Login])
+@(projectName: String, form: Form[LoginAdmin.Login])
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -18,7 +18,7 @@
 		<script src="@routes.Assets.at("libs/bootstrap/js/bootstrap.min.js")"></script>
 	</head>
 	<body>
-		@navbar(application_name)
+		@navbar(projectName)
 		@helper.form(routes.LoginAdmin.authenticate) {
 			<div class="text-center">
 				<h1>Connexion</h1>

@@ -2,7 +2,7 @@
 * This template takes a single argument, a String containing the
 * application name to display.
 *@
-@(application_name: String)
+@(projectName: String)
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -13,7 +13,7 @@
 		<meta name="author" content="Corentin Limier">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
 
-		<title>@application_name's Home</title>
+		<title>@projectName's Home</title>
 
 		<link href="@routes.Assets.at("libs/bootstrap/css/bootstrap.min.css")" rel="stylesheet"></script>
 		<link href="@routes.Assets.at("libs/sidebar/sidebar.css")" rel="stylesheet"></script>
@@ -26,7 +26,7 @@
 		<script src="@routes.Assets.at("libs/sidebar/sidebar.js")"></script>
 	</head>
 	<body>
-		@navbar(application_name)
+		@navbar(projectName)
 		@sidebar()
 		<div id="content">
 			@if(flash.contains("success")) {
