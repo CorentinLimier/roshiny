@@ -1,14 +1,27 @@
-<form>
 <table class="table table-striped">
 	<tr>
 		<th>Nom du fichier</th>
 		<th>Chemin relatif au scénario</th>
 		<th>Visualiser comme tableau csv</th>
 		<th>Activer la dataviz</th>
+		<th>Ajouter/Supprimer</th>
 	</tr>
 	<tr>
-		<td colspan=4><button type="button" class="add-row btn btn-default">Ajouter un fichier</button></td>
+		<td><input type="text" class="form-control"></td>
+		<td><input type="text" class="form-control"></td>
+		<td>
+			<label>
+			<input type="checkbox" class="checkbox checkbox-disabled checkbox-inline">
+			<span class="little-margin">Activer</span>
+			</label>
+		</td>
+		<td>
+			<label>
+			<input type="checkbox" class="checkbox checkbox-disabled checkbox-inline">
+			<span class="little-margin">Activer</span>
+			</label>
+		</td>
+		<td><button type="button" class="add-row btn btn-default">Ajouter ce fichier</button></td>
 	</tr>
 </table>
-<button type="submit" class="btn btn-default">Valider</button>
-</form>
+<button class="btn btn-default">Valider</button>
