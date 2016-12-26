@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 
 import play.Logger;
 import play.data.*;
@@ -45,20 +46,33 @@ public class Admin extends Controller {
 		}
 	}
 
+	public static class DataFileValidation{
+		public List<String> form_file_name;
+		public List<String> form_file_path;
+		public List<Boolean> form_csv_viz;
+		public List<Boolean> form_data_viz;
+
+		public String validate() {
+			return null;
+		}
+	}
+
 	public Result index() {
 		Logger.info("Admin.index()");
 		HashMap<String, String> settings = new HashMap<String, String>();
 		settings.put("projectName", Setting.find.byId("projectName").value);
 		settings.put("enginePath", ParameterFile.find.byId("enginePath").file.path);
 		settings.put("scenariiPath", ParameterFile.find.byId("scenariiPath").file.path);
-		return ok(admin.render(settings));
+		List<DataFile> dataInFiles = DataFile.find.where().eq("usage", "data-in").findList();
+		List<DataFile> dataOutFiles = DataFile.find.where().eq("usage", "data-out").findList();
+		return ok(admin.render(settings, dataInFiles, dataOutFiles));
 	}
 
 	public Result setApplicationName() {
 		try{
 			DynamicForm form = Form.form().bindFromRequest();	
 			String newName = form.get("app_name");
-			Logger.error("Admin.setApplicationName(): " + newName);
+			Logger.info("Admin.setApplicationName(): " + newName);
 			Setting projectName = Setting.find.byId("projectName"); 
 			projectName.value = newName;
 			projectName.update();
@@ -127,5 +141,43 @@ public class Admin extends Controller {
 
 		return ok("OK");
 	}
-}
 
+	public Result setDataInFiles(){
+		Logger.info("Admin.setDataInFiles()");
+		setDataFiles("data-in");
+		return index();
+	}
+
+	public Result setDataOutFiles(){
+		Logger.info("Admin.setDataOutFiles()");
+		setDataFiles("data-out");
+		return index();
+	}
+
+	private void setDataFiles(String usage){
+		List<DataFile> dataInFiles = DataFile.find.where().eq("usage", usage).findList();
+		for(DataFile dataFile: dataInFiles){
+			dataFile.file.delete();
+			dataFile.delete();
+		}
+
+		try{
+			Form<DataFileValidation> form = form(DataFileValidation.class).bindFromRequest();
+
+			for(int i=0; i<form.get().form_file_name.size(); i++){
+				models.File file = new models.File();
+				file.path = form.get().form_file_path.get(i);
+				DataFile dataFile = new DataFile();
+				dataFile.file = file;
+				dataFile.usage = usage;
+				dataFile.name = form.get().form_file_name.get(i);
+				dataFile.csvViz = form.get().form_csv_viz.get(i);
+				dataFile.dataViz = form.get().form_data_viz.get(i);
+				file.save();
+				dataFile.save();
+			}
+		}
+		catch(Exception exc){
+		}
+	}
+}

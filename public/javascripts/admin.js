@@ -38,21 +38,28 @@
 		var table = button.closest("table");
 		var newTR = $(document.createElement('TR'));
 		var validate = true;
-		var td, deleteButton;
+		var td, deleteButton, hidden_input;
 
 		inputs.each(function(){
 			td = $(document.createElement('TD'));
+			hidden_input = $(document.createElement('INPUT'))
+				.attr("type", "hidden")
+				.attr("name", "form_" + $(this).attr("name") + "[]");
 			if($(this).attr('type') == "text"){
 				td.html($(this).val());
+				$(hidden_input).val($(this).val());
 				$(this).val("");
 			}
 			else if($(this).is(":checked")){
 				td.html("Activé");
+				$(hidden_input).val("true");
 				$(this).attr("checked", false);
 			}
 			else{
+				$(hidden_input).val("false");
 				td.html("Désactivé");
 			}
+			td.append(hidden_input);
 			newTR.append(td);
 		});
 
@@ -78,6 +85,7 @@
 		$("#engine_path_form").on('submit', function(e){sendForm(e, $(this))});
 		$("#scenarii_path_form").on('submit', function(e){sendForm(e, $(this))});
 		$(".add-row").on('click', function(e){addDataFileRow($(this))});
+		$(".delete-row").on('click', function(e){deleteRow($(this))});
 	});
 
 }());

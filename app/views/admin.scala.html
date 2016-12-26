@@ -1,4 +1,4 @@
-@(settings: Map[String, String])
+@(settings: Map[String, String], datain: List[DataFile], dataout: List[DataFile])
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -66,9 +66,9 @@
 				</div>
 			</form>
 			<h2>Fichiers d'entrée</h2>
-			@admin_data_files()
+			@admin_data_files("/admin/datain", datain)
 			<h2>Fichiers de sortie</h2>
-			@admin_data_files()
+			@admin_data_files("/admin/dataout", dataout)
 		</div>
 	</body>
 </html>

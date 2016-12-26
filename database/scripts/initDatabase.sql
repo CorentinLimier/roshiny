@@ -29,12 +29,15 @@ insert into user values (1, 1, "admin", "");
 create table data_file (
   id                            integer not null,
   file_id                       integer,
+  name							varchar(255),
+  usage							varchar(255),
   csv_viz                       integer(1),
   data_viz                      integer(1),
   constraint uq_data_file_file_id unique (file_id),
   constraint pk_data_file primary key (id)
 );
 
+/*
 create table file (
   id                            integer not null,
   path                          varchar(255),
@@ -53,3 +56,4 @@ create table parameter_file (
 
 insert into parameter_file values ("enginePath", 1);
 insert into parameter_file values ("scenariiPath", 2);
+*/

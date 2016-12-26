@@ -16,6 +16,8 @@ public class DataFile extends Model{
 	@OneToOne
 	public File file;
 
+	public String usage;
+	public String name;
 	public Boolean csvViz;
 	public Boolean dataViz;
 
