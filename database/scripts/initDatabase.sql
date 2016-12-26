@@ -55,5 +55,5 @@ create table parameter_file (
 );
 
 insert into parameter_file values ("enginePath", 1);
-insert into parameter_file values ("scenariiPath", 2);
+insert into parameter_file values ("scenariosPath", 2);
 */

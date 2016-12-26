@@ -2,7 +2,7 @@
 	'use strict';
 
 	$(function(){
-		$("#scenarii_table").DataTable();
+		$("#scenarios_table").DataTable();
 	});
 }());
 

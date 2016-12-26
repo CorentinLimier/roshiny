@@ -62,7 +62,7 @@ public class Admin extends Controller {
 		HashMap<String, String> settings = new HashMap<String, String>();
 		settings.put("projectName", Setting.find.byId("projectName").value);
 		settings.put("enginePath", ParameterFile.find.byId("enginePath").file.path);
-		settings.put("scenariiPath", ParameterFile.find.byId("scenariiPath").file.path);
+		settings.put("scenariosPath", ParameterFile.find.byId("scenariosPath").file.path);
 		List<DataFile> dataInFiles = DataFile.find.where().eq("usage", "data-in").findList();
 		List<DataFile> dataOutFiles = DataFile.find.where().eq("usage", "data-out").findList();
 		return ok(admin.render(settings, dataInFiles, dataOutFiles));
@@ -122,22 +122,22 @@ public class Admin extends Controller {
 		return ok("OK");
 	}
 
-	public Result setScenariiPath() {
-		Logger.info("Admin.setScenariiPath()");
+	public Result setScenariosPath() {
+		Logger.info("Admin.setScenariosPath()");
 		Form<FileValidation> fileForm = form(FileValidation.class).bindFromRequest();
 
 		if (fileForm.hasErrors()) {
-			Logger.error("Admin.setScenariiPath(): " + fileForm.globalError().message());
+			Logger.error("Admin.setScenariosPath(): " + fileForm.globalError().message());
 			return badRequest(fileForm.globalError().message());
 		} 
 
 		String newPath = fileForm.get().path;
 
-		models.File scenariiFile = ParameterFile.find.byId("scenariiPath").file;
-		scenariiFile.path = newPath;
-		scenariiFile.update();
+		models.File scenariosFile = ParameterFile.find.byId("scenariosPath").file;
+		scenariosFile.path = newPath;
+		scenariosFile.update();
 
-		Logger.info("Admin.setScenariiPath(): " + newPath);
+		Logger.info("Admin.setScenariosPath(): " + newPath);
 
 		return ok("OK");
 	}

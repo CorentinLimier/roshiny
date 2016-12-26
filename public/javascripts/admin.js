@@ -83,7 +83,7 @@
 		$("#appname_form").on('submit', function(e){sendForm(e, $(this))});
 		$("#pswd_form").on('submit', function(e){sendForm(e, $(this))});
 		$("#engine_path_form").on('submit', function(e){sendForm(e, $(this))});
-		$("#scenarii_path_form").on('submit', function(e){sendForm(e, $(this))});
+		$("#scenarios_path_form").on('submit', function(e){sendForm(e, $(this))});
 		$(".add-row").on('click', function(e){addDataFileRow($(this))});
 		$(".delete-row").on('click', function(e){deleteRow($(this))});
 	});

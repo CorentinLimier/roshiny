@@ -15,7 +15,7 @@ POST	/admin/password				controllers.Admin.setPassword
 POST	/admin/datain				controllers.Admin.setDataInFiles
 POST	/admin/dataout				controllers.Admin.setDataOutFiles
 POST	/admin/enginepath			controllers.Admin.setEnginePath
-POST	/admin/scenariipath			controllers.Admin.setScenariiPath
+POST	/admin/scenariospath			controllers.Admin.setScenariosPath
 
 # Files
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
