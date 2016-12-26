@@ -1,7 +1,11 @@
-#sidebar-wrapper{
-	position: fixed;
+.sidebar-submenu{
+	line-height: 20px !important;
 }
 
-#content{
-	margin-left: 270px;
+#sidebar-wrapper{
+	width: 220px !important;
+}
+
+#wrapper{
+	padding-left: 220px !important;
 }

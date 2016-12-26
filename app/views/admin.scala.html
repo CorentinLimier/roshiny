@@ -11,10 +11,11 @@
 
 		<title>@settings("projectName") Admininistration</title>
 
-		<link href="@routes.Assets.at("libs/bootstrap/css/bootstrap.min.css")" rel="stylesheet"></script>
-		<link href="@routes.Assets.at("libs/sidebar/css/simple-sidebar.css")" rel="stylesheet"></script>
-		<link href="@routes.Assets.at("libs/font-awesome/css/font-awesome.min.css")" rel="stylesheet"></script>
-		<link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet"></script>
+		<link href="@routes.Assets.at("libs/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("libs/sidebar/css/simple-sidebar.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("libs/font-awesome/css/font-awesome.min.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("stylesheets/sidebar.css")" rel="stylesheet">
 
 		<script src="@routes.Assets.at("libs/jquery.min.js")"></script>
 		<script src="@routes.Assets.at("libs/bootstrap/js/bootstrap.min.js")"></script>
@@ -22,6 +23,7 @@
 	</head>
 	<body>
 		@navbar(settings("projectName"))
+		<div id="wrapper">
 		@sidebar()
 		<div id="page-content-wrapper">
 			<h1>Administration</h1>
@@ -67,6 +69,7 @@
 			@admin_data_files("/admin/datain", datain)
 			<h2>Fichiers de sortie</h2>
 			@admin_data_files("/admin/dataout", dataout)
+		</div>
 		</div>
 	</body>
 </html>
