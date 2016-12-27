@@ -1,4 +1,10 @@
 /*
+MIT License
+Copyright (c) 2016 Corentin Limier 
+See LICENSE file at root of project for more informations
+*/
+
+/*
 create table role (
   id                            integer not null,
   name                          varchar(255),

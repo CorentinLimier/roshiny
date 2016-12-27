@@ -26,7 +26,7 @@
 		"page",
 		"internationalisable"
 	],
-	"repository": {
+	"project": {
 		"type": "git",
 		"url": "https://github.com/DataTables/DataTables.git"
 	},
