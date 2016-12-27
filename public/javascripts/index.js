@@ -2,21 +2,23 @@
 	'use strict';
 
 	var toggleSection = function(e){
+		var id_link = $(this).attr("id");
+		var section = id_link.substring(5, id_link.length);
 		e.preventDefault();
-		$("#scenarios_list").toggle();
-		$("#new_scenario").toggle();
+		$(".section").hide();
+		$("#" + section).show();
 	};
 
 	$(function(){
 		// DataTables
-		$("#new_scenario").toggle();
 		$("#scenarios_table").DataTable({
 			'pageLength': 50
 		});
 
-		// Sidebar
-		$("#link_scenarios_list").click(toggleSection);
-		$("#link_new_scenario").click(toggleSection);
+		// Sections
+		$(".section").hide();
+		$("#scenarios_list").show();
+		$(".link_section").click(toggleSection);
 	});
 }());
 
