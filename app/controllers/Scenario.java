@@ -9,22 +9,19 @@ package controllers;
 import play.*;
 import play.mvc.*;
 import play.data.*;
+import static play.data.Form.*;
+import play.data.validation.Constraints;
 
 import models.*;
 import views.html.*;
 
 import java.util.List;
 
-/**
- * This controller contains an action to handle HTTP requests
- * to the application's home page.
- */
-public class Application extends Controller {
+public class Scenario extends Controller {
 
-	public Result index() {
-		Logger.info("Application.index()");
+	public Result index(String scenarioName) {
+		Logger.info("Scenario.index()");
 		Setting projectName = Setting.find.byId("projectName"); 
-		return ok(index.render(projectName.value));
+		return ok(scenario.render(projectName.value, scenarioName));
 	}
 }
-

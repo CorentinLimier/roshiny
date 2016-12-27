@@ -2,11 +2,16 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /                           controllers.Application.index
+GET     /                           controllers.Home.index
+GET     /home                       controllers.Home.index
+POST	/home/create_scenario       controllers.Home.createScenario
 
 GET 	/login						controllers.LoginAdmin.login
 POST    /login                      controllers.LoginAdmin.authenticate
 GET		/logout						controllers.LoginAdmin.logout
+
+# Scenario
+GET		/scenario					controllers.Scenario.index(scenarioName: String)
 
 # Admin dashboard
 GET		/admin						controllers.Admin.index
@@ -15,7 +20,7 @@ POST	/admin/password				controllers.Admin.setPassword
 POST	/admin/datain				controllers.Admin.setDataInFiles
 POST	/admin/dataout				controllers.Admin.setDataOutFiles
 POST	/admin/enginepath			controllers.Admin.setEnginePath
-POST	/admin/scenariospath			controllers.Admin.setScenariosPath
+POST	/admin/scenariospath		controllers.Admin.setScenariosPath
 
 # Files
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

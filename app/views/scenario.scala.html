@@ -1,0 +1,41 @@
+@(projectName: String, scenarioName: String)
+
+<!--
+MIT License
+Copyright (c) 2016 Corentin Limier 
+See LICENSE file at root of project for more informations
+-->
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta name="description" content="Home page">
+		<meta name="author" content="Corentin Limier">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+
+		<title>@projectName's Home</title>
+
+		<link href="@routes.Assets.at("libs/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("libs/sidebar/css/simple-sidebar.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("libs/font-awesome/css/font-awesome.min.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("libs/datatables/media/css/jquery.dataTables.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("stylesheets/sidebar.css")" rel="stylesheet">
+
+		<script src="@routes.Assets.at("libs/jquery.min.js")"></script>
+		<script src="@routes.Assets.at("libs/bootstrap/js/bootstrap.min.js")"></script>
+		<script src="@routes.Assets.at("libs/datatables/media/js/jquery.dataTables.js")" type="text/javascript"></script>
+	</head>
+	<body>
+		@navbar(projectName)
+		<div id="wrapper">
+		@sidebar()
+		<div id="page-content-wrapper">
+			<h1>Scenario @scenarioName</h1>
+		</div>
+		</div>
+	</body>
+</html>

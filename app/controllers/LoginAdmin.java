@@ -41,7 +41,7 @@ public class LoginAdmin extends Controller {
 		Setting projectName = Setting.find.byId("projectName"); 
 
 		if (loginForm.hasErrors()) {
-			Logger.info("LoginAdmin.authenticate(): invalid password");
+			Logger.error("LoginAdmin.authenticate(): invalid password");
 			return badRequest(login.render(projectName.value, loginForm));
 		} 
 
@@ -56,7 +56,7 @@ public class LoginAdmin extends Controller {
 		session().clear();
 		flash("success", "Vous avez été déconnecté");
 		return redirect(
-				routes.Application.index()
+				routes.Home.index()
 		);
 	}
 }

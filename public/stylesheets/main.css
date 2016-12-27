@@ -12,7 +12,11 @@ body{
 	margin-left: 10px;
 }
 
-.section {
+.section{
     padding-top: 60px;
     margin-top: -60px;
+}
+
+.checkbox{
+	bottom: 2px;
 }

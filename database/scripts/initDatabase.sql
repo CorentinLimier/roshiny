@@ -30,7 +30,6 @@ create table user (
 );
 
 insert into user values (1, 1, "admin", "");
-*/
 
 create table data_file (
   id                            integer not null,
@@ -43,7 +42,6 @@ create table data_file (
   constraint pk_data_file primary key (id)
 );
 
-/*
 create table file (
   id                            integer not null,
   path                          varchar(255),
@@ -63,3 +61,14 @@ create table parameter_file (
 insert into parameter_file values ("enginePath", 1);
 insert into parameter_file values ("scenariosPath", 2);
 */
+
+create table scenario (
+  id                            integer not null,
+  user_id                       integer,
+  name                          varchar(255),
+  description                   TEXT,
+  creation_date                 timestamp,
+  last_run_date                 timestamp,
+  status                        varchar(255),
+  constraint pk_scenario primary key (id)
+);
