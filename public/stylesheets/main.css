@@ -5,3 +5,8 @@ body{
 .little-margin{
 	margin-left: 10px;
 }
+
+.section {
+    padding-top: 60px;
+    margin-top: -60px;
+}
