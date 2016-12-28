@@ -32,6 +32,10 @@ See LICENSE file at root of project for more informations
 		}
 	}
 
+	var alertDelete = function(e){
+		alert("Etes-vous sûr de vouloir supprimer les scénarios sélectionnés ?");
+	}
+
 	$(function(){
 		// DataTables
 		$("#scenarios_table").DataTable({
@@ -48,6 +52,9 @@ See LICENSE file at root of project for more informations
 		$(".select_scenario").click(lockDelDupl);
 		$("#del_scenario").attr("disabled", true);
 		$("#dupl_scenario").attr("disabled", true);
+
+		// Alert if delete scenarios
+		$("#del_scenario").click(alertDelete);
 	});
 }());
 
