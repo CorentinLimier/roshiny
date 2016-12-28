@@ -33,7 +33,10 @@ See LICENSE file at root of project for more informations
 	}
 
 	var alertDelete = function(e){
-		alert("Etes-vous sûr de vouloir supprimer les scénarios sélectionnés ?");
+		var r = confirm("Etes-vous sûr de vouloir supprimer les scénarios sélectionnés ?");
+		if(!r){
+			e.preventDefault();
+		}
 	}
 
 	$(function(){
