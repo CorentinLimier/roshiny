@@ -24,7 +24,10 @@ public class Scenario extends Controller {
 		Setting projectName = Setting.find.byId("projectName"); 
 		try{
 			models.Scenario scenar = models.Scenario.find.byId(scenarioId); 
-			return ok(scenario.render(projectName.value, scenar));
+			List<DataFile> dataInFiles = DataFile.find.where().eq("usage", "data-in").findList();
+			List<DataFile> dataOutFiles = DataFile.find.where().eq("usage", "data-out").findList();
+
+			return ok(scenario.render(projectName.value, scenar, dataInFiles, dataOutFiles));
 		}
 		catch(Exception exc){
 			return redirect(routes.Home.index());

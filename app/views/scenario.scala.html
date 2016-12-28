@@ -1,4 +1,4 @@
-@(projectName: String, scenario: models.Scenario)
+@(projectName: String, scenario: models.Scenario, datain: List[DataFile], dataout: List[DataFile])
 
 <!--
 MIT License
@@ -32,9 +32,59 @@ See LICENSE file at root of project for more informations
 	<body>
 		@navbar(projectName)
 		<div id="wrapper">
-		@sidebar()
+		@sidebar_scenario(datain, dataout)
 		<div id="page-content-wrapper">
-			<h1>Scenario @scenario.name</h1>
+			<h1>Scénario @scenario.name</h1>
+			@scenario.description
+			<h2>Fichiers d'entrée</h2>
+			<form method="post" enctype="multipart/form-data">
+				<table class="table table-striped">
+					<tr>
+						<th>Nom du fichier</th>
+						<th>Upload</th>
+						<th>Actions</th>
+					</tr>
+					@for(dataFile <- datain){
+					<tr>
+						<td>
+							<input type="hidden" name="form_file_name[]" value=@dataFile.name>
+							@dataFile.name
+						</td>
+						<td>
+							<input type="file" name="file[]" class="btn btn-default">
+						</td>
+						<td>
+							<button type="submit" class="btn btn-default">Télécharger</button>
+							<button type="submit" class="btn btn-default">Visualiser</button>
+						</td>
+					</tr>
+					}
+				</table>
+				<button type="submit" class="btn btn-default">Valider</button>
+			</form>
+			<h2>Lancer le scénario</h2>
+			<form method="post">
+				<button type="submit" class="btn btn-default">Démarrer</button>
+			</form>
+			<h2>Fichiers de sortie</h2>
+			<table class="table table-striped">
+				<tr>
+					<th>Nom du fichier</th>
+					<th>Actions</th>
+				</tr>
+				@for(dataFile <- dataout){
+				<tr>
+					<td>
+						<input type="hidden" name="form_file_name[]" value=@dataFile.name>
+						@dataFile.name
+					</td>
+					<td>
+						<button type="submit" class="btn btn-default">Télécharger</button>
+						<button type="submit" class="btn btn-default">Visualiser</button>
+					</td>
+				</tr>
+				}
+			</table>
 		</div>
 		</div>
 	</body>
