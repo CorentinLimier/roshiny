@@ -1,4 +1,4 @@
-@(projectName: String, scenarioName: String)
+@(projectName: String, scenario: models.Scenario)
 
 <!--
 MIT License
@@ -34,7 +34,7 @@ See LICENSE file at root of project for more informations
 		<div id="wrapper">
 		@sidebar()
 		<div id="page-content-wrapper">
-			<h1>Scenario @scenarioName</h1>
+			<h1>Scenario @scenario.name</h1>
 		</div>
 		</div>
 	</body>

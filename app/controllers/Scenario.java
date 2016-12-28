@@ -19,9 +19,15 @@ import java.util.List;
 
 public class Scenario extends Controller {
 
-	public Result index(String scenarioName) {
+	public Result index(long scenarioId) {
 		Logger.info("Scenario.index()");
 		Setting projectName = Setting.find.byId("projectName"); 
-		return ok(scenario.render(projectName.value, scenarioName));
+		try{
+			models.Scenario scenar = models.Scenario.find.byId(scenarioId); 
+			return ok(scenario.render(projectName.value, scenar));
+		}
+		catch(Exception exc){
+			return redirect(routes.Home.index());
+		}
 	}
 }

@@ -5,13 +5,14 @@
 GET     /                           controllers.Home.index
 GET     /home                       controllers.Home.index
 POST	/home/create_scenario       controllers.Home.createScenario
+POST	/home/duplicate_or_delete	controllers.Home.duplicateOrDeleteScenario
 
 GET 	/login						controllers.LoginAdmin.login
 POST    /login                      controllers.LoginAdmin.authenticate
 GET		/logout						controllers.LoginAdmin.logout
 
 # Scenario
-GET		/scenario					controllers.Scenario.index(scenarioName: String)
+GET		/scenario					controllers.Scenario.index(scenarioId: java.lang.Long)
 
 # Admin dashboard
 GET		/admin						controllers.Admin.index
