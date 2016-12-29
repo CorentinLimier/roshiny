@@ -30,6 +30,7 @@ create table user (
 );
 
 insert into user values (1, 1, "admin", "");
+*/
 
 create table data_file (
   id                            integer not null,
@@ -37,11 +38,13 @@ create table data_file (
   name							varchar(255),
   usage							varchar(255),
   csv_viz                       integer(1),
+  ignore_header                 integer(1),
   data_viz                      integer(1),
   constraint uq_data_file_file_id unique (file_id),
   constraint pk_data_file primary key (id)
 );
 
+/*
 create table file (
   id                            integer not null,
   path                          varchar(255),
@@ -71,7 +74,6 @@ create table scenario (
   status                        varchar(255),
   constraint pk_scenario primary key (id)
 );
-*/
 
 create table run (
   id                            integer not null,
@@ -81,3 +83,4 @@ create table run (
   success                       integer(1),
   constraint pk_run primary key (id)
 );
+*/

@@ -25,6 +25,7 @@ public class DataFile extends Model{
 	public String usage;
 	public String name;
 	public Boolean csvViz;
+	public Boolean ignoreHeader;
 	public Boolean dataViz;
 
 	public static Model.Finder<Long,DataFile> find = new Model.Finder<Long,DataFile>(

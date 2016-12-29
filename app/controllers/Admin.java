@@ -56,6 +56,7 @@ public class Admin extends Controller {
 		public List<String> form_file_name;
 		public List<String> form_file_path;
 		public List<Boolean> form_csv_viz;
+		public List<Boolean> form_ignore_header;
 		public List<Boolean> form_data_viz;
 
 		public String validate() {
@@ -178,6 +179,7 @@ public class Admin extends Controller {
 				dataFile.usage = usage;
 				dataFile.name = form.get().form_file_name.get(i);
 				dataFile.csvViz = form.get().form_csv_viz.get(i);
+				dataFile.ignoreHeader = form.get().form_ignore_header.get(i);
 				dataFile.dataViz = form.get().form_data_viz.get(i);
 				file.save();
 				dataFile.save();

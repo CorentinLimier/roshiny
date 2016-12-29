@@ -9,6 +9,7 @@ create table data_file (
   usage                         varchar(255),
   name                          varchar(255),
   csv_viz                       integer(1),
+  ignore_header                 integer(1),
   data_viz                      integer(1),
   constraint uq_data_file_file_id unique (file_id),
   constraint pk_data_file primary key (id)

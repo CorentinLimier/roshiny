@@ -38,6 +38,7 @@ See LICENSE file at root of project for more informations
 		trButton.remove();
 	}
 
+	// Ugly as hell
 	var addDataFileRow = function(button){
 		var trButton = button.closest("tr");
 		var inputs = trButton.find("input");
@@ -47,7 +48,9 @@ See LICENSE file at root of project for more informations
 		var td, deleteButton, hidden_input;
 
 		inputs.each(function(){
-			td = $(document.createElement('TD'));
+			if($(this).attr("name") != "ignore_header"){
+				td = $(document.createElement('TD'));
+			}
 			hidden_input = $(document.createElement('INPUT'))
 				.attr("type", "hidden")
 				.attr("name", "form_" + $(this).attr("name") + "[]");
@@ -57,16 +60,25 @@ See LICENSE file at root of project for more informations
 				$(this).val("");
 			}
 			else if($(this).is(":checked")){
-				td.html("Activé");
+				if($(this).attr("name") == "ignore_header"){
+					td.append(" (header ignoré)")
+				}
+				else{
+					td.append("Activé");
+				}
 				$(hidden_input).val("true");
 				$(this).attr("checked", false);
 			}
 			else{
 				$(hidden_input).val("false");
-				td.html("Désactivé");
+				if($(this).attr("name") != "ignore_header"){
+					td.append("Désactivé");
+				}
 			}
 			td.append(hidden_input);
-			newTR.append(td);
+			if($(this).attr("name") != "csv_viz"){
+				newTR.append(td);
+			}
 		});
 
 		if(!validate){
@@ -82,6 +94,11 @@ See LICENSE file at root of project for more informations
 		newTR.append(td);
 
 		trButton.before(newTR);
+		$(".ignore_header").hide();
+	}
+
+	var toggleIgnoreHeader = function(checkbox){
+		checkbox.closest("td").find(".ignore_header").toggle();
 	}
 
 	// Wait until dom is ready
@@ -90,6 +107,8 @@ See LICENSE file at root of project for more informations
 		$("#pswd_form").on('submit', function(e){sendForm(e, $(this))});
 		$("#engine_path_form").on('submit', function(e){sendForm(e, $(this))});
 		$("#scenarios_path_form").on('submit', function(e){sendForm(e, $(this))});
+		$(".ignore_header").hide();
+		$(".csv_viz").on('change', function(e){toggleIgnoreHeader($(this))});
 		$(".add-row").on('click', function(e){addDataFileRow($(this))});
 		$(".delete-row").on('click', function(e){deleteRow($(this))});
 	});

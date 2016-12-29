@@ -29,6 +29,10 @@ See LICENSE file at root of project for more informations
 			<input type="hidden" name="form_csv_viz[]" value=@dataFile.csvViz>
 			@if(dataFile.csvViz){
 				Activé
+				@if(dataFile.ignoreHeader){
+				<input type="hidden" name="form_ignore_header[]" value=@dataFile.ignoreHeader>
+				 (header ignoré)
+				}
 			} else{
 				Désactivé
 			}
@@ -51,9 +55,15 @@ See LICENSE file at root of project for more informations
 		<td><input type="text" name="file_path" class="form-control"></td>
 		<td>
 			<label>
-			<input type="checkbox" name="csv_viz" class="checkbox checkbox-disabled checkbox-inline">
+			<input type="checkbox" name="csv_viz" class="csv_viz checkbox checkbox-disabled checkbox-inline">
 			<span class="little-margin">Activer</span>
 			</label>
+			<div class="ignore_header">
+			<label>
+			<input type="checkbox" name="ignore_header" class="checkbox checkbox-disabled checkbox-inline">
+			<span class="little-margin">Ignorer la 1ère ligne (header)</span>
+			<label>
+			</div>
 		</td>
 		<td>
 			<label>
