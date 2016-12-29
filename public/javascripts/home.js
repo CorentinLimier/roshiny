@@ -42,7 +42,7 @@ See LICENSE file at root of project for more informations
 	$(function(){
 		// DataTables
 		$("#scenarios_table").DataTable({
-			'pageLength': 50,
+			'pageLength': 25,
 			'language': {
 				"sProcessing":     "Traitement en cours...",
 				"sSearch":         "Rechercher&nbsp;:",
