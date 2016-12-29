@@ -22,6 +22,7 @@ POST	/scenario/launch			controllers.Scenario.launch(scenarioId: java.lang.Long)
 
 # Display data file
 GET		/scenario/display			controllers.DisplayFile.display(scenarioId: java.lang.Long, dataFileId: java.lang.Long)
+POST	/scenario/display/update	controllers.DisplayFile.updateFile(scenarioId: java.lang.Long, dataFileId: java.lang.Long)
 
 # Admin dashboard
 GET		/admin						controllers.Admin.index

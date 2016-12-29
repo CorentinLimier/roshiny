@@ -58,8 +58,40 @@ public class DisplayFile extends Controller {
 			return ok(display_file.render(projectName.value, scenariosPath, scenarioModel, dataFile, fileContent.trim(), dataInFiles, dataOutFiles));
 		}
 		catch(Exception exc){
+			Logger.info("DisplayFile.display() " + exc.getMessage());
 			flash("error", "Scénario ou fichier inconnu");
 			return redirect(routes.Home.index());
+		}
+	}
+
+	public Result updateFile(long scenarioId, long dataFileId){
+		Logger.info("DisplayFile.updateFile() " + Long.toString(scenarioId) + Long.toString(dataFileId));
+		String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path;
+
+		try{
+			models.Scenario scenarioModel = models.Scenario.find.byId(scenarioId); 
+			DataFile dataFile = DataFile.find.byId(dataFileId);
+
+			DynamicForm form = Form.form().bindFromRequest();	
+			String fileContent = form.get("file_content");
+
+			File file = new File(scenariosPath + "/" + scenarioId + "/" + dataFile.file.path);
+
+			if(file.exists()){
+				file.delete();
+			}
+
+			FileWriter filewriter = new FileWriter(file, true);
+			BufferedWriter out = new BufferedWriter(filewriter);
+			out.write(fileContent);
+			out.close();
+
+			return redirect(routes.DisplayFile.display(scenarioId, dataFileId));
+		}
+		catch(Exception exc){
+			Logger.info("DisplayFile.updateFile() " + exc.getMessage());
+			flash("error", "Erreur lors de la modification du fichier");
+			return redirect(routes.DisplayFile.display(scenarioId, dataFileId));
 		}
 	}
 }

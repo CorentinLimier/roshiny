@@ -35,8 +35,19 @@ See LICENSE file at root of project for more informations
 		<div id="wrapper">
 		@sidebar_scenario(scenariosPath, scenario, datain, dataout)
 		<div id="page-content-wrapper">
+			@if(flash.contains("error")) {
+			<div class="alert alert-danger">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>@flash.get("error")</strong>
+			</div>
+			}
 			<h1>Fichier @dataFile.name</h1>
-			<textarea id="file_content" @if(dataFile.usage == "data-out"){readonly}>@fileContent</textarea>
+			<form action="/scenario/display/update?scenarioId=@scenario.id&dataFileId=@dataFile.id" method="post">
+				<textarea name="file_content" id="file_content" @if(dataFile.usage == "data-out"){readonly}>@fileContent</textarea>
+				@if(dataFile.usage == "data-in"){
+					<button type="submit" class="btn btn-default">Valider les modifications</button>
+				}
+			</form>
 		</div>
 		</div>
 	</body>
