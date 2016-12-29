@@ -24,6 +24,7 @@ See LICENSE file at root of project for more informations
 		<link href="@routes.Assets.at("libs/datatables/media/css/jquery.dataTables.css")" rel="stylesheet">
 		<link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet">
 		<link href="@routes.Assets.at("stylesheets/sidebar.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("stylesheets/index.css")" rel="stylesheet">
 
 		<script src="@routes.Assets.at("libs/jquery.min.js")"></script>
 		<script src="@routes.Assets.at("libs/bootstrap/js/bootstrap.min.js")"></script>
@@ -72,6 +73,7 @@ See LICENSE file at root of project for more informations
 							<th>Statut</th>
 							<th>Date de création</th>
 							<th>Date de run</th>
+							<th>Télécharger</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -93,6 +95,7 @@ See LICENSE file at root of project for more informations
 									@scenario.lastRunDate.format("dd-MM-yyyy")
 								}
 							</td>
+							<td><a href="/scenario/download?scenarioId=@scenario.id" class="btn btn-default">Télécharger</a></td>
 						</tr>
 						}
 					</tbody>

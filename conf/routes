@@ -13,6 +13,8 @@ GET		/logout						controllers.LoginAdmin.logout
 
 # Scenario
 GET		/scenario					controllers.Scenario.index(scenarioId: java.lang.Long)
+GET		/scenario/download			controllers.Scenario.downloadScenario(scenarioId: java.lang.Long)
+GET		/scenario/download_file		controllers.Scenario.downloadFile(scenarioId: java.lang.Long, dataFileId: java.lang.Long)
 POST	/scenario					controllers.Scenario.index(scenarioId: java.lang.Long)
 POST	/scenario/update			controllers.Scenario.updateInformations(scenarioId: java.lang.Long)
 POST	/scenario/upload			controllers.Scenario.uploadFiles(scenarioId: java.lang.Long)

@@ -1,3 +1,8 @@
 .fa{
 	cursor: pointer;
 }
+
+#download_scenario,
+#form_update{
+	padding-top: 10px;
+}

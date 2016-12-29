@@ -54,6 +54,9 @@ See LICENSE file at root of project for more informations
 				<button type="submit" class="btn btn-default">Modifier</button>
 			</form>
 			</div>
+			<div id="download_scenario">
+				<a href="/scenario/download?scenarioId=@scenario.id" class="btn btn-default">Télécharger</a>
+			</div>
 			<div id="datain" class="section">
 			<h2>Fichiers d'entrée</h2>
 			<form method="post" action="/scenario/upload?scenarioId=@scenario.id" enctype="multipart/form-data">
@@ -65,20 +68,21 @@ See LICENSE file at root of project for more informations
 						<th>Upload</th>
 					</tr>
 					@for(dataFile <- datain){
+					@defining(!(new java.io.File(scenariosPath +"/"+ scenario.id +"/"+ dataFile.file.path).exists)){disabled =>
 					<tr>
 						<td>
 							@dataFile.name
+							@if(!disabled){<i class="fa fa-check"></i>}
 						</td>
 						<td>
-							@defining(!(new java.io.File(scenariosPath +"/"+ scenario.id +"/"+ dataFile.file.path).exists)){disabled =>
-							<a href="#" class="btn btn-default" @if(disabled){disabled}>Télécharger</a>
-							<a href="#" class="btn btn-default" @if(disabled){disabled}>Visualiser</a>
-							}
+							<a href="#" class="btn btn-default">Modifier</a>
+							<a href="/scenario/download_file?scenarioId=@scenario.id&dataFileId=@dataFile.id" class="btn btn-default" @if(disabled){disabled}>Télécharger</a>
 						</td>
 						<td>
 							<input type="file" name="@dataFile.id" class="btn btn-default">
 						</td>
 					</tr>
+					}
 					}
 				</table>
 				<button id="upload_files" type="submit" class="btn btn-default">Valider</button>
@@ -96,18 +100,19 @@ See LICENSE file at root of project for more informations
 					<th>Actions</th>
 				</tr>
 				@for(dataFile <- dataout){
+				@defining(!(new java.io.File(scenariosPath +"/"+ scenario.id +"/"+ dataFile.file.path).exists)){disabled =>
 				<tr>
 					<td>
 						<input type="hidden" name="form_file_name[]" value=@dataFile.name>
 						@dataFile.name
+						@if(!disabled){<i class="fa fa-check"></i>}
 					</td>
 					<td>
-						@defining(!(new java.io.File(scenariosPath +"/"+ scenario.id +"/"+ dataFile.file.path).exists)){disabled =>
-						<a href="#" class="btn btn-default" @if(disabled){disabled}>Télécharger</a>
 						<a href="#" class="btn btn-default" @if(disabled){disabled}>Visualiser</a>
-						}
+						<a href="/scenario/download_file?scenarioId=@scenario.id&dataFileId=@dataFile.id" class="btn btn-default" @if(disabled){disabled}>Télécharger</a>
 					</td>
 				</tr>
+				}
 				}
 			</table>
 			</div>

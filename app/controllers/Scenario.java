@@ -142,4 +142,53 @@ public class Scenario extends Controller {
 
 		return redirect(routes.Scenario.index(scenarioId));
 	}
+
+	public Result downloadFile(long scenarioId, long dataFileId){
+		Logger.info("Scenario.downloadFile()");
+		String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path;
+
+		try {
+			models.Scenario scenarioModel = models.Scenario.find.byId(scenarioId); 
+			String scenarioPath = scenariosPath + "/" + Long.toString(scenarioId); 
+			DataFile file = DataFile.find.byId(dataFileId);
+			String filePath = scenarioPath + "/" + file.file.path;
+			return ok(new File(filePath));
+		}
+		catch(Exception exc){
+			Logger.error("Scenario.downloadFile() error : " + exc.getMessage());
+			flash("error", "Erreur lors du téléchargement du fichier");
+			return redirect(routes.Scenario.index(scenarioId));
+		}
+	}
+
+	public Result downloadScenario(long scenarioId){
+		Logger.info("Scenario.downloadScenario()");
+		String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path;
+		String script = "scripts/compressScenario.sh";
+
+		try {
+			models.Scenario scenarioModel = models.Scenario.find.byId(scenarioId); 
+
+			String args = " " + scenariosPath + " " + Long.toString(scenarioId); 
+
+			Process proc = Runtime.getRuntime().exec(script + args);
+
+			int exit = proc.waitFor();
+			if(exit!=0) {
+				Logger.error("Scenario.downloadScenario() : exit status " + exit);
+				flash("error", "Erreur lors du téléchargement du scénario");
+				return redirect(routes.Scenario.index(scenarioId));
+			}
+			else {
+				Logger.info("Scenario.downloadScenario() : succès");
+			}
+
+			return ok(new File(scenariosPath + "/" + Long.toString(scenarioId) + ".tar.bz2"));
+		}
+		catch(Exception exc){
+			Logger.error("Scenario.downloadScenario() error : " + exc.getMessage());
+			flash("error", "Erreur lors du téléchargement du scénario");
+			return redirect(routes.Scenario.index(scenarioId));
+		}
+	}
 }
