@@ -99,9 +99,8 @@ public class Home extends Controller {
 
 		if (createForm.hasErrors()) {
 			Logger.error("Home.createScenario(): empty name");
-			List<models.Scenario> scenarios = models.Scenario.find.all();
 			flash("error", "Erreur lors de la création du scénario");
-			return badRequest(index.render(projectName.value, scenarios));
+			return redirect(routes.Home.index());
 		} 
 
 		models.Scenario newScenario = new models.Scenario();
@@ -124,9 +123,8 @@ public class Home extends Controller {
 		catch(Exception exc){
 			Logger.error("Home.createScenario(): " + exc.getMessage());
 			newScenario.delete();
-			List<models.Scenario> scenarios = models.Scenario.find.all();
 			flash("error", "Erreur lors de la création du scénario");
-			return badRequest(index.render(projectName.value, scenarios));
+			return redirect(routes.Home.index());
 		}
 
 		Logger.info("Home.createScenario(): OK");
@@ -159,9 +157,8 @@ public class Home extends Controller {
 				}
 				catch(Exception exc){
 					Logger.error("Home.duplicateOrDeleteScenario(): " + exc.getMessage());
-					List<models.Scenario> scenarios = models.Scenario.find.all();
 					flash("error", "Erreur lors de la suppression des scénarios");
-					return badRequest(index.render(projectName.value, scenarios));
+					return redirect(routes.Home.index());
 				}
 			}			
 
@@ -189,9 +186,7 @@ public class Home extends Controller {
 				catch(Exception exc){
 					Logger.error("Home.duplicateOrDeleteScenario(): " + exc.getMessage());
 					newScenario.delete();
-					List<models.Scenario> scenarios = models.Scenario.find.all();
-					flash("error", "Erreur lors de la création du scénario");
-					return badRequest(index.render(projectName.value, scenarios));
+					return redirect(routes.Home.index());
 				}
 
 				return redirect(routes.Scenario.index(newScenario.id));

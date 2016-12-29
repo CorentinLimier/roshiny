@@ -14,6 +14,7 @@ GET		/logout						controllers.LoginAdmin.logout
 # Scenario
 GET		/scenario					controllers.Scenario.index(scenarioId: java.lang.Long)
 POST	/scenario					controllers.Scenario.index(scenarioId: java.lang.Long)
+POST	/scenario/upload			controllers.Scenario.uploadFiles(scenarioId: java.lang.Long)
 
 # Admin dashboard
 GET		/admin						controllers.Admin.index
