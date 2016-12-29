@@ -29,7 +29,7 @@ import java.util.List;
 public class Scenario extends Controller {
 
 	public Result index(long scenarioId) {
-		Logger.info("Scenario.index()");
+		Logger.info("Scenario.index() " + Long.toString(scenarioId));
 		Setting projectName = Setting.find.byId("projectName"); 
 		String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path;
 
@@ -47,7 +47,7 @@ public class Scenario extends Controller {
 	}
 
 	public Result updateInformations(long scenarioId) {
-		Logger.info("Scenario.updateInformations()");
+		Logger.info("Scenario.updateInformations() " + Long.toString(scenarioId));
 
 		Form<Home.CreateScenario> createForm = form(Home.CreateScenario.class).bindFromRequest();
 
@@ -73,7 +73,7 @@ public class Scenario extends Controller {
 	}
 
 	public Result uploadFiles(long scenarioId) {
-		Logger.info("Scenario.uploadFiles()");
+		Logger.info("Scenario.uploadFiles() " + Long.toString(scenarioId));
 
 		InputStream is = null;
 		OutputStream os = null;
@@ -117,10 +117,10 @@ public class Scenario extends Controller {
 	}
 
 	public Result launch(long scenarioId) {
+		Logger.debug("Scenario.launch() " + Long.toString(scenarioId));
+
 		String script = ParameterFile.find.byId("enginePath").file.path;
 		String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path;
-
-		Logger.debug("Scenario.launch() " + script);
 
 		try {
 			models.Scenario scenarioModel = models.Scenario.find.byId(scenarioId); 
@@ -168,7 +168,7 @@ public class Scenario extends Controller {
 	}
 
 	public Result downloadFile(long scenarioId, long dataFileId){
-		Logger.info("Scenario.downloadFile()");
+		Logger.info("Scenario.downloadFile() " + Long.toString(scenarioId) + "  " + Long.toString(dataFileId));
 		String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path;
 
 		try {
@@ -186,7 +186,7 @@ public class Scenario extends Controller {
 	}
 
 	public Result downloadScenario(long scenarioId){
-		Logger.info("Scenario.downloadScenario()");
+		Logger.info("Scenario.downloadScenario() " + Long.toString(scenarioId));
 		String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path;
 		String script = "scripts/compressScenario.sh";
 

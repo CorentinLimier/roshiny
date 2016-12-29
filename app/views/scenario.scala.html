@@ -12,7 +12,7 @@ See LICENSE file at root of project for more informations
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<meta name="description" content="Scénatio @scenario.name">
+		<meta name="description" content="Scénario @scenario.name">
 		<meta name="author" content="Corentin Limier">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
 
@@ -34,7 +34,7 @@ See LICENSE file at root of project for more informations
 	<body>
 		@navbar(projectName)
 		<div id="wrapper">
-		@sidebar_scenario(scenario, datain, dataout)
+		@sidebar_scenario(scenariosPath, scenario, datain, dataout)
 		<div id="page-content-wrapper">
 			@if(flash.contains("error")) {
 			<div class="alert alert-danger">
@@ -75,7 +75,7 @@ See LICENSE file at root of project for more informations
 							@if(!disabled){<i class="fa fa-check"></i>}
 						</td>
 						<td>
-							<a href="#" class="btn btn-default">Modifier</a>
+							<a href="/scenario/display?scenarioId=@scenario.id&dataFileId=@dataFile.id" class="btn btn-default">Modifier</a>
 							<a href="/scenario/download_file?scenarioId=@scenario.id&dataFileId=@dataFile.id" class="btn btn-default" @if(disabled){disabled}>Télécharger</a>
 						</td>
 						<td>
@@ -127,7 +127,7 @@ See LICENSE file at root of project for more informations
 						@if(!disabled){<i class="fa fa-check"></i>}
 					</td>
 					<td>
-						<a href="#" class="btn btn-default" @if(disabled){disabled}>Visualiser</a>
+						<a href="/scenario/display?scenarioId=@scenario.id&dataFileId=@dataFile.id" class="btn btn-default" @if(disabled){disabled}>Visualiser</a>
 						<a href="/scenario/download_file?scenarioId=@scenario.id&dataFileId=@dataFile.id" class="btn btn-default" @if(disabled){disabled}>Télécharger</a>
 					</td>
 				</tr>

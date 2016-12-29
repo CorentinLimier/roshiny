@@ -20,6 +20,9 @@ POST	/scenario/update			controllers.Scenario.updateInformations(scenarioId: java
 POST	/scenario/upload			controllers.Scenario.uploadFiles(scenarioId: java.lang.Long)
 POST	/scenario/launch			controllers.Scenario.launch(scenarioId: java.lang.Long)
 
+# Display data file
+GET		/scenario/display			controllers.DisplayFile.display(scenarioId: java.lang.Long, dataFileId: java.lang.Long)
+
 # Admin dashboard
 GET		/admin						controllers.Admin.index
 POST	/admin/appname				controllers.Admin.setApplicationName

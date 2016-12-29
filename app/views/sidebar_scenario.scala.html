@@ -1,4 +1,4 @@
-@(scenario: models.Scenario, datain: List[DataFile], dataout: List[DataFile])
+@(scenariosPath: String, scenario: models.Scenario, datain: List[DataFile], dataout: List[DataFile])
 
 <!--
 MIT License
@@ -18,7 +18,7 @@ See LICENSE file at root of project for more informations
 			<ul>
 				@for(dataFile <- datain){
 					<li class="sidebar-submenu">
-						<a href="#">@dataFile.name</a>
+						<a href="/scenario/display?scenarioId=@scenario.id&dataFileId=@dataFile.id">@dataFile.name</a>
 					</li>
 				}
 			</ul>
@@ -27,9 +27,17 @@ See LICENSE file at root of project for more informations
 			<a href="/scenario?scenarioId=@scenario.id#dataout">Fichiers de sortie</a>
 			<ul>
 				@for(dataFile <- dataout){
+					@defining(!(new java.io.File(scenariosPath +"/"+ scenario.id +"/"+ dataFile.file.path).exists)){disabled =>
 					<li class="sidebar-submenu">
-						<a href="#">@dataFile.name</a>
+						<a
+							@if(!disabled){		
+								href="/scenario/display?scenarioId=@scenario.id&dataFileId=@dataFile.id"
+							}else{
+								class="disabled_link"
+							}
+						>@dataFile.name</a>
 					</li>
+					}
 				}
 			</ul>
 		</li>
