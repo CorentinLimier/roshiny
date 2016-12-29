@@ -1,4 +1,4 @@
-@(projectName: String, scenariosPath: String, scenario: models.Scenario, dataFile: DataFile, datain: List[DataFile], dataout: List[DataFile])
+@(projectName: String, scenariosPath: String, scenario: models.Scenario, dataFile: DataFile, fileContent: String, datain: List[DataFile], dataout: List[DataFile])
 
 <!--
 MIT License
@@ -24,6 +24,7 @@ See LICENSE file at root of project for more informations
 		<link href="@routes.Assets.at("libs/datatables/media/css/jquery.dataTables.css")" rel="stylesheet">
 		<link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet">
 		<link href="@routes.Assets.at("stylesheets/sidebar.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("stylesheets/display_file.css")" rel="stylesheet">
 
 		<script src="@routes.Assets.at("libs/jquery.min.js")"></script>
 		<script src="@routes.Assets.at("libs/bootstrap/js/bootstrap.min.js")"></script>
@@ -35,6 +36,7 @@ See LICENSE file at root of project for more informations
 		@sidebar_scenario(scenariosPath, scenario, datain, dataout)
 		<div id="page-content-wrapper">
 			<h1>Fichier @dataFile.name</h1>
+			<textarea id="file_content" @if(dataFile.usage == "data-out"){readonly}>@fileContent</textarea>
 		</div>
 		</div>
 	</body>
