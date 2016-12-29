@@ -12,8 +12,11 @@ See LICENSE file at root of project for more informations
 	}
 
 	// Wait until dom is ready
-	$(function(){
-		$("#upload_files").click(changeOpacity);
+	$(document).ready(function(){
+		$("#upload_1files").click(changeOpacity);
+		$("#launch").click(changeOpacity);
+		$("#form_update").hide();
+		$("#update_description").click(function(e){$("#form_update").toggle()});
 	});
 
 }());

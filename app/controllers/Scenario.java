@@ -44,6 +44,32 @@ public class Scenario extends Controller {
 		}
 	}
 
+	public Result updateInformations(long scenarioId) {
+		Logger.info("Scenario.updateInformations()");
+
+		Form<Home.CreateScenario> createForm = form(Home.CreateScenario.class).bindFromRequest();
+
+		if (createForm.hasErrors()) {
+			Logger.error("Scenario.updateInformations(): empty name");
+			flash("error", "Erreur lors de la modification du scénario");
+			return redirect(routes.Scenario.index(scenarioId));
+		} 
+
+		try{
+			models.Scenario scenarioModel = models.Scenario.find.byId(scenarioId); 
+			scenarioModel.name = createForm.get().scenario_name; 
+			scenarioModel.description = createForm.get().scenario_description;
+			scenarioModel.update();
+		}
+		catch(Exception exc){
+			Logger.error("Scenario.updateInformations(): " + exc.getMessage());
+			flash("error", "Erreur lors de la modification du scénario");
+			return redirect(routes.Scenario.index(scenarioId));
+		}
+
+		return redirect(routes.Scenario.index(scenarioId));
+	}
+
 	public Result uploadFiles(long scenarioId) {
 		Logger.info("Scenario.uploadFiles()");
 
@@ -77,6 +103,35 @@ public class Scenario extends Controller {
 					is.close();
 					os.close();
 				}
+			}
+		}
+		catch(Exception exc){
+			Logger.error("Scenario.uploadFiles() error : " + exc.getMessage());
+			flash("error", "Erreur lors de l'upload");
+			return redirect(routes.Scenario.index(scenarioId));
+		}
+
+		return redirect(routes.Scenario.index(scenarioId));
+	}
+
+	public Result launch(long scenarioId) {
+		String script = ParameterFile.find.byId("enginePath").file.path;
+		String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path;
+
+		Logger.debug("Scenario.launch() " + script);
+
+		try {
+			models.Scenario scenarioModel = models.Scenario.find.byId(scenarioId); 
+			String scenarioPath = scenariosPath + "/" + Long.toString(scenarioId); 
+			Process proc = Runtime.getRuntime().exec(script, null, new File(scenarioPath));
+			int exit = proc.waitFor();
+			if(exit!=0) {
+				Logger.error("Scenario.launch() : exit status " + exit);
+				flash("error", "Erreur d'exécution du scénario");
+				return redirect(routes.Scenario.index(scenarioId));
+			}
+			else {
+				Logger.info("Scenario.launch() : succès");
 			}
 		}
 		catch(Exception exc){

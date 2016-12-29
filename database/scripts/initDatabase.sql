@@ -60,7 +60,6 @@ create table parameter_file (
 
 insert into parameter_file values ("enginePath", 1);
 insert into parameter_file values ("scenariosPath", 2);
-*/
 
 create table scenario (
   id                            integer not null,
@@ -71,4 +70,14 @@ create table scenario (
   last_run_date                 timestamp,
   status                        varchar(255),
   constraint pk_scenario primary key (id)
+);
+*/
+
+create table run (
+  id                            integer not null,
+  scenario_id                   integer,
+  creation_date                 timestamp,
+  duration                      integer,
+  success                       integer(1),
+  constraint pk_run primary key (id)
 );
