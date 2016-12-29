@@ -16,14 +16,12 @@ import play.data.validation.Constraints;
 import models.*;
 import views.html.*;
 
+import java.io.File;
+import java.lang.Long;
 import java.util.List;
 import java.util.Date;
-import java.lang.Long;
 
-/**
- * This controller contains an action to handle HTTP requests
- * to the application's home page.
- */
+
 public class Home extends Controller {
 
 	public static class CreateScenario{
@@ -48,8 +46,50 @@ public class Home extends Controller {
 		Logger.info("Home.index()");
 		Setting projectName = Setting.find.byId("projectName"); 
 		List<models.Scenario> scenarios = models.Scenario.find.all();
-		return ok(index.render(projectName.value, form(CreateScenario.class), scenarios));
+		return ok(index.render(projectName.value, scenarios));
 	}
+
+	private void createScenarioDirectories(models.Scenario scenario) throws Exception{
+		String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path;
+
+		List<DataFile> dataFiles = DataFile.find.all();
+
+		for(DataFile dataFile: dataFiles){
+			File dfile = new File(dataFile.file.path);
+			String path = scenariosPath + "/" + Long.toString(scenario.id) + "/" + dfile.getParent();
+			File file = new File(path);
+			if(file.exists() && file.isDirectory()){
+				continue;
+			}
+			Logger.info("Home.createScenarioDirectories() " + path);
+			if(!file.mkdirs()){
+				throw new Exception("Cannot create directory " + path);
+			}
+		}
+	}
+
+	private boolean deleteDirectory(File dir){
+		if (dir.isDirectory()) {
+			String[] children = dir.list();
+			for (int i = 0; i < children.length; i++) {
+				boolean success = deleteDirectory(new File(dir, children[i]));
+
+				if (!success) {
+					return false;
+				}
+			}
+		}
+		return dir.delete();
+	}
+
+	private void deleteScenarioDirectories(models.Scenario scenario) throws Exception{
+		String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path + "/" + Long.toString(scenario.id);
+		Logger.info("Home.deleteScenarioDirectories() " + scenariosPath);
+
+		if(!deleteDirectory(new File(scenariosPath))){
+			throw new Exception("Cannot delete directory " + scenariosPath);
+		}
+	} 
 
 	public Result createScenario() {
 		Logger.info("Home.createScenario()");
@@ -60,7 +100,8 @@ public class Home extends Controller {
 		if (createForm.hasErrors()) {
 			Logger.error("Home.createScenario(): empty name");
 			List<models.Scenario> scenarios = models.Scenario.find.all();
-			return badRequest(index.render(projectName.value, createForm, scenarios));
+			flash("error", "Erreur lors de la création du scénario");
+			return badRequest(index.render(projectName.value, scenarios));
 		} 
 
 		models.Scenario newScenario = new models.Scenario();
@@ -77,12 +118,25 @@ public class Home extends Controller {
 		newScenario.status = "Créé";
 		newScenario.save();
 
+		try{
+			createScenarioDirectories(newScenario);
+		}
+		catch(Exception exc){
+			Logger.error("Home.createScenario(): " + exc.getMessage());
+			newScenario.delete();
+			List<models.Scenario> scenarios = models.Scenario.find.all();
+			flash("error", "Erreur lors de la création du scénario");
+			return badRequest(index.render(projectName.value, scenarios));
+		}
+
 		Logger.info("Home.createScenario(): OK");
 		return redirect(routes.Scenario.index(newScenario.id));
 	}
 
 	public Result duplicateOrDeleteScenario(){
 		Logger.info("Home.duplicateOrDeleteScenario()");
+
+		Setting projectName = Setting.find.byId("projectName"); 
 
 		Form<DuplOrDel> form = form(DuplOrDel.class).bindFromRequest();
 
@@ -96,19 +150,31 @@ public class Home extends Controller {
 
 			if(form.get().del_scenario.equals("del_scenario")){
 				Logger.info("Home.duplicateOrDeleteScenario() delete "+ Long.toString(id));
+
 				models.Scenario scenario = models.Scenario.find.byId(id); 
-				scenario.delete();
+
+				try{
+					deleteScenarioDirectories(scenario);
+					scenario.delete();
+				}
+				catch(Exception exc){
+					Logger.error("Home.duplicateOrDeleteScenario(): " + exc.getMessage());
+					List<models.Scenario> scenarios = models.Scenario.find.all();
+					flash("error", "Erreur lors de la suppression des scénarios");
+					return badRequest(index.render(projectName.value, scenarios));
+				}
 			}			
 
 			if(form.get().dupl_scenario.equals("dupl_scenario")){
 				Logger.info("Home.duplicateOrDeleteScenario() duplicate "+ Long.toString(id));
 				models.Scenario scenario = models.Scenario.find.byId(id); 
 				models.Scenario newScenario = new models.Scenario();
-				newScenario.name = scenario.name;
+				newScenario.name = scenario.name + " [dupl.] ";
 				newScenario.description = scenario.description;
 
 				Context ctx = Context.current();
 				String userName = ctx.session().get("user");
+
 				if(!userName.isEmpty()){
 					newScenario.user = User.find.where().eq("name", userName).findUnique();
 				}
@@ -116,9 +182,22 @@ public class Home extends Controller {
 				newScenario.creationDate = new Date(); 
 				newScenario.status = "Créé";
 				newScenario.save();
+
+				try{
+					createScenarioDirectories(newScenario);
+				}
+				catch(Exception exc){
+					Logger.error("Home.duplicateOrDeleteScenario(): " + exc.getMessage());
+					newScenario.delete();
+					List<models.Scenario> scenarios = models.Scenario.find.all();
+					flash("error", "Erreur lors de la création du scénario");
+					return badRequest(index.render(projectName.value, scenarios));
+				}
+
 				return redirect(routes.Scenario.index(newScenario.id));
 			}
 		}
+
 		return redirect(routes.Home.index());
 	}
 }

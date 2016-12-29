@@ -15,3 +15,7 @@ See LICENSE file at root of project for more informations
 #wrapper{
 	padding-left: 220px !important;
 }
+
+.sidebar-nav{
+	padding-top: 10px;
+}

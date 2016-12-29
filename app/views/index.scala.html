@@ -1,4 +1,4 @@
-@(projectName: String, form: Form[Home.CreateScenario], scenarios: List[models.Scenario])
+@(projectName: String, scenarios: List[models.Scenario])
 
 <!--
 MIT License
@@ -55,6 +55,12 @@ See LICENSE file at root of project for more informations
 				<strong>@flash.get("success")</strong>
 			</div>
 			}
+			@if(flash.contains("error")) {
+			<div class="alert alert-danger">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>@flash.get("error")</strong>
+			</div>
+			}
 			<div id="scenarios_list" class="section">
 			<h2>Liste des scénarios</h2>
 			<form method="post" action="/home/duplicate_or_delete">
@@ -100,12 +106,6 @@ See LICENSE file at root of project for more informations
 			<div id="new_scenario" class="section">
 			<h2>Créer un nouveau scénario</h2>
 			@helper.form(routes.Home.createScenario) {
-				@if(form.hasGlobalErrors) {
-				<div class="alert alert-danger">
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					<strong>@form.globalError.message</strong>
-				</div>
-				}
 				<label for="scenario_name">Nom du scénario:</label>
 				<input type="text" id="scenario_name" name="scenario_name" class="form-control">
 				<label for="scenario_description">Description:</label>
