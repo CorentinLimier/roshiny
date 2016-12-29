@@ -141,18 +141,21 @@ public class Scenario extends Controller {
 				Logger.error("Scenario.launch() : exit status " + exit);
 				newRun.success = false;
 				scenarioModel.status = "Echec";
+				newRun.duration = (endTime - startTime) / 1000000000.0; 
+				newRun.save();
+				scenarioModel.update();
 				flash("error", "Erreur d'exécution du scénario");
 				return redirect(routes.Scenario.index(scenarioId));
 			}
 			else {
 				newRun.success = true;
 				scenarioModel.status = "Succès";
+				newRun.duration = (endTime - startTime) / 1000000000.0; 
+				newRun.save();
+				scenarioModel.update();
 				Logger.info("Scenario.launch() : succès");
 			}
 
-			newRun.duration = (endTime - startTime) / 1000000000.0; 
-			newRun.save();
-			scenarioModel.update();
 		}
 		catch(Exception exc){
 			Logger.error("Scenario.uploadFiles() error : " + exc.getMessage());

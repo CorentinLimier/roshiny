@@ -21,3 +21,11 @@ body{
 .checkbox{
 	bottom: 2px;
 }
+
+.fa-check{
+	color: green;
+}
+
+.fa-times{
+	color: red;
+}
