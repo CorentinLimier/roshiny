@@ -92,6 +92,25 @@ See LICENSE file at root of project for more informations
 			<form method="post" action="/scenario/launch?scenarioId=@scenario.id">
 				<button type="submit" id="launch" class="btn btn-default">Démarrer</button>
 			</form>
+			<div id="last_run">
+				Dernière exécution: 
+				@if(scenario.lastRunDate != null){
+					<span class="little-margin">@scenario.lastRunDate.format("dd-MM-yyyy HH:MM")</span>
+				}else{
+					<span class="little-margin">-</span>
+				}
+				<br />
+				Statut: 
+				<span class="little-margin">
+					@scenario.status
+					@if(scenario.status == "Succès"){
+						<i class="fa fa-check"></i>
+					}
+					@if(scenario.status == "Echec"){
+						<i class="fa fa-times"></i>
+					}
+				</span>
+			</div>
 			<div id="dataout" class="section">
 			<h2>Fichiers de sortie</h2>
 			<table class="table table-striped">
