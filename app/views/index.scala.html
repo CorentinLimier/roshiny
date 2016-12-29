@@ -84,7 +84,7 @@ See LICENSE file at root of project for more informations
 								@scenario.id
 							</td>
 							<td>
-								<a href="/scenario?scenarioId=@scenario.id">@scenario.name</a>
+								<a href="/scenario?scenarioId=@scenario.id" title="@scenario.description">@scenario.name</a>
 							</td>
 							<td>
 								@scenario.status
@@ -101,6 +101,8 @@ See LICENSE file at root of project for more informations
 							<td>
 								@if(scenario.lastRunDate != null){
 									@scenario.lastRunDate.format("dd-MM-yyyy")
+								}else{
+									-
 								}
 							</td>
 							<td><a href="/scenario/download?scenarioId=@scenario.id" class="btn btn-default">Télécharger</a></td>
