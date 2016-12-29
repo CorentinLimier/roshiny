@@ -22,6 +22,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.Long;
+import java.util.Date;
 import java.util.List;
 
 public class Scenario extends Controller {
@@ -122,17 +124,35 @@ public class Scenario extends Controller {
 
 		try {
 			models.Scenario scenarioModel = models.Scenario.find.byId(scenarioId); 
+			models.Run newRun = new models.Run();
+			newRun.scenario = scenarioModel;
+			newRun.runDate = new Date();
+			scenarioModel.status = "En cours";
+			scenarioModel.update();
+
 			String scenarioPath = scenariosPath + "/" + Long.toString(scenarioId); 
 			Process proc = Runtime.getRuntime().exec(script, null, new File(scenarioPath));
+
+			long startTime = System.nanoTime();
 			int exit = proc.waitFor();
+			long endTime = System.nanoTime();
+
 			if(exit!=0) {
 				Logger.error("Scenario.launch() : exit status " + exit);
+				newRun.success = false;
+				scenarioModel.status = "Echec";
 				flash("error", "Erreur d'exécution du scénario");
 				return redirect(routes.Scenario.index(scenarioId));
 			}
 			else {
+				newRun.success = true;
+				scenarioModel.status = "Succès";
 				Logger.info("Scenario.launch() : succès");
 			}
+
+			newRun.duration = (endTime - startTime) / 1000000000.0; 
+			newRun.save();
+			scenarioModel.update();
 		}
 		catch(Exception exc){
 			Logger.error("Scenario.uploadFiles() error : " + exc.getMessage());

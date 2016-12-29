@@ -23,10 +23,10 @@ public class Run extends Model {
 	public Scenario scenario;
 
 	@Formats.DateTime(pattern="dd/MM/yyyy")
-	public Date creationDate;
+	public Date runDate;
 
 	// duration in seconds
-	public Long duration;
+	public double duration;
 
 	public Boolean success;
 

@@ -36,8 +36,8 @@ create table role (
 create table run (
   id                            integer autoincrement not null,
   scenario_id                   integer,
-  creation_date                 timestamp,
-  duration                      integer,
+  run_date                      timestamp,
+  duration                      double,
   success                       integer(1),
   constraint pk_run primary key (id)
 );
