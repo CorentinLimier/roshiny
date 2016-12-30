@@ -105,6 +105,7 @@ See LICENSE file at root of project for more informations
 	$(function(){
 		$("#appname_form").on('submit', function(e){sendForm(e, $(this))});
 		$("#pswd_form").on('submit', function(e){sendForm(e, $(this))});
+		$("#datepicker_form").on('submit', function(e){sendForm(e, $(this))});
 		$("#engine_path_form").on('submit', function(e){sendForm(e, $(this))});
 		$("#scenarios_path_form").on('submit', function(e){sendForm(e, $(this))});
 		$(".ignore_header").hide();

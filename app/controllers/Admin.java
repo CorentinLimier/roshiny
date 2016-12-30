@@ -68,6 +68,7 @@ public class Admin extends Controller {
 		Logger.info("Admin.index()");
 		HashMap<String, String> settings = new HashMap<String, String>();
 		settings.put("projectName", Setting.find.byId("projectName").value);
+		settings.put("datePickerFormat", Setting.find.byId("datePickerFormat").value);
 		settings.put("enginePath", ParameterFile.find.byId("enginePath").file.path);
 		settings.put("scenariosPath", ParameterFile.find.byId("scenariosPath").file.path);
 		List<DataFile> dataInFiles = DataFile.find.where().eq("usage", "data-in").findList();
@@ -83,6 +84,22 @@ public class Admin extends Controller {
 			Setting projectName = Setting.find.byId("projectName"); 
 			projectName.value = newName;
 			projectName.update();
+			return ok("OK");
+		}
+		catch(Exception exc){
+			Logger.error("Admin.setApplicationName: "+exc);
+			return badRequest("Erreur");
+		}
+	}
+
+	public Result setDatepickerFormat() {
+		try{
+			DynamicForm form = Form.form().bindFromRequest();	
+			String format = form.get("datepicker_format");
+			Logger.info("Admin.setDatepickerFormat(): " + format);
+			Setting datePickerFormat = Setting.find.byId("datePickerFormat"); 
+			datePickerFormat.value = format;
+			datePickerFormat.update();
 			return ok("OK");
 		}
 		catch(Exception exc){

@@ -19,8 +19,11 @@ create table setting (
   constraint pk_setting primary key (name)
 );
 
-insert into setting values ("projectName", "ROShiny")
+insert into setting values ("projectName", "ROShiny");
+*/
+insert into setting values ("datePickerFormat", "yyyy-mm-dd");
 
+/*
 create table user (
   id                            integer not null,
   role_id                       integer,
@@ -30,7 +33,6 @@ create table user (
 );
 
 insert into user values (1, 1, "admin", "");
-*/
 
 create table data_file (
   id                            integer not null,
@@ -44,7 +46,6 @@ create table data_file (
   constraint pk_data_file primary key (id)
 );
 
-/*
 create table file (
   id                            integer not null,
   path                          varchar(255),

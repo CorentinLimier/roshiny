@@ -28,6 +28,7 @@ POST	/scenario/display/update	controllers.DisplayFile.updateFile(scenarioId: jav
 GET		/admin						controllers.Admin.index
 POST	/admin/appname				controllers.Admin.setApplicationName
 POST	/admin/password				controllers.Admin.setPassword
+POST	/admin/datepicker			controllers.Admin.setDatepickerFormat
 POST	/admin/datain				controllers.Admin.setDataInFiles
 POST	/admin/dataout				controllers.Admin.setDataOutFiles
 POST	/admin/enginepath			controllers.Admin.setEnginePath

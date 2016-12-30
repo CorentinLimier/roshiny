@@ -1,0 +1,49 @@
+@(datain: List[DataFile], dataout: List[DataFile])
+
+<!--
+MIT License
+Copyright (c) 2016 Corentin Limier 
+See LICENSE file at root of project for more informations
+-->
+
+<div id="sidebar-wrapper">
+	<ul class="sidebar-nav">
+		<li class="sidebar-brand">
+			<a href="/admin">
+				Administration
+			</a>
+		</li>
+		<li>
+			<a href="/admin#datain">Fichiers d'entrée</a>
+			<ul>
+				@for(dataFile <- datain){
+					<li class="sidebar-submenu">
+						<a 
+							@if(dataFile.csvViz||dataFile.dataViz){
+								href="/admin/configure?dataFileId=@dataFile.id"
+							}else{
+								class="disabled_link"
+							}
+						>@dataFile.name</a>
+					</li>
+				}
+			</ul>
+		</li>
+		<li>
+			<a href="/admin#dataout">Fichiers de sortie</a>
+			<ul>
+				@for(dataFile <- dataout){
+					<li class="sidebar-submenu">
+						<a 
+							@if(dataFile.csvViz||dataFile.dataViz){
+								href="/admin/configure?dataFileId=@dataFile.id"
+							}else{
+								class="disabled_link"
+							}
+						>@dataFile.name</a>
+					</li>
+				}
+			</ul>
+		</li>
+	</ul>
+</div>

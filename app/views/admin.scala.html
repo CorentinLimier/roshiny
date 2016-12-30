@@ -18,6 +18,7 @@ See LICENSE file at root of project for more informations
 
 		<title>@settings("projectName") Admininistration</title>
 
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("libs/bootstrap-datepicker/css/datepicker.css")">
 		<link href="@routes.Assets.at("libs/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
 		<link href="@routes.Assets.at("libs/sidebar/css/simple-sidebar.css")" rel="stylesheet">
 		<link href="@routes.Assets.at("libs/font-awesome/css/font-awesome.min.css")" rel="stylesheet">
@@ -26,12 +27,14 @@ See LICENSE file at root of project for more informations
 
 		<script src="@routes.Assets.at("libs/jquery.min.js")"></script>
 		<script src="@routes.Assets.at("libs/bootstrap/js/bootstrap.min.js")"></script>
+		<script src="@routes.Assets.at("libs/bootstrap-datepicker/js/bootstrap-datepicker.js")" type="text/javascript"></script>
+		<script src="@routes.Assets.at("libs/bootstrap-datepicker/js/locales/bootstrap-datepicker.fr.js")" type="text/javascript"></script>
 		<script src="@routes.Assets.at("javascripts/admin.js")"></script>
 	</head>
 	<body>
 		@navbar(settings("projectName"))
 		<div id="wrapper">
-		@sidebar()
+		@sidebar_admin(datain, dataout)
 		<div id="page-content-wrapper">
 			<h1>Administration</h1>
 			<h2>Paramètres du dashboard</h2>
@@ -57,6 +60,13 @@ See LICENSE file at root of project for more informations
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>
+			<form id="datepicker_form" action="/admin/datepicker" method="post" class="form-inline">
+				<div class="form-group">
+					<label for="datepicker_format">Format datepicker</label><br />
+					<input type="text" class="form-control" id="datepicker_format" name="datepicker_format" value=@settings("datePickerFormat")>
+					<button type="submit" class="btn btn-default">Valider</button>
+				</div>
+			</form>
 			<h2>Paramètres de l'engine</h2>
 			<form id="engine_path_form" action="/admin/enginepath" method="post" class="form-inline">
 				<div class="form-group">
@@ -72,10 +82,14 @@ See LICENSE file at root of project for more informations
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>
+			<div id="datain" class="section">
 			<h2>Fichiers d'entrée</h2>
 			@admin_data_files("/admin/datain", datain)
+			</div>
+			<div id="dataout" class="section">
 			<h2>Fichiers de sortie</h2>
 			@admin_data_files("/admin/dataout", dataout)
+			</div>
 		</div>
 		</div>
 	</body>
