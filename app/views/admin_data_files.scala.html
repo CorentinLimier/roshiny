@@ -13,6 +13,7 @@ See LICENSE file at root of project for more informations
 		<th>Chemin relatif au scénario</th>
 		<th>Visualiser comme tableau csv</th>
 		<th>Activer la dataviz</th>
+		<th>Header</th>
 		<th>Ajouter/Supprimer</th>
 	</tr>
 	@for(dataFile <- dataFiles){
@@ -27,12 +28,8 @@ See LICENSE file at root of project for more informations
 		</td>
 		<td>
 			<input type="hidden" name="form_csv_viz[]" value=@dataFile.csvViz>
-			<input type="hidden" name="form_ignore_header[]" value=@dataFile.ignoreHeader>
 			@if(dataFile.csvViz){
 				Activé
-				@if(dataFile.ignoreHeader){
-				 (header ignoré)
-				}
 			} else{
 				Désactivé
 			}
@@ -43,6 +40,14 @@ See LICENSE file at root of project for more informations
 				Activé
 			} else{
 				Désactivé
+			}
+		</td>
+		<td>
+			<input type="hidden" name="form_ignore_header[]" value=@dataFile.ignoreHeader>
+			@if(dataFile.ignoreHeader){
+				Oui	
+			} else{
+				Non	
 			}
 		</td>
 		<td>
@@ -58,12 +63,6 @@ See LICENSE file at root of project for more informations
 			<input type="checkbox" name="csv_viz" class="csv_viz checkbox checkbox-disabled checkbox-inline">
 			<span class="little-margin">Activer</span>
 			</label>
-			<div class="ignore_header">
-			<label>
-			<input type="checkbox" name="ignore_header" class="checkbox checkbox-disabled checkbox-inline">
-			<span class="little-margin">Ignorer la 1ère ligne (header)</span>
-			<label>
-			</div>
 		</td>
 		<td>
 			<label>
@@ -71,7 +70,13 @@ See LICENSE file at root of project for more informations
 			<span class="little-margin">Activer</span>
 			</label>
 		</td>
-		<td><button type="button" class="add-row btn btn-default">Ajouter ce fichier</button></td>
+		<td>
+			<label>
+			<input type="checkbox" name="ignore_header" class="checkbox checkbox-disabled checkbox-inline">
+			<span class="little-margin">Header</span>
+			<label>
+		</td>
+		<td><button type="button" class="add-row btn btn-default">Ajouter</button></td>
 	</tr>
 </table>
 <button type="submit" class="btn btn-default">Valider</button>

@@ -38,7 +38,7 @@ See LICENSE file at root of project for more informations
 		trButton.remove();
 	}
 
-	// Ugly as hell
+	// Ugly
 	var addDataFileRow = function(button){
 		var trButton = button.closest("tr");
 		var inputs = trButton.find("input");
@@ -48,9 +48,7 @@ See LICENSE file at root of project for more informations
 		var td, deleteButton, hidden_input;
 
 		inputs.each(function(){
-			if($(this).attr("name") != "ignore_header"){
-				td = $(document.createElement('TD'));
-			}
+			td = $(document.createElement('TD'));
 			hidden_input = $(document.createElement('INPUT'))
 				.attr("type", "hidden")
 				.attr("name", "form_" + $(this).attr("name") + "[]");
@@ -61,24 +59,25 @@ See LICENSE file at root of project for more informations
 			}
 			else if($(this).is(":checked")){
 				if($(this).attr("name") == "ignore_header"){
-					td.append(" (header ignoré)")
+					td.html("Oui")
 				}
 				else{
-					td.append("Activé");
+					td.html("Activé");
 				}
 				$(hidden_input).val("true");
 				$(this).attr("checked", false);
 			}
 			else{
 				$(hidden_input).val("false");
-				if($(this).attr("name") != "ignore_header"){
+				if($(this).attr("name") == "ignore_header"){
+					td.html("Non")
+				}
+				else{
 					td.append("Désactivé");
 				}
 			}
 			td.append(hidden_input);
-			if($(this).attr("name") != "csv_viz"){
-				newTR.append(td);
-			}
+			newTR.append(td);
 		});
 
 		if(!validate){
