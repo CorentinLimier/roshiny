@@ -33,3 +33,8 @@ body{
 .hidden{
 	display: none;
 }
+
+#navigation_tabs{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}

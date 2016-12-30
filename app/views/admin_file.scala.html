@@ -35,6 +35,7 @@ See LICENSE file at root of project for more informations
 		@sidebar_admin(datain, dataout)
 		<div id="page-content-wrapper">
 			<h1>Administration fichier @dataFile.name</h1>
+			<div id="navigation_tabs">
 			<ul id="tablist" class="nav nav-tabs" role="tablist">
 				@if(dataFile.csvViz){
 				<li role="presentation" class="active">
@@ -47,6 +48,7 @@ See LICENSE file at root of project for more informations
 				</li>
 				}
 			</ul>
+			</div>
 			<div class="tab-content">
 			@if(dataFile.csvViz){
 			<div id="csv_viz" class="tab-pane fade in active">
