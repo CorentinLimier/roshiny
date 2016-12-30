@@ -36,8 +36,8 @@ public class AdminFile extends Controller {
 
 			if(!(dataFile.csvViz || dataFile.dataViz)){
 				Logger.error("AdminFile.configureDataFile(): ni csvViz ni dataViz ");
-				flash("error", "Le fichier ne peut pas être configuré");
-				return ok(admin.render(settings, dataInFiles, dataOutFiles));
+				flash("error", "Fichier non configurable");
+				return redirect(routes.Admin.index());
 			}
 
 			return ok(admin_file.render(settings, dataFile, dataInFiles, dataOutFiles));
@@ -45,7 +45,7 @@ public class AdminFile extends Controller {
 		catch(Exception exc){
 			Logger.error("AdminFile.configureDataFile(): " + exc.getMessage());
 			flash("error", "Fichier inconnu");
-			return ok(admin.render(settings, dataInFiles, dataOutFiles));
+			return redirect(routes.Admin.index());
 		}
 	}
 }

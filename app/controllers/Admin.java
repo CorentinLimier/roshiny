@@ -169,13 +169,13 @@ public class Admin extends Controller {
 	public Result setDataInFiles(){
 		Logger.info("Admin.setDataInFiles()");
 		setDataFiles("data-in");
-		return index();
+		return redirect(routes.Admin.index());
 	}
 
 	public Result setDataOutFiles(){
 		Logger.info("Admin.setDataOutFiles()");
 		setDataFiles("data-out");
-		return index();
+		return redirect(routes.Admin.index());
 	}
 
 	private void setDataFiles(String usage){
@@ -189,12 +189,22 @@ public class Admin extends Controller {
 			Form<DataFileValidation> form = form(DataFileValidation.class).bindFromRequest();
 
 			for(int i=0; i<form.get().form_file_name.size(); i++){
+
+				String name = form.get().form_file_name.get(i);
+				String path = form.get().form_file_path.get(i); 
+
+				if(name.equals("")||path.equals("")){
+					Logger.error("Admin.setDataFiles(): nom ou chemin vide");
+					flash("error", "Certains fichiers n'ont pas été validés (nom ou chemin vide)");
+					continue;
+				}
+
 				models.File file = new models.File();
-				file.path = form.get().form_file_path.get(i);
+				file.path = path; 
 				DataFile dataFile = new DataFile();
 				dataFile.file = file;
 				dataFile.usage = usage;
-				dataFile.name = form.get().form_file_name.get(i);
+				dataFile.name = name; 
 				dataFile.csvViz = form.get().form_csv_viz.get(i);
 				dataFile.ignoreHeader = form.get().form_ignore_header.get(i);
 				dataFile.dataViz = form.get().form_data_viz.get(i);
@@ -203,6 +213,7 @@ public class Admin extends Controller {
 			}
 		}
 		catch(Exception exc){
+			Logger.error("Admin.setDataFiles(): " + exc.getMessage());
 		}
 	}
 }

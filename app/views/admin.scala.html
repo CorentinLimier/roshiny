@@ -47,7 +47,7 @@ See LICENSE file at root of project for more informations
 			<form id="appname_form" action="/admin/appname" method="post" class="form-inline">
 				<div class="form-group">
 					<label for="app_name">Nom de l'application</label><br />
-					<input type="text" class="form-control" id="app_name" name="app_name" value=@settings("projectName")>
+					<input type="text" class="form-control" id="app_name" name="app_name" value=@settings("projectName") required>
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>
@@ -58,18 +58,18 @@ See LICENSE file at root of project for more informations
 				</div>
 				<div class="form-group">
 					<label for="new_pswd">Nouveau mot de passe</label><br />
-					<input type="password" class="form-control" id="new_pswd" name="new_pswd">
+					<input type="password" class="form-control" id="new_pswd" name="new_pswd" required>
 				</div>
 				<div class="form-group">
 					<label for="conf_pswd">Confirmer le mot de passe</label><br />
-					<input type="password" class="form-control" id="conf_pswd" name="conf_pswd">
+					<input type="password" class="form-control" id="conf_pswd" name="conf_pswd" required>
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>
 			<form id="datepicker_form" action="/admin/datepicker" method="post" class="form-inline">
 				<div class="form-group">
 					<label for="datepicker_format">Format datepicker</label><br />
-					<input type="text" class="form-control" id="datepicker_format" name="datepicker_format" value=@settings("datePickerFormat")>
+					<input type="text" class="form-control" id="datepicker_format" name="datepicker_format" value=@settings("datePickerFormat") required>
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>
@@ -77,14 +77,14 @@ See LICENSE file at root of project for more informations
 			<form id="engine_path_form" action="/admin/enginepath" method="post" class="form-inline">
 				<div class="form-group">
 					<label for="engine_path">Chemin du script de l'engine</label><br />
-					<input type="text" class="form-control" id="engine_path" name="path" value=@settings("enginePath")>
+					<input type="text" class="form-control" id="engine_path" name="path" value=@settings("enginePath") required>
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>
 			<form id="scenarios_path_form" action="/admin/scenariospath" method="post" class="form-inline">
 				<div class="form-group">
 					<label for="scenarios_path">Chemin du répertoire des scénarios</label><br />
-					<input type="text" class="form-control" id="scenarios_path" name="path" value=@settings("scenariosPath")>
+					<input type="text" class="form-control" id="scenarios_path" name="path" value=@settings("scenariosPath") required>
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>

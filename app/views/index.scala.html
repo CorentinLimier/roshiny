@@ -120,7 +120,7 @@ See LICENSE file at root of project for more informations
 			<h2>Créer un nouveau scénario</h2>
 			@helper.form(routes.Home.createScenario) {
 				<label for="scenario_name">Nom du scénario:</label>
-				<input type="text" id="scenario_name" name="scenario_name" class="form-control">
+				<input type="text" id="scenario_name" name="scenario_name" class="form-control" required>
 				<label for="scenario_description">Description:</label>
 				<textarea id="scenario_description" rows=5 name="scenario_description" class="form-control"></textarea>
 				<button type="submit" class="btn btn-default">Créer</button>
