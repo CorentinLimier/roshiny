@@ -153,6 +153,10 @@ public class Home extends Controller {
 
 				try{
 					deleteScenarioDirectories(scenario);
+					List<Run> associatedRun = Run.find.where().eq("scenario", scenario).findList();
+					for(Run run: associatedRun){
+						run.delete();
+					}
 					scenario.delete();
 				}
 				catch(Exception exc){
