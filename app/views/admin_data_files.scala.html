@@ -27,10 +27,10 @@ See LICENSE file at root of project for more informations
 		</td>
 		<td>
 			<input type="hidden" name="form_csv_viz[]" value=@dataFile.csvViz>
+			<input type="hidden" name="form_ignore_header[]" value=@dataFile.ignoreHeader>
 			@if(dataFile.csvViz){
 				Activé
 				@if(dataFile.ignoreHeader){
-				<input type="hidden" name="form_ignore_header[]" value=@dataFile.ignoreHeader>
 				 (header ignoré)
 				}
 			} else{
