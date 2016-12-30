@@ -1,3 +1,32 @@
+ROshiny a été développé avec Play version 2.5.3 et activator
+
+Pour lancer l'application en mode développeur, exécutez le script 
+./scripts/run-dev.sh PORT
+le paramètre PORT est par défaut à 9000
+
+Pour compiler l'application, exécutez le script 
+./scripts/compile.sh
+
+Pour déployer l'application, copiez les répertoires ./scripts ./database et ./target
+! ATTENTION !
+Ne copiez pas database/roshiny.db si vous ne souhaitez pas écraser votre base de données existante
+
+Pour lancer l'application en mode développeur : 
+- Compilez d'abord l'application
+- puis exécutez le script 
+./scripts/run-prod.sh PORT
+le paramètre PORT est par défaut à 9000
+
+Pour créer une nouvelle base de données compatible avec roshiny:
+- Créez une base vide avec sqlite3
+- Exécutez avec sqlite3 le script ./scripts/initDatabase.sql
+- Le mot de passe de la page admin de l'application sera vide par défaut
+
+=======================================================================================================================
+
+
+README ORIGINAL (Play Framework) : 
+
 This is your new Play application
 =================================
 

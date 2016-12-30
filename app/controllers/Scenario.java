@@ -159,8 +159,8 @@ public class Scenario extends Controller {
 
 		}
 		catch(Exception exc){
-			Logger.error("Scenario.uploadFiles() error : " + exc.getMessage());
-			flash("error", "Erreur lors de l'upload");
+			Logger.error("Scenario.launch() error : " + exc.getMessage());
+			flash("error", "Erreur d'exécution du scénario");
 			return redirect(routes.Scenario.index(scenarioId));
 		}
 
@@ -192,7 +192,7 @@ public class Scenario extends Controller {
 		try {
 			models.Scenario scenarioModel = models.Scenario.find.byId(scenarioId); 
 
-			String script = "scripts/compressScenario.sh";
+			String script = "scripts/dashboard/compressScenario.sh";
 			String args = " " + scenariosPath + " " + Long.toString(scenarioId); 
 
 			Process proc = Runtime.getRuntime().exec(script + args);

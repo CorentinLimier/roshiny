@@ -182,7 +182,7 @@ public class Home extends Controller {
 
 				try{
 					String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path;
-					String script = "scripts/duplicateScenario.sh";
+					String script = "scripts/dashboard/duplicateScenario.sh";
 					String args = " " + scenariosPath + " " + Long.toString(scenario.id) + " " + Long.toString(newScenario.id);
 
 					Process proc = Runtime.getRuntime().exec(script + args);
