@@ -181,11 +181,24 @@ public class Home extends Controller {
 				newScenario.save();
 
 				try{
-					createScenarioDirectories(newScenario);
+					String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path;
+					String script = "scripts/duplicateScenario.sh";
+					String args = " " + scenariosPath + " " + Long.toString(scenario.id) + " " + Long.toString(newScenario.id);
+
+					Process proc = Runtime.getRuntime().exec(script + args);
+
+					int exit = proc.waitFor();
+					if(exit!=0) {
+						Logger.error("Scenario.duplicateOrDeleteScenario() : duplicate exit status" + exit);
+						flash("error", "Erreur lors de la duplication du scénario");
+						newScenario.delete();
+						return redirect(routes.Home.index());
+					}
 				}
 				catch(Exception exc){
 					Logger.error("Home.duplicateOrDeleteScenario(): " + exc.getMessage());
 					newScenario.delete();
+					flash("error", "Erreur lors de la duplication du scénario");
 					return redirect(routes.Home.index());
 				}
 

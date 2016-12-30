@@ -188,11 +188,11 @@ public class Scenario extends Controller {
 	public Result downloadScenario(long scenarioId){
 		Logger.info("Scenario.downloadScenario() " + Long.toString(scenarioId));
 		String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path;
-		String script = "scripts/compressScenario.sh";
 
 		try {
 			models.Scenario scenarioModel = models.Scenario.find.byId(scenarioId); 
 
+			String script = "scripts/compressScenario.sh";
 			String args = " " + scenariosPath + " " + Long.toString(scenarioId); 
 
 			Process proc = Runtime.getRuntime().exec(script + args);
