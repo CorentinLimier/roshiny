@@ -1,4 +1,4 @@
-@(projectName: String, scenariosPath: String, scenario: models.Scenario, dataFile: DataFile, fileContent: String, datain: List[DataFile], dataout: List[DataFile])
+@(projectName: String, scenariosPath: String, scenario: models.Scenario, dataFile: DataFile, fileContent: String, datain: List[DataFile], dataout: List[DataFile], columns: List[ColumnCsv])
 
 <!--
 MIT License
@@ -27,6 +27,7 @@ See LICENSE file at root of project for more informations
 
 		<script src="@routes.Assets.at("libs/jquery.min.js")"></script>
 		<script src="@routes.Assets.at("libs/bootstrap/js/bootstrap.min.js")"></script>
+		<script src="@routes.Assets.at("javascripts/csv_viz.js")"></script>
 	</head>
 	<body>
 		@navbar(projectName)
@@ -68,7 +69,19 @@ See LICENSE file at root of project for more informations
 			</div>
 			@if(dataFile.csvViz){
 			<div id="csv_viz" class="tab-pane fade">
-				CSV VIZ
+				<table id="csv_table" class="table table-striped">
+					<thead>
+						<tr>
+							@for(column <- columns){
+								<th>@column.name</th>
+							}
+						</tr>
+					</thead>
+					<tbody>
+					<tbody>
+					<tfoot>
+					</tfoot>
+				</table>
 			</div>
 			}
 			@if(dataFile.dataViz){

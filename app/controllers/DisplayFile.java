@@ -37,6 +37,7 @@ public class DisplayFile extends Controller {
 		try{
 			models.Scenario scenarioModel = models.Scenario.find.byId(scenarioId); 
 			DataFile dataFile = DataFile.find.byId(dataFileId);
+			List<ColumnCsv> columns = ColumnCsv.find.where().eq("dataFile", dataFile).findList();
 			List<DataFile> dataInFiles = DataFile.find.where().eq("usage", "data-in").findList();
 			List<DataFile> dataOutFiles = DataFile.find.where().eq("usage", "data-out").findList();
 
@@ -55,7 +56,7 @@ public class DisplayFile extends Controller {
 				}
 			}
 
-			return ok(display_file.render(projectName.value, scenariosPath, scenarioModel, dataFile, fileContent.trim(), dataInFiles, dataOutFiles));
+			return ok(display_file.render(projectName.value, scenariosPath, scenarioModel, dataFile, fileContent.trim(), dataInFiles, dataOutFiles, columns));
 		}
 		catch(Exception exc){
 			Logger.info("DisplayFile.display() " + exc.getMessage());
