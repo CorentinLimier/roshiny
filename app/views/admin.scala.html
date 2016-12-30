@@ -37,6 +37,12 @@ See LICENSE file at root of project for more informations
 		@sidebar_admin(datain, dataout)
 		<div id="page-content-wrapper">
 			<h1>Administration</h1>
+			@if(flash.contains("error")) {
+			<div class="alert alert-danger">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>@flash.get("error")</strong>
+			</div>
+			}
 			<h2>Paramètres du dashboard</h2>
 			<form id="appname_form" action="/admin/appname" method="post" class="form-inline">
 				<div class="form-group">

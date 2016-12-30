@@ -1,0 +1,65 @@
+@(settings: Map[String, String], dataFile: DataFile, datain: List[DataFile], dataout: List[DataFile])
+
+<!--
+MIT License
+Copyright (c) 2016 Corentin Limier 
+See LICENSE file at root of project for more informations
+-->
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta name="description" content="Administration page fichier @dataFile.name">
+		<meta name="author" content="Corentin Limier">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+
+		<title>@settings("projectName") Admininistration fichier @dataFile.name</title>
+
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("libs/bootstrap-datepicker/css/datepicker.css")">
+		<link href="@routes.Assets.at("libs/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("libs/sidebar/css/simple-sidebar.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("libs/font-awesome/css/font-awesome.min.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("stylesheets/sidebar.css")" rel="stylesheet">
+
+		<script src="@routes.Assets.at("libs/jquery.min.js")"></script>
+		<script src="@routes.Assets.at("libs/bootstrap/js/bootstrap.min.js")"></script>
+		<script src="@routes.Assets.at("javascripts/admin.js")"></script>
+	</head>
+	<body>
+		@navbar(settings("projectName"))
+		<div id="wrapper">
+		@sidebar_admin(datain, dataout)
+		<div id="page-content-wrapper">
+			<h1>Administration fichier @dataFile.name</h1>
+			<ul id="tablist" class="nav nav-tabs" role="tablist">
+				@if(dataFile.csvViz){
+				<li role="presentation" class="active">
+					<a href="#csv_viz" aria-controls="csv_viz" role="tab" data-toggle="tab">Tableau CSV</a>
+				</li>
+				}
+				@if(dataFile.dataViz){
+				<li role="presentation" @if(!dataFile.csvViz){class="active"}>
+					<a href="#data_viz" aria-controls="data_viz" role="tab" data-toggle="tab">Dataviz</a>
+				</li>
+				}
+			</ul>
+			<div class="tab-content">
+			@if(dataFile.csvViz){
+			<div id="csv_viz" class="tab-pane fade in active">
+				CSV VIZ
+			</div>
+			}
+			@if(dataFile.dataViz){
+			<div id="data_viz" @if(!dataFile.csvViz){class="tab-pane fade in active"}else{class="tab-pane fade"}>
+				DATA VIZ
+			</div>
+			}
+			</div>
+		</div>
+		</div>
+	</body>
+</html>
