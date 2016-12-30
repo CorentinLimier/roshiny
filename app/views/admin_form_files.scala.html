@@ -19,15 +19,15 @@ See LICENSE file at root of project for more informations
 	@for(dataFile <- dataFiles){
 	<tr>
 		<td>
-			<input type="hidden" name="form_file_name[]" value=@dataFile.name>
+			<input type="hidden" name="form_file_name[]" value="@dataFile.name">
 			@dataFile.name
 		</td>
 		<td>
-			<input type="hidden" name="form_file_path[]" value=@dataFile.file.path>
+			<input type="hidden" name="form_file_path[]" value="@dataFile.file.path">
 			@dataFile.file.path
 		</td>
 		<td>
-			<input type="hidden" name="form_csv_viz[]" value=@dataFile.csvViz>
+			<input type="hidden" name="form_csv_viz[]" value="@dataFile.csvViz">
 			@if(dataFile.csvViz){
 				Activé
 			} else{
@@ -35,7 +35,7 @@ See LICENSE file at root of project for more informations
 			}
 		</td>
 		<td>
-			<input type="hidden" name="form_data_viz[]" value=@dataFile.dataViz>
+			<input type="hidden" name="form_data_viz[]" value="@dataFile.dataViz">
 			@if(dataFile.dataViz){
 				Activé
 			} else{
@@ -43,7 +43,7 @@ See LICENSE file at root of project for more informations
 			}
 		</td>
 		<td>
-			<input type="hidden" name="form_ignore_header[]" value=@dataFile.ignoreHeader>
+			<input type="hidden" name="form_ignore_header[]" value="@dataFile.ignoreHeader">
 			@if(dataFile.ignoreHeader){
 				Oui	
 			} else{

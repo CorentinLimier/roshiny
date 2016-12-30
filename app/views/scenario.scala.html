@@ -120,7 +120,7 @@ See LICENSE file at root of project for more informations
 				@defining(!(new java.io.File(scenariosPath +"/"+ scenario.id +"/"+ dataFile.file.path).exists)){disabled =>
 				<tr>
 					<td>
-						<input type="hidden" name="form_file_name[]" value=@dataFile.name>
+						<input type="hidden" name="form_file_name[]" value="@dataFile.name">
 						@dataFile.name
 						@if(!disabled){<i class="fa fa-check"></i>}
 					</td>

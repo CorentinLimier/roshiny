@@ -3,6 +3,15 @@
 
 # --- !Ups
 
+create table column_csv (
+  id                            integer autoincrement not null,
+  data_file_id                  integer,
+  name                          varchar(255),
+  column_type                   varchar(255),
+  position                      integer,
+  constraint pk_column_csv primary key (id)
+);
+
 create table data_file (
   id                            integer autoincrement not null,
   file_id                       integer,
@@ -68,6 +77,9 @@ create table user (
   constraint pk_user primary key (id)
 );
 
+alter table column_csv add constraint fk_column_csv_data_file_id foreign key (data_file_id) references data_file (id) on delete restrict on update restrict;
+create index ix_column_csv_data_file_id on column_csv (data_file_id);
+
 alter table data_file add constraint fk_data_file_file_id foreign key (file_id) references file (id) on delete restrict on update restrict;
 
 alter table parameter_file add constraint fk_parameter_file_file_id foreign key (file_id) references file (id) on delete restrict on update restrict;
@@ -84,6 +96,9 @@ create index ix_user_role_id on user (role_id);
 
 # --- !Downs
 
+alter table column_csv drop constraint if exists fk_column_csv_data_file_id;
+drop index if exists ix_column_csv_data_file_id;
+
 alter table data_file drop constraint if exists fk_data_file_file_id;
 
 alter table parameter_file drop constraint if exists fk_parameter_file_file_id;
@@ -96,6 +111,8 @@ drop index if exists ix_scenario_user_id;
 
 alter table user drop constraint if exists fk_user_role_id;
 drop index if exists ix_user_role_id;
+
+drop table if exists column_csv;
 
 drop table if exists data_file;
 

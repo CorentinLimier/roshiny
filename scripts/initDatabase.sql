@@ -20,10 +20,8 @@ create table setting (
 );
 
 insert into setting values ("projectName", "ROShiny");
-*/
 insert into setting values ("datePickerFormat", "yyyy-mm-dd");
 
-/*
 create table user (
   id                            integer not null,
   role_id                       integer,
@@ -85,3 +83,12 @@ create table run (
   constraint pk_run primary key (id)
 );
 */
+
+create table column_csv (
+  id                            integer not null,
+  data_file_id                  integer,
+  name                          varchar(255),
+  column_type					varchar(255),
+  position						integer,
+  constraint pk_column_csv primary key (id)
+);

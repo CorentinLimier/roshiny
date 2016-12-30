@@ -117,7 +117,7 @@ public class Scenario extends Controller {
 	}
 
 	public Result launch(long scenarioId) {
-		Logger.debug("Scenario.launch() " + Long.toString(scenarioId));
+		Logger.info("Scenario.launch() " + Long.toString(scenarioId));
 
 		String script = ParameterFile.find.byId("enginePath").file.path;
 		String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path;

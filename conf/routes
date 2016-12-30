@@ -36,6 +36,7 @@ POST	/admin/scenariospath		controllers.Admin.setScenariosPath
 
 # Admin configure csv and data viz
 GET		/admin/configure			controllers.AdminFile.configureDataFile(dataFileId: java.lang.Long)
+POST	/admin/configure/csv_viz	controllers.AdminFile.updateCsvViz(dataFileId: java.lang.Long)
 
 # Files
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

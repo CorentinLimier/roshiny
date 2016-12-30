@@ -27,8 +27,6 @@ See LICENSE file at root of project for more informations
 
 		<script src="@routes.Assets.at("libs/jquery.min.js")"></script>
 		<script src="@routes.Assets.at("libs/bootstrap/js/bootstrap.min.js")"></script>
-		<script src="@routes.Assets.at("libs/bootstrap-datepicker/js/bootstrap-datepicker.js")" type="text/javascript"></script>
-		<script src="@routes.Assets.at("libs/bootstrap-datepicker/js/locales/bootstrap-datepicker.fr.js")" type="text/javascript"></script>
 		<script src="@routes.Assets.at("javascripts/admin.js")"></script>
 	</head>
 	<body>
@@ -47,7 +45,7 @@ See LICENSE file at root of project for more informations
 			<form id="appname_form" action="/admin/appname" method="post" class="form-inline">
 				<div class="form-group">
 					<label for="app_name">Nom de l'application</label><br />
-					<input type="text" class="form-control" id="app_name" name="app_name" value=@settings("projectName") required>
+					<input type="text" class="form-control" id="app_name" name="app_name" value='@settings("projectName")' required>
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>
@@ -69,7 +67,7 @@ See LICENSE file at root of project for more informations
 			<form id="datepicker_form" action="/admin/datepicker" method="post" class="form-inline">
 				<div class="form-group">
 					<label for="datepicker_format">Format datepicker</label><br />
-					<input type="text" class="form-control" id="datepicker_format" name="datepicker_format" value=@settings("datePickerFormat") required>
+					<input type="text" class="form-control" id="datepicker_format" name="datepicker_format" value='@settings("datePickerFormat")' required>
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>
@@ -77,24 +75,24 @@ See LICENSE file at root of project for more informations
 			<form id="engine_path_form" action="/admin/enginepath" method="post" class="form-inline">
 				<div class="form-group">
 					<label for="engine_path">Chemin du script de l'engine</label><br />
-					<input type="text" class="form-control" id="engine_path" name="path" value=@settings("enginePath") required>
+					<input type="text" class="form-control" id="engine_path" name="path" value='@settings("enginePath")' required>
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>
 			<form id="scenarios_path_form" action="/admin/scenariospath" method="post" class="form-inline">
 				<div class="form-group">
 					<label for="scenarios_path">Chemin du répertoire des scénarios</label><br />
-					<input type="text" class="form-control" id="scenarios_path" name="path" value=@settings("scenariosPath") required>
+					<input type="text" class="form-control" id="scenarios_path" name="path" value='@settings("scenariosPath")' required>
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>
 			<div id="datain" class="section">
 			<h2>Fichiers d'entrée</h2>
-			@admin_data_files("/admin/datain", datain)
+			@admin_form_files("/admin/datain", datain)
 			</div>
 			<div id="dataout" class="section">
 			<h2>Fichiers de sortie</h2>
-			@admin_data_files("/admin/dataout", dataout)
+			@admin_form_files("/admin/dataout", dataout)
 			</div>
 		</div>
 		</div>

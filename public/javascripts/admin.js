@@ -93,11 +93,6 @@ See LICENSE file at root of project for more informations
 		newTR.append(td);
 
 		trButton.before(newTR);
-		$(".ignore_header").hide();
-	}
-
-	var toggleIgnoreHeader = function(checkbox){
-		checkbox.closest("td").find(".ignore_header").toggle();
 	}
 
 	// Wait until dom is ready
@@ -107,8 +102,6 @@ See LICENSE file at root of project for more informations
 		$("#datepicker_form").on('submit', function(e){sendForm(e, $(this))});
 		$("#engine_path_form").on('submit', function(e){sendForm(e, $(this))});
 		$("#scenarios_path_form").on('submit', function(e){sendForm(e, $(this))});
-		$(".ignore_header").hide();
-		$(".csv_viz").on('change', function(e){toggleIgnoreHeader($(this))});
 		$(".add-row").on('click', function(e){addDataFileRow($(this))});
 		$(".delete-row").on('click', function(e){deleteRow($(this))});
 	});

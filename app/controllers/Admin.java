@@ -60,19 +60,32 @@ public class Admin extends Controller {
 		public List<Boolean> form_data_viz;
 
 		public String validate() {
+			for(String inputText: form_file_name){
+				if(inputText.isEmpty()){
+					return "Le champ \"Nom du fichier\" est requis";
+				}
+			}
+			for(String inputText: form_file_path){
+				if(inputText.isEmpty()){
+					return "Le champ \"Chemin relatif au scénario\" est requis";
+				}
+			}
 			return null;
 		}
 	}
 
 	public Result index() {
 		Logger.info("Admin.index()");
+
 		HashMap<String, String> settings = new HashMap<String, String>();
 		settings.put("projectName", Setting.find.byId("projectName").value);
 		settings.put("datePickerFormat", Setting.find.byId("datePickerFormat").value);
 		settings.put("enginePath", ParameterFile.find.byId("enginePath").file.path);
 		settings.put("scenariosPath", ParameterFile.find.byId("scenariosPath").file.path);
+
 		List<DataFile> dataInFiles = DataFile.find.where().eq("usage", "data-in").findList();
 		List<DataFile> dataOutFiles = DataFile.find.where().eq("usage", "data-out").findList();
+
 		return ok(admin.render(settings, dataInFiles, dataOutFiles));
 	}
 
@@ -168,52 +181,46 @@ public class Admin extends Controller {
 
 	public Result setDataInFiles(){
 		Logger.info("Admin.setDataInFiles()");
-		setDataFiles("data-in");
-		return redirect(routes.Admin.index());
+		return setDataFiles("data-in");
 	}
 
 	public Result setDataOutFiles(){
 		Logger.info("Admin.setDataOutFiles()");
-		setDataFiles("data-out");
-		return redirect(routes.Admin.index());
+		return setDataFiles("data-out");
 	}
 
-	private void setDataFiles(String usage){
+	private Result setDataFiles(String usage){
+		Form<DataFileValidation> form = form(DataFileValidation.class).bindFromRequest();
+		if (form.hasErrors()) {
+			String message = form.globalError().message();
+			Logger.error("Admin.setDataFiles(): " + message);
+			flash("error", message);
+			return redirect(routes.Admin.index());
+		} 
+
 		List<DataFile> dataInFiles = DataFile.find.where().eq("usage", usage).findList();
 		for(DataFile dataFile: dataInFiles){
 			dataFile.file.delete();
 			dataFile.delete();
 		}
 
-		try{
-			Form<DataFileValidation> form = form(DataFileValidation.class).bindFromRequest();
+		for(int i=0; i<form.get().form_file_name.size(); i++){
+			String name = form.get().form_file_name.get(i);
+			String path = form.get().form_file_path.get(i); 
 
-			for(int i=0; i<form.get().form_file_name.size(); i++){
-
-				String name = form.get().form_file_name.get(i);
-				String path = form.get().form_file_path.get(i); 
-
-				if(name.equals("")||path.equals("")){
-					Logger.error("Admin.setDataFiles(): nom ou chemin vide");
-					flash("error", "Certains fichiers n'ont pas été validés (nom ou chemin vide)");
-					continue;
-				}
-
-				models.File file = new models.File();
-				file.path = path; 
-				DataFile dataFile = new DataFile();
-				dataFile.file = file;
-				dataFile.usage = usage;
-				dataFile.name = name; 
-				dataFile.csvViz = form.get().form_csv_viz.get(i);
-				dataFile.ignoreHeader = form.get().form_ignore_header.get(i);
-				dataFile.dataViz = form.get().form_data_viz.get(i);
-				file.save();
-				dataFile.save();
-			}
+			models.File file = new models.File();
+			file.path = path; 
+			DataFile dataFile = new DataFile();
+			dataFile.file = file;
+			dataFile.usage = usage;
+			dataFile.name = name; 
+			dataFile.csvViz = form.get().form_csv_viz.get(i);
+			dataFile.ignoreHeader = form.get().form_ignore_header.get(i);
+			dataFile.dataViz = form.get().form_data_viz.get(i);
+			file.save();
+			dataFile.save();
 		}
-		catch(Exception exc){
-			Logger.error("Admin.setDataFiles(): " + exc.getMessage());
-		}
+
+		return redirect(routes.Admin.index());
 	}
 }
