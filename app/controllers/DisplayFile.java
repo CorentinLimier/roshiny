@@ -23,25 +23,33 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+
 import java.lang.Long;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class DisplayFile extends Controller {
 
 	public Result display(long scenarioId, long dataFileId){
-		Logger.info("DisplayFile.display() " + Long.toString(scenarioId) + Long.toString(dataFileId));
-		Setting projectName = Setting.find.byId("projectName"); 
-		String scenariosPath = ParameterFile.find.byId("scenariosPath").file.path;
+		Logger.info("DisplayFile.display() " + Long.toString(scenarioId) + " " + Long.toString(dataFileId));
+		HashMap<String, String> settings = new HashMap<String, String>();
+		settings.put("projectName", Setting.find.byId("projectName").value);
+		settings.put("scenariosPath", ParameterFile.find.byId("scenariosPath").file.path);
+		settings.put("csvSeparator", Setting.find.byId("csvSeparator").value);
+		settings.put("datePickerFormat", Setting.find.byId("datePickerFormat").value);
 
 		try{
 			models.Scenario scenarioModel = models.Scenario.find.byId(scenarioId); 
 			DataFile dataFile = DataFile.find.byId(dataFileId);
+
+			settings.put("ignoreHeader", Boolean.toString(dataFile.ignoreHeader));
+
 			List<ColumnCsv> columns = ColumnCsv.find.where().eq("dataFile", dataFile).findList();
 			List<DataFile> dataInFiles = DataFile.find.where().eq("usage", "data-in").findList();
 			List<DataFile> dataOutFiles = DataFile.find.where().eq("usage", "data-out").findList();
 
-			File file = new File(scenariosPath + "/" + scenarioId + "/" + dataFile.file.path);
+			File file = new File(settings.get("scenariosPath") + "/" + scenarioId + "/" + dataFile.file.path);
 
 			String fileContent = new String();
 
@@ -56,7 +64,7 @@ public class DisplayFile extends Controller {
 				}
 			}
 
-			return ok(display_file.render(projectName.value, scenariosPath, scenarioModel, dataFile, fileContent.trim(), dataInFiles, dataOutFiles, columns));
+			return ok(display_file.render(settings, scenarioModel, dataFile, fileContent.trim(), dataInFiles, dataOutFiles, columns));
 		}
 		catch(Exception exc){
 			Logger.info("DisplayFile.display() " + exc.getMessage());

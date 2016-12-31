@@ -71,6 +71,13 @@ See LICENSE file at root of project for more informations
 					<button type="submit" class="btn btn-default">Valider</button>
 				</div>
 			</form>
+			<form id="csv_separator_form" action="/admin/csvseparator" method="post" class="form-inline">
+				<div class="form-group">
+					<label for="csv_separator">Séparateur CSV</label><br />
+					<input type="text" class="form-control" id="csv_separator" name="datepicker_format" value='@settings("csvSeparator")' required>
+					<button type="submit" class="btn btn-default">Valider</button>
+				</div>
+			</form>
 			<h2>Paramètres de l'engine</h2>
 			<form id="engine_path_form" action="/admin/enginepath" method="post" class="form-inline">
 				<div class="form-group">

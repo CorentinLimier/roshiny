@@ -1,4 +1,4 @@
-@(projectName: String, scenariosPath: String, scenario: models.Scenario, dataFile: DataFile, fileContent: String, datain: List[DataFile], dataout: List[DataFile], columns: List[ColumnCsv])
+@(settings: Map[String, String], scenario: models.Scenario, dataFile: DataFile, fileContent: String, datain: List[DataFile], dataout: List[DataFile], columns: List[ColumnCsv])
 
 <!--
 MIT License
@@ -16,7 +16,7 @@ See LICENSE file at root of project for more informations
 		<meta name="author" content="Corentin Limier">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
 
-		<title>@projectName scénario @scenario.name fichier @dataFile.name</title>
+		<title>@settings("projectName") scénario @scenario.name fichier @dataFile.name</title>
 
 		<link href="@routes.Assets.at("libs/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
 		<link href="@routes.Assets.at("libs/sidebar/css/simple-sidebar.css")" rel="stylesheet">
@@ -27,12 +27,18 @@ See LICENSE file at root of project for more informations
 
 		<script src="@routes.Assets.at("libs/jquery.min.js")"></script>
 		<script src="@routes.Assets.at("libs/bootstrap/js/bootstrap.min.js")"></script>
+
+		<script>
+			var csvSeparator = '@settings("csvSeparator")';
+			var ignoreHeader = '@settings("ignoreHeader")';
+			var datePickerFormat = '@settings("datePickerFormat")';
+		</script>
 		<script src="@routes.Assets.at("javascripts/csv_viz.js")"></script>
 	</head>
 	<body>
-		@navbar(projectName)
+		@navbar(settings("projectName"))
 		<div id="wrapper">
-		@sidebar_scenario(scenariosPath, scenario, datain, dataout)
+		@sidebar_scenario(settings("scenariosPath"), scenario, datain, dataout)
 		<div id="page-content-wrapper">
 			@if(flash.contains("error")) {
 			<div class="alert alert-danger">
@@ -78,7 +84,7 @@ See LICENSE file at root of project for more informations
 						</tr>
 					</thead>
 					<tbody>
-					<tbody>
+					</tbody>
 					<tfoot>
 					</tfoot>
 				</table>
