@@ -27,8 +27,11 @@ See LICENSE file at root of project for more informations
 		$("#upload_files").click(changeOpacity);
 		$("#launch_scenario").on('submit', function(e){launchScenario(e, $(this))});
 		$("#form_update").hide();
-		$("#ajax-load").hide();
 		$("#update_description").click(function(e){$("#form_update").toggle()});
+
+		if(scenarioStatus != "En cours"){
+			$("#ajax-load").hide();
+		}
 	});
 
 	$(document).ajaxComplete(function() {
