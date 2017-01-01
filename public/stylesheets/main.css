@@ -22,11 +22,11 @@ body{
 	bottom: 2px;
 }
 
-.fa-check{
+.fa-plus, .fa-check{
 	color: green;
 }
 
-.fa-times{
+.fa-minus, .fa-times{
 	color: red;
 }
 
