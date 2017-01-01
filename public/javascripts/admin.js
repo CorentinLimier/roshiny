@@ -34,8 +34,21 @@ See LICENSE file at root of project for more informations
 	};
 
 	var deleteRow= function(button){
-		var trButton = button.closest("tr");
-		trButton.remove();
+		var tr = button.closest("tr");
+		var table = button.closest("table");
+		var id = tr.find("")
+		var id = tr.find(".dataFileId");
+		var hidden_input;
+
+		if(id.length){
+			hidden_input = $(document.createElement('INPUT'))
+				.attr("type", "hidden")
+				.attr("name", "form_file_delete[]")
+				.val(id.val());
+			table.append(hidden_input);
+		}
+
+		tr.remove();
 	}
 
 	// Ugly
@@ -46,6 +59,12 @@ See LICENSE file at root of project for more informations
 		var newTR = $(document.createElement('TR'));
 		var validate = true;
 		var td, deleteButton, hidden_input;
+
+		hidden_input = $(document.createElement('INPUT'))
+			.attr("type", "hidden")
+			.attr("name", "form_file_id[]")
+			.val("-1");
+		newTR.append(hidden_input);
 
 		inputs.each(function(){
 			td = $(document.createElement('TD'));

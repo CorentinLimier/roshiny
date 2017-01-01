@@ -8,6 +8,7 @@ package controllers;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 import play.Logger;
@@ -53,11 +54,13 @@ public class Admin extends Controller {
 	}
 
 	public static class DataFileValidation{
-		public List<String> form_file_name;
-		public List<String> form_file_path;
-		public List<Boolean> form_csv_viz;
-		public List<Boolean> form_ignore_header;
-		public List<Boolean> form_data_viz;
+		public List<Long> form_file_delete = new ArrayList<Long>();
+		public List<Long> form_file_id = new ArrayList<Long>();
+		public List<String> form_file_name = new ArrayList<String>();
+		public List<String> form_file_path = new ArrayList<String>();
+		public List<Boolean> form_csv_viz = new ArrayList<Boolean>();
+		public List<Boolean> form_ignore_header = new ArrayList<Boolean>();
+		public List<Boolean> form_data_viz = new ArrayList<Boolean>();
 
 		public String validate() {
 			for(String inputText: form_file_name){
@@ -215,8 +218,14 @@ public class Admin extends Controller {
 			return redirect(routes.Admin.index());
 		} 
 
-		List<DataFile> dataInFiles = DataFile.find.where().eq("usage", usage).findList();
-		for(DataFile dataFile: dataInFiles){
+		for(Long toDeleteId: form.get().form_file_delete){
+			DataFile dataFile = DataFile.find.byId(toDeleteId);
+			
+			List<ColumnCsv> columns = ColumnCsv.find.where().eq("dataFile", dataFile).findList();
+			for(ColumnCsv column: columns){
+				column.delete();
+			}
+
 			dataFile.file.delete();
 			dataFile.delete();
 		}
@@ -224,6 +233,11 @@ public class Admin extends Controller {
 		for(int i=0; i<form.get().form_file_name.size(); i++){
 			String name = form.get().form_file_name.get(i);
 			String path = form.get().form_file_path.get(i); 
+			Long id = form.get().form_file_id.get(i);
+
+			if(id != -1){
+				continue;
+			}
 
 			models.File file = new models.File();
 			file.path = path; 

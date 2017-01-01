@@ -7,6 +7,7 @@ See LICENSE file at root of project for more informations
 package controllers;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,8 +23,8 @@ import views.html.*;
 public class AdminFile extends Controller {
 
 	public static class Columns{
-		public List<String> form_column_name;
-		public List<String> form_column_type;
+		public List<String> form_column_name = new ArrayList<String>();
+		public List<String> form_column_type = new ArrayList<String>();
 
 		public String validate() {
 			for(String name: form_column_name){
