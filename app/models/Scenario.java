@@ -30,9 +30,6 @@ public class Scenario extends Model {
 	@Formats.DateTime(pattern="dd/MM/yyyy")
 	public Date creationDate;
 
-	@Formats.DateTime(pattern="dd/MM/yyyy")
-	public Date lastRunDate;
-
 	public String status;
 
 	public static Model.Finder<Long,Scenario> find = new Model.Finder<Long,Scenario>(

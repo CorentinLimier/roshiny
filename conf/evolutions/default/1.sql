@@ -58,7 +58,6 @@ create table scenario (
   name                          varchar(255),
   description                   TEXT,
   creation_date                 timestamp,
-  last_run_date                 timestamp,
   status                        varchar(255),
   constraint pk_scenario primary key (id)
 );

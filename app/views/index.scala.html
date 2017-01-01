@@ -100,10 +100,12 @@ See LICENSE file at root of project for more informations
 								@scenario.creationDate.format("yyyy-MM-dd")
 							</td>
 							<td>
-								@if(scenario.lastRunDate != null){
-									@scenario.lastRunDate.format("yyyy-MM-dd")
-								}else{
-									-
+								@defining(Run.find.where().eq("scenario", scenario).orderBy("runDate desc").findList()){runs =>
+									@if(runs.length > 0){
+										@runs.get(0).runDate.format("yyyy-MM-dd")
+									}else{
+										-
+									}
 								}
 							</td>
 							<td><a href="/scenario/download?scenarioId=@scenario.id" class="btn btn-default">Télécharger</a></td>

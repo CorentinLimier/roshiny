@@ -128,7 +128,6 @@ public class Scenario extends Controller {
 			newRun.scenario = scenarioModel;
 			newRun.runDate = new Date();
 			scenarioModel.status = "En cours";
-			scenarioModel.lastRunDate = new Date();
 			scenarioModel.update();
 
 			String scenarioPath = scenariosPath + "/" + Long.toString(scenarioId); 

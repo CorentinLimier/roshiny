@@ -21,10 +21,8 @@ create table setting (
 
 insert into setting values ("projectName", "ROShiny");
 insert into setting values ("datePickerFormat", "yyyy-mm-dd");
-*/
 insert into setting values ("csvSeparator", ";");
 
-/*
 create table user (
   id                            integer not null,
   role_id                       integer,
@@ -65,6 +63,7 @@ create table parameter_file (
 
 insert into parameter_file values ("enginePath", 1);
 insert into parameter_file values ("scenariosPath", 2);
+*/
 
 create table scenario (
   id                            integer not null,
@@ -72,11 +71,11 @@ create table scenario (
   name                          varchar(255),
   description                   TEXT,
   creation_date                 timestamp,
-  last_run_date                 timestamp,
   status                        varchar(255),
   constraint pk_scenario primary key (id)
 );
 
+/*
 create table run (
   id                            integer not null,
   scenario_id                   integer,

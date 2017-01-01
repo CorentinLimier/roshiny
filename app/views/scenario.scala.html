@@ -91,13 +91,21 @@ See LICENSE file at root of project for more informations
 				<button type="submit" id="launch" class="btn btn-default">Démarrer</button>
 			</form>
 			<div id="last_run">
-				Dernière exécution: 
-				@if(scenario.lastRunDate != null){
-					<span class="little-margin">@scenario.lastRunDate.format("yyyy-MM-dd HH:mm")</span>
-				}else{
-					<span class="little-margin">-</span>
+				@defining(Run.find.where().eq("scenario", scenario).orderBy("runDate desc").findList()){runs =>
+					@if(runs.length > 0){
+						<div>
+						<div>
+						Dernière exécution:
+						<span class="little-margin">@runs.get(0).runDate.format("yyyy-MM-dd")</span>
+						</div>
+						<div>
+						Durée:
+						<span class="little-margin">@("%.1f".format(runs.get(0).duration)) secondes</span>
+						</div>
+						</div>
+					}
 				}
-				<br />
+				<div>
 				Statut: 
 				<span class="little-margin">
 					@scenario.status
@@ -108,6 +116,7 @@ See LICENSE file at root of project for more informations
 						<i class="fa fa-times"></i>
 					}
 				</span>
+				</div>
 			</div>
 			<div id="dataout" class="section">
 			<h2>Fichiers de sortie</h2>
