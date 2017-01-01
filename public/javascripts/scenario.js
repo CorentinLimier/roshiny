@@ -11,12 +11,28 @@ See LICENSE file at root of project for more informations
 		$('body').css('opacity', '0.5');
 	}
 
+	var launchScenario = function(e, form){
+		e.preventDefault();
+
+		$("#status").html('En cours');
+		$("#ajax-load").show();
+
+		$.ajax({
+			url: form.attr('action')
+		});
+	};
+
 	// Wait until dom is ready
 	$(document).ready(function(){
-		$("#upload_1files").click(changeOpacity);
-		$("#launch").click(changeOpacity);
+		$("#upload_files").click(changeOpacity);
+		$("#launch_scenario").on('submit', function(e){launchScenario(e, $(this))});
 		$("#form_update").hide();
+		$("#ajax-load").hide();
 		$("#update_description").click(function(e){$("#form_update").toggle()});
+	});
+
+	$(document).ajaxComplete(function() {
+		location.reload();
 	});
 
 }());

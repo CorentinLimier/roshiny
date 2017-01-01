@@ -87,7 +87,7 @@ See LICENSE file at root of project for more informations
 			</form>
 			</div>
 			<h2>Lancer le scénario</h2>
-			<form method="post" action="/scenario/launch?scenarioId=@scenario.id">
+			<form id="launch_scenario" method="post" action="/scenario/launch?scenarioId=@scenario.id">
 				<button type="submit" id="launch" class="btn btn-default">Démarrer</button>
 			</form>
 			<div id="last_run">
@@ -96,7 +96,7 @@ See LICENSE file at root of project for more informations
 						<div>
 						<div>
 						Dernière exécution:
-						<span class="little-margin">@runs.get(0).runDate.format("yyyy-MM-dd")</span>
+						<span class="little-margin">@runs.get(0).runDate.format("yyyy-MM-dd HH:mm")</span>
 						</div>
 						<div>
 						Durée:
@@ -107,7 +107,7 @@ See LICENSE file at root of project for more informations
 				}
 				<div>
 				Statut: 
-				<span class="little-margin">
+				<span id="status" class="little-margin">
 					@scenario.status
 					@if(scenario.status == "Succès"){
 						<i class="fa fa-check"></i>
@@ -116,6 +116,8 @@ See LICENSE file at root of project for more informations
 						<i class="fa fa-times"></i>
 					}
 				</span>
+				<span id="ajax-load" class="little-margin">
+					<img src="@routes.Assets.at("images/ajax-loader.gif")">
 				</div>
 			</div>
 			<div id="dataout" class="section">
