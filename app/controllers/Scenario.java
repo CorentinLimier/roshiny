@@ -163,7 +163,7 @@ public class Scenario extends Controller {
 			return redirect(routes.Scenario.index(scenarioId));
 		}
 
-		return redirect(routes.Scenario.index(scenarioId));
+		return ok("OK");
 	}
 
 	public Result downloadFile(long scenarioId, long dataFileId){

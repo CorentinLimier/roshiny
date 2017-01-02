@@ -18,7 +18,10 @@ See LICENSE file at root of project for more informations
 		$("#ajax-load").show();
 
 		$.ajax({
-			url: form.attr('action')
+			url: form.attr('action'),
+			complete: function(xhr, status) {
+				location.reload();
+			},
 		});
 	};
 
@@ -33,9 +36,4 @@ See LICENSE file at root of project for more informations
 			$("#ajax-load").hide();
 		}
 	});
-
-	$(document).ajaxComplete(function() {
-		location.reload();
-	});
-
 }());
