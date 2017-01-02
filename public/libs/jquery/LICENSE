@@ -1,0 +1,41 @@
+JS Foundation
+Intellectual Property Policy
+The JS Foundation supports numerous individual projects (each, a “Project” and together, the
+“Projects”). Contributions to individual projects are made pursuant to the license applicable to
+each such Project (with respect to each Project, the “Applicable License”). The technical
+governing body of each Project is free to choose, as its Applicable License with respect to
+contributions of code, the Apache License, Version 2.0 (available at
+http://www.apache.org/licenses/LICENSE-2.0).
+If an alternative inbound or outbound license is required for compliance with the license for a
+leveraged open source project or is otherwise required to achieve the JS Foundation’s, or an
+individual Project’s, objectives, the Board of Directors of the JS Foundation (the “Board”) may
+approve the use of an alternative license for inbound or outbound contributions on an exception
+basis. Please email legal@js.foundation to obtain exception approval.
+The JS Foundation and its Projects seek to integrate and contribute back to other open source
+projects within the scope of driving widespread adoption and continued development of key
+JavaScript solutions and related technologies. Based on this design goal for the JS Foundation,
+the development community will:
+• conform to all license requirements of the open source projects leveraged within the
+project; and
+• operate to maximize opportunities for compatibility with other projects that might be
+leveraged in the project.
+Except as may be approved by the Board:
+• All new code contributions to any Project shall be made under the Applicable License
+accompanied by either a JS Foundation CLA Signature available at
+https://js.foundation/CLA or a Developers Certificate of Origin (DCO, available at
+http://developercertificate.org/).
+• All outbound code will be made available under the Applicable License.
+• All documentation (including without limitation code that is intended as sample code)
+will be contributed to the Project and made available under the Applicable License or, if
+approved by the Project, Creative Commons Attribution 4.0 International License or
+under CC0.
+Furthermore, on notice to the Projects, the Board may adopt and/or modify contribution policies
+for the contribution of code to any Project.
+The technical governing body of each Project may provide for additional requirements with
+respect to contributions.
+Except for (a) each member’s commitment to be bound by this Policy with respect to its or its
+employees’ authorized contributions to any Project and (b) any applicable contributor license
+agreement, if any, no license is granted by the member to its intellectual property, and none shall
+be implied by general membership in the JS Foundation.
+
+As adopted by the Board of Directors on October, 17 2016
