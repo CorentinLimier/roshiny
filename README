@@ -11,7 +11,7 @@ Pour déployer l'application, copiez les répertoires ./scripts ./database et ./
 ! ATTENTION !
 Ne copiez pas database/roshiny.db si vous ne souhaitez pas écraser votre base de données existante
 
-Pour lancer l'application en mode développeur : 
+Pour lancer l'application en mode production: 
 - Compilez d'abord l'application
 - puis exécutez le script 
 ./scripts/run-prod.sh PORT
