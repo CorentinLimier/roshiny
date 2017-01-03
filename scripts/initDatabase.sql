@@ -21,7 +21,7 @@ create table setting (
 
 insert into setting values ("projectName", "ROShiny");
 insert into setting values ("datePickerFormat", "yyyy-mm-dd");
-insert into setting values ("csvSeparator", ";");
+insert into setting values ("csvDelimiter", ";");
 
 create table user (
   id                            integer not null,
@@ -91,7 +91,6 @@ create table column_csv (
   position						integer,
   constraint pk_column_csv primary key (id)
 );
-*/
 
 create table chart (
   id                            integer not null,
@@ -111,4 +110,4 @@ create table chart (
   brush                         integer(1),
   constraint pk_chart primary key (id)
 );
-
+*/

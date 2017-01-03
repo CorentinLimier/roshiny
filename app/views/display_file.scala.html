@@ -1,4 +1,4 @@
-@(settings: Map[String, String], scenario: models.Scenario, dataFile: DataFile, fileContent: String, datain: List[DataFile], dataout: List[DataFile], columns: List[ColumnCsv])
+@(settings: Map[String, String], scenario: models.Scenario, dataFile: DataFile, fileContent: String, datain: List[DataFile], dataout: List[DataFile], columns: List[ColumnCsv], charts: List[Chart])
 
 <!--
 MIT License
@@ -22,6 +22,7 @@ See LICENSE file at root of project for more informations
 		<link href="@routes.Assets.at("libs/sidebar/css/simple-sidebar.css")" rel="stylesheet">
 		<link href="@routes.Assets.at("libs/font-awesome/css/font-awesome.min.css")" rel="stylesheet">
 		<link href="@routes.Assets.at("libs/bootstrap-datepicker/css/datepicker.css")" rel="stylesheet" >
+		<link href="@routes.Assets.at("libs/dc/dc.min.css")" rel="stylesheet" >
 		<link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet">
 		<link href="@routes.Assets.at("stylesheets/sidebar.css")" rel="stylesheet">
 		<link href="@routes.Assets.at("stylesheets/display_file.css")" rel="stylesheet">
@@ -30,9 +31,12 @@ See LICENSE file at root of project for more informations
 		<script src="@routes.Assets.at("libs/bootstrap/js/bootstrap.min.js")"></script>
 		<script src="@routes.Assets.at("libs/bootstrap-datepicker/js/bootstrap-datepicker.js")" type="text/javascript"></script>
 		<script src="@routes.Assets.at("libs/bootstrap-datepicker/js/locales/bootstrap-datepicker.fr.js")" type="text/javascript"></script>
+		<script src="@routes.Assets.at("libs/crossfilter/crossfilter.min.js")" type="text/javascript"></script>
+		<script src="@routes.Assets.at("libs/d3/d3.min.js")" type="text/javascript"></script>
+		<script src="@routes.Assets.at("libs/dc/dc.min.js")" type="text/javascript"></script>
 
 		<script>
-			var csvSeparator = '@settings("csvSeparator")';
+			var csvDelimiter = '@settings("csvDelimiter")';
 			var ignoreHeader = '@settings("ignoreHeader")';
 			var datePickerFormat = '@settings("datePickerFormat")';
 			var usage = '@dataFile.usage';
@@ -40,9 +44,52 @@ See LICENSE file at root of project for more informations
 			@for(column <- columns){
 				columnTypes.push("@column.columnType");
 			}
+
+			var Chart = function(){
+				this.id = '';
+				this.dataFile = '';
+				this.typeChart = '';
+				this.legend = '';
+				this.position = '';
+				this.height = '';
+				this.width = '';
+				this.absColumn = '';
+				this.absTitle = '';
+				this.absType = '';
+				this.ordColumn = '';
+				this.ordTitle = '';
+				this.ordType = '';
+				this.dateFormat = '';
+				this.brush = '';
+			}
+
+			var charts = [];
+			@for(chart <- charts){
+				var newChart = new Chart(); 
+				newChart.id = parseInt('@chart.id');
+				newChart.dataFile = '@chart.dataFile';
+				newChart.typeChart = '@chart.typeChart';
+				newChart.legend = '@chart.legend';
+				newChart.position = parseInt('@chart.position');
+				newChart.height = parseInt('@chart.height');
+				newChart.width = parseInt('@chart.width');
+				newChart.absColumn = parseInt('@chart.absColumn');
+				newChart.absTitle = '@chart.absTitle';
+				newChart.absType = '@chart.absType';
+				newChart.ordColumn = parseInt('@chart.ordColumn');
+				newChart.ordTitle = '@chart.ordTitle';
+				newChart.ordType = '@chart.ordType';
+				newChart.dateFormat = '@chart.dateFormat';
+				newChart.brush = '@chart.brush';
+				charts.push(newChart);
+			}
 		</script>
-		<script src="@routes.Assets.at("javascripts/csv_viz.js")"></script>
-		<script src="@routes.Assets.at("javascripts/data_viz.js")"></script>
+		@if(dataFile.csvViz){
+			<script src="@routes.Assets.at("javascripts/csv_viz.js")"></script>
+		}
+		@if(dataFile.dataViz){
+			<script src="@routes.Assets.at("javascripts/data_viz.js")"></script>
+		}
 	</head>
 	<body>
 		@navbar(settings("projectName"))
@@ -107,6 +154,10 @@ See LICENSE file at root of project for more informations
 			}
 			@if(dataFile.dataViz){
 			<div id="data_viz" class="tab-pane fade">
+				@for(chart <- charts){
+					<div id="@chart.id">
+					</div>
+				}
 			</div>
 			}
 			</div>

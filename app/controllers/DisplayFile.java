@@ -36,7 +36,7 @@ public class DisplayFile extends Controller {
 		HashMap<String, String> settings = new HashMap<String, String>();
 		settings.put("projectName", Setting.find.byId("projectName").value);
 		settings.put("scenariosPath", ParameterFile.find.byId("scenariosPath").file.path);
-		settings.put("csvSeparator", Setting.find.byId("csvSeparator").value);
+		settings.put("csvDelimiter", Setting.find.byId("csvDelimiter").value);
 		settings.put("datePickerFormat", Setting.find.byId("datePickerFormat").value);
 
 		try{
@@ -46,6 +46,7 @@ public class DisplayFile extends Controller {
 			settings.put("ignoreHeader", Boolean.toString(dataFile.ignoreHeader));
 
 			List<ColumnCsv> columns = ColumnCsv.find.where().eq("dataFile", dataFile).findList();
+			List<Chart> charts = Chart.find.where().eq("dataFile", dataFile).orderBy("position").findList();
 			List<DataFile> dataInFiles = DataFile.find.where().eq("usage", "data-in").findList();
 			List<DataFile> dataOutFiles = DataFile.find.where().eq("usage", "data-out").findList();
 
@@ -64,7 +65,7 @@ public class DisplayFile extends Controller {
 				}
 			}
 
-			return ok(display_file.render(settings, scenarioModel, dataFile, fileContent.trim(), dataInFiles, dataOutFiles, columns));
+			return ok(display_file.render(settings, scenarioModel, dataFile, fileContent.trim(), dataInFiles, dataOutFiles, columns, charts));
 		}
 		catch(Exception exc){
 			Logger.info("DisplayFile.display() " + exc.getMessage());

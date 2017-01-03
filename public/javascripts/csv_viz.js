@@ -129,7 +129,7 @@ See LICENSE file at root of project for more informations
 		for(; i < file_lines.length; i++){
 			newTR = $(document.createElement('TR'));
 			line = file_lines[i];
-			rows = line.split(csvSeparator);
+			rows = line.split(csvDelimiter);
 
 			for(j=0; j < rows.length; j++){
 				newTD = $(document.createElement('TD'));

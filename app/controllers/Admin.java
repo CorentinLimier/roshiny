@@ -83,7 +83,7 @@ public class Admin extends Controller {
 		HashMap<String, String> settings = new HashMap<String, String>();
 		settings.put("projectName", Setting.find.byId("projectName").value);
 		settings.put("datePickerFormat", Setting.find.byId("datePickerFormat").value);
-		settings.put("csvSeparator", Setting.find.byId("csvSeparator").value);
+		settings.put("csvDelimiter", Setting.find.byId("csvDelimiter").value);
 		settings.put("enginePath", ParameterFile.find.byId("enginePath").file.path);
 		settings.put("scenariosPath", ParameterFile.find.byId("scenariosPath").file.path);
 
@@ -130,9 +130,9 @@ public class Admin extends Controller {
 			DynamicForm form = Form.form().bindFromRequest();	
 			String separator = form.get("csv_separator");
 			Logger.info("Admin.setCsvSeparator(): " + separator);
-			Setting csvSeparator = Setting.find.byId("csvSeparator"); 
-			csvSeparator.value = separator;
-			csvSeparator.update();
+			Setting csvDelimiter = Setting.find.byId("csvDelimiter"); 
+			csvDelimiter.value = separator;
+			csvDelimiter.update();
 			return ok("OK");
 		}
 		catch(Exception exc){
