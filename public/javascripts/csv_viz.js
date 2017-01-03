@@ -190,7 +190,7 @@ See LICENSE file at root of project for more informations
 	}
 
 	$(function(){
-		$("#li_csv_viz").click(fillCsvTable);
+		fillCsvTable();
 		$("#send_csv_updates").click(sendUpdates);
 		$(".add-row").on('click', function(e){addRow($(this))});
 		$('.custom_datepicker').datepicker({

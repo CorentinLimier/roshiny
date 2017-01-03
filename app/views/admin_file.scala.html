@@ -44,61 +44,21 @@ See LICENSE file at root of project for more informations
 			<h1>Administration fichier @dataFile.name</h1>
 			<div id="navigation_tabs">
 			<ul id="tablist" class="nav nav-tabs" role="tablist">
-				@if(dataFile.csvViz){
+				@if(dataFile.dataViz){
 				<li role="presentation" class="active">
-					<a href="#csv_viz" aria-controls="csv_viz" role="tab" data-toggle="tab">Tableau CSV</a>
+					<a href="#data_viz" aria-controls="data_viz" role="tab" data-toggle="tab">Dataviz</a>
 				</li>
 				}
-				@if(dataFile.dataViz){
-				<li role="presentation" @if(!dataFile.csvViz){class="active"}>
-					<a href="#data_viz" aria-controls="data_viz" role="tab" data-toggle="tab">Dataviz</a>
+				@if(dataFile.csvViz){
+				<li role="presentation" @if(!dataFile.dataViz){class="active"}>
+					<a href="#csv_viz" aria-controls="csv_viz" role="tab" data-toggle="tab">Tableau CSV</a>
 				</li>
 				}
 			</ul>
 			</div>
 			<div class="tab-content">
-			@if(dataFile.csvViz){
-			<div id="csv_viz" class="tab-pane fade in active">
-				<h2>Configuration des colonnes du fichier</h2>	
-				<form action="/admin/configure/csv_viz?dataFileId=@dataFile.id" method="post">
-					<table class="table table-striped">
-						<tr>
-							<th>Nom de la colonne</th>
-							<th>Type</th>
-							<th>Action</th>
-						</tr>
-						@for(column <- columns){
-							</tr>
-								<td>
-									<input type="hidden" name="form_column_name[]" value="@column.name">
-									@column.name
-								</td>
-								<td>
-									<input type="hidden" name="form_column_type[]" value="@column.columnType">
-									@column.columnType
-								</td>
-								<td>
-									<button type="button" class="delete-row btn btn-default">Supprimer</button>
-								</td>
-							<tr>
-						}
-						<tr>
-							<td><input type="text" name="column_name" class="form-control"></td>
-							<td>
-								<select name="column_type" class="form-control"> 
-									<option>String</option>
-									<option>Date</option>
-								</select>
-							</td>
-							<td><button type="button" class="add-row btn btn-default">Ajouter</button></td>
-						</tr>
-					</table>
-					<button type="submit" class="btn btn-default">Valider</button>
-				</form>
-			</div>
-			}
 			@if(dataFile.dataViz){
-			<div id="data_viz" @if(!dataFile.csvViz){class="tab-pane fade in active"}else{class="tab-pane fade"}>
+			<div id="data_viz" class="tab-pane fade in active">
 				<form action="/admin/configure/add_chart?dataFileId=@dataFile.id" method="post" class="form-inline">
 					<h2>Ajouter un graphique</h2>
 					<div>
@@ -180,6 +140,46 @@ See LICENSE file at root of project for more informations
 					-->
 					</div>
 					<button type="submit" class="btn btn-default">Valider les modifications</button>
+				</form>
+			</div>
+			}
+			@if(dataFile.csvViz){
+			<div id="csv_viz" @if(!dataFile.dataViz){class="tab-pane fade in active"}else{class="tab-pane fade"}>
+				<h2>Configuration des colonnes du fichier</h2>	
+				<form action="/admin/configure/csv_viz?dataFileId=@dataFile.id" method="post">
+					<table class="table table-striped">
+						<tr>
+							<th>Nom de la colonne</th>
+							<th>Type</th>
+							<th>Action</th>
+						</tr>
+						@for(column <- columns){
+							</tr>
+								<td>
+									<input type="hidden" name="form_column_name[]" value="@column.name">
+									@column.name
+								</td>
+								<td>
+									<input type="hidden" name="form_column_type[]" value="@column.columnType">
+									@column.columnType
+								</td>
+								<td>
+									<button type="button" class="delete-row btn btn-default">Supprimer</button>
+								</td>
+							<tr>
+						}
+						<tr>
+							<td><input type="text" name="column_name" class="form-control"></td>
+							<td>
+								<select name="column_type" class="form-control"> 
+									<option>String</option>
+									<option>Date</option>
+								</select>
+							</td>
+							<td><button type="button" class="add-row btn btn-default">Ajouter</button></td>
+						</tr>
+					</table>
+					<button type="submit" class="btn btn-default">Valider</button>
 				</form>
 			</div>
 			}
