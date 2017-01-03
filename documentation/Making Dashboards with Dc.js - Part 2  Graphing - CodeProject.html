@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing -->
+<html style="height: 100%;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><iframe src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/dm.html"></iframe>
+	<title>Making Dashboards with Dc.js - Part 2: Graphing - CodeProject</title> 
+	<link type="text/css" rel="stylesheet" href="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/Main.min.css">
+
+	
+<meta http-equiv="content-language" content="en-US">
+<meta charset="UTF-8">
+<meta name="Description" content="Graphing; Author: The Myth; Updated: 21 Jan 2014; Section: Charts, Graphs and Images; Chapter: Web Development; Updated: 21 Jan 2014">
+<meta name="Keywords" content="Javascript,Charts, Graphs and Images,Web Development,Free source code, tutorials">
+<meta name="Author" content="The Myth">
+<meta name="Rating" content="General">
+<meta name="Revisit-After" content="1 days">
+<meta name="application-name" content="CodeProject">
+<meta name="google-translate-customization" content="d908bb7ce7aff658-4c2f3a504525c916-g629383f736781a8a-13">
+
+<link rel="dns-prefetch" href="https://ajax.googleapis.com/"> 
+
+
+
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - All Topics" href="https://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=1">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - Android" href="https://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=22">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - iOS" href="https://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=25">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - C++" href="https://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=2">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - C#" href="https://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=3">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - Web" href="https://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=23">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Lounge Postings" href="https://www.codeproject.com/webservices/LoungeRSS.aspx">
+<meta name="robots" content="index, follow">
+<link rel="search" type="application/opensearchdescription+xml" title="CodeProject" href="https://www.codeproject.com/info/OpenSearch.xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--<base target="_top">--><base href="." target="_top">
+	<link rel="icon" href="https://www.codeproject.com/favicon.ico" type="image/ico">
+<link rel="shortcut icon" href="https://www.codeproject.com/favicon.ico" type="image/ico">
+<link rel="apple-touch-icon" href="https://www.codeproject.com/images/FavIcon-Apple.png" type="image/png">
+<script async="" type="text/javascript" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/dm"></script><script async="" type="text/javascript" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/dm(1)"></script><script type="text/javascript" language="Javascript" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/jquery.min.js"></script><script type="text/javascript">//<![CDATA[
+if (typeof jQuery == 'undefined') {
+  var altScript  = document.createElement('script');
+  altScript.type = 'text/javascript';
+  altScript.src  = unescape('%2fscript%2fJS%2fjquery-1.6.2.min.js');
+  var target = document.getElementsByTagName('script')[0];
+  target.parentNode.insertBefore(altScript, target);
+}//]]></script>
+<script type="text/javascript" language="Javascript">//<![CDATA[
+function defrm () { /* thanks twitter */ document.write = ''; window.top.location = window.self.location;  setTimeout(function() { document.body.innerHTML = ''; }, 0);  window.self.onload = function(evt) { document.body.innerHTML = ''; }; }if (window.top !== window.self) {  try {  if (window.top.location.host) { /* will throw */ } else { defrm(); /* chrome */ }  } catch (ex) { defrm(); /* everyone else */ } }if (typeof(DemoUrl)!='undefined')   document.write(unescape('%3Cme')+'ta http'+'-equiv="re'+'fresh"                  con'+'tent="1;url='+DemoUrl+unescape('"%3CE'));
+!function () { !function t(n, e, o) { function r(i, u) { if (!e[i]) { if (!n[i]) { var a = 'function' == typeof require && require; if (!u && a) return a(i, !0); if (c) return c(i, !0); var s = new Error("Cannot find module '" + i + "'"); throw s.code = "MODULE_NOT_FOUND", s } var f = e[i] = { exports: {} }; n[i][0].call(f.exports, function (t) { var e = n[i][1][t]; return r(e ? e : t) }, f, f.exports, t, n, e, o) } return e[i].exports } for (var c = "function" == typeof require && require, i = 0; i < o.length; i++) r(o[i]); return r }({ 1: [function (t, n, e) { "use strict"; !function (n, e, o) { function r() { v || (v = !0, f = n._sp_ && n._sp_.config || {}, p = f.content_control_callback || n._sp_lock, d = f.account_id || f.client_id || n.sp_cid) } function c(t, n) { var e = new Image; e.src = "//" + m + "/cct?v=" + o(h) + "&ct=1&cid=" + o(d) + "&l=" + o(t) + "&rc=" + o(n) } function i(t, o, r) { n.addEventListener("error", function (n) { n.filename.substring(n.filename.indexOf("//")) === t && (_ = !0) }); var c = e.createElement("script"); c.src = t, c.onload = function () { setTimeout(o, 0) }, c.onerror = function () { u(t, r) }, e.head.appendChild(c), e.querySelector('script[src="' + t + '"]') || r(2) } function u(t, o) { var r = new XMLHttpRequest; try { r.open("HEAD", t) } catch (c) { var i = e.createElement("a"); i.src = t, n.location.protocol === i.protocol && o(1) } r.onreadystatechange = function () { 4 !== this.readyState || "2" !== this.status.toString()[0] && 0 !== this.status || o(0) }; try { r.send() } catch (c) { o(1) } } function a(t) { c(1, t), p && setTimeout(function () { p() }, 250) } function s(t, e) { r(), e && (p = n._sp_lock = e), i(t, function () { return _ ? void c(0, 0) : void ((f && !f.has_been_read || !n._sp_) && c(0, 1)) }, a) } var f, p, d, l = t(2), _ = !1, v = !1, m = l.be.join(""), h = l.bv; n.spBootstrap = s }(window, document, encodeURIComponent) }, {}], 2: [function (t, n, e) { "use strict"; n.exports = { be: ["w", "w", "w", ".", "c", "o", "m", "r", "a", "d", "e", "p", "o", "n", "y", ".", "c", "o", "m"], bv: "1.6.45" } }, {}] }, {}, [1]) }();
+  window.spBootstrap(('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.codeproject.com/dm/c.min.js?v=1.1');
+
+//]]>
+</script><script src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/c.min.js"></script>
+
+	
+
+
+
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-1735123-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_setDomainName', 'www.codeproject.com']);
+	_gaq.push(['_setSessionTimeout', '1200']); 
+
+	(function () {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})(); 
+</script><script type="text/javascript" async="" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/ga.js"></script>
+
+
+<script src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/recovery.min.js"></script><link type="text/css" rel="stylesheet" charset="UTF-8" href="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/translateelement.css"><script type="text/javascript" charset="UTF-8" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/main_fr.js"></script><script src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pubads_impl_107.js" async=""></script><script type="text/javascript" charset="UTF-8" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/element_main.js"></script></head>	
+
+<body class="chrome chrome41" style="position: relative; min-height: 100%; top: 0px;">
+
+<a class="access-link" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#Main"><img alt="Click here to Skip to main content" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t.gif"></a>
+
+
+
+
+
+<div class="page-background">
+
+	
+	
+
+	
+<div class="alert-bar  overlay ">
+	<a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" class="close-notify">×</a>
+	<div>Sign up for our free weekly <a href="https://www.codeproject.com/feature/web-newsletter">Web Developer Newsletter</a>.</div>
+</div>
+
+	
+    <div id="ctl00_STM" class="site-top-menu fixed">
+        <div class="main-content">
+            
+
+<div class="container memberbar clearfix">
+
+	<div id="ctl00_MemberMenu_GenInfo" class="float-left">12,667,518 members (30,563 online)</div>
+
+	<div class="float-left">
+		
+	</div>
+
+	<div class="float-right">
+
+		
+
+		
+
+		
+
+			<script type="text/javascript">//<!--
+			function doSubmit(secure)
+			{
+				if (secure)
+					document.subForm.action = "https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2farticles%2f697043%2fmaking-dashboards-with-dc-js-part-2-graphing"
+				else
+					document.subForm.action = "https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2farticles%2f697043%2fmaking-dashboards-with-dc-js-part-2-graphing"
+				document.subForm.submit();
+				return true;
+			}//-->
+			</script>
+
+			<a name="SignUp"></a>
+			<span class="member-signin tooltip">
+				<span><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2farticles%2f697043%2fmaking-dashboards-with-dc-js-part-2-graphing">Sign in</a></span>
+
+				<div class="tooltip-flyout">
+					<form name="subForm" id="subForm" action="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2farticles%2f697043%2fmaking-dashboards-with-dc-js-part-2-graphing" method="post" class="tight">
+
+						
+						<input id="FormName" name="FormName" value="MenuBarForm" type="hidden">
+
+						<div>Email</div>
+						<div><input class="small-text" type="email" name="Email" id="Email"></div>
+						<div>Password</div>
+						<div><input class="small-text" type="password" name="Password" id="Password"></div>
+						<div class="action">
+							
+                                  <input id="joinBtn" type="button" class="create hidden" onclick="return Join();" value="Join" style="visibility: visible;">
+                                  <input type="hidden" name="fld_quicksign" value="true">
+                                  <script type="text/javascript">
+                                  function simpleMask(str, key) {
+                                      var result = ''; 
+                                      for (var i = 0; i < str.length; ++i)
+                                          result += String.fromCharCode(key ^ str.charCodeAt(i));
+                                      return result;
+                                  }
+                                  function Join() {
+                                      var url = 'https://www.codeproject.com/script/Membership/Modify.aspx';
+document.location.href=url;
+                                      return false;
+                                  }
+                                  $('#joinBtn').css('visibility', 'visible');
+                                  </script>
+							<input type="submit" value="Sign in" class="signin" onclick="return doSubmit(false);">
+						</div>
+
+						<div class="container">
+							
+							&nbsp;
+							<a id="ctl00_MemberMenu_SendPassword" class="forgot float-right" href="https://www.codeproject.com/script/Membership/SendPassword.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Forgot your password?</a>
+						</div>
+					</form>
+
+					<hr class="divider-dark">
+
+					Sign in using <a class="oauth" title="Sign in using Facebook" href="https://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=Facebook"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/facebook.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+<a class="oauth" title="Sign in using Google" href="https://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=Google"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/google-plus.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+<a class="oauth" title="Sign in using Linkedin" href="https://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=LinkedIn"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/linkedin.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+<a class="oauth" title="Sign in using Microsoft" href="https://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=Microsoft"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/microsoft.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+
+				</div>
+            </span>
+		
+	</div>
+</div>
+        </div>
+    </div>
+
+	
+    <div id="ctl00_SH" class="site-header fixed">
+        <div class="main-content">
+            <div class="logo"><a href="https://www.codeproject.com/"><img id="ctl00_Logo" tabindex="1" title="CodeProject" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/logo250x135.gif" alt="Home" style="height:135px;width:250px;border-width:0px;"></a></div>
+            <div class="promo"><div class="msg-728x90" data-format="728x90" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="Web-Development/Charts-Graphs-and-Images/General" data-tags="Javascript,rating4.5"><noscript>&lt;a href="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Charts-Graphs-and-Images/General&amp;sz=728x90&amp;c=758807"&gt;&lt;img src="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Charts-Graphs-and-Images/General&amp;sz=728x90&amp;c=758807"  width="728px" height="90px" target="_blank"/&gt;&lt;/a&gt;</noscript></div></div>
+        </div>
+    </div>
+
+	<a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#Main"><img alt="Click here to Skip to main content" class="access-link" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t.gif"></a>
+
+	
+	<div id="ctl00_TPR" class="sub-headerbar clearfix fixed">
+    <div class="float-right">
+		
+
+<div class="searchbar">
+
+<form method="get" action="https://www.codeproject.com/search.aspx?sbo=kw" name="Search" class="tight">
+
+
+<table border="0" cellspacing="0" cellpadding="0" class="search"><tbody><tr><td><input tabindex="2" class="search  subdue" id="sb_tb" value="" name="q"></td><td><input type="image" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/search.gif"></td></tr></tbody></table>
+
+<div class="hover-container">
+	<div id="SearchFilter" class="search-advanced small-text align-left" style="display: none;">
+	<b>Search within:<br></b>
+		
+		<input type="radio" id="sb_kw" name="sbo" value="kw" checked="true"><label for="sb_kw">Articles</label><br>
+<input type="radio" id="sb_qa" name="sbo" value="qa"><label for="sb_qa">Quick Answers</label><br>
+<input type="radio" id="sb_fm" name="sbo" value="fm"><label for="sb_fm">Messages</label><br>
+
+
+		
+		
+
+		
+		
+	</div>
+</div>
+</form>
+
+</div>
+    </div>
+    <div class="float-left">
+		
+
+<div class="navbar clearfix">
+<ul class="navmenu openable">
+
+<li class="desktop-only"><a id="ctl00_TopNavBar_Home" href="https://www.codeproject.com/">home</a>
+
+
+</li><li class=""><a id="ctl00_TopNavBar_Art" class="down selected" href="https://www.codeproject.com/script/Articles/Latest.aspx">articles</a>
+
+	<ul>
+		<li class=""><a id="ctl00_TopNavBar_ArtTopicList" class="fly" onmouseover="navBarMenu.ShowMap(this, &#39;ctl00_TopNavBar_MapFlyout&#39;);" href="https://www.codeproject.com/script/Content/SiteMap.aspx">Chapters and Sections<span class="has-submenu">&gt;</span></a><ul id="ctl00_TopNavBar_MapFlyout">
+			<li>
+				<div id="siteMap">
+					<img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/animated.gif" alt="loading" style="margin:150px;width:100px;height:100px;">
+				</div>
+			</li>
+			</ul>
+		</li>
+		<li><a id="ctl00_TopNavBar_ArtSearch" class="fly break" href="https://www.codeproject.com/search.aspx?sbo=kw">Search</a></li>
+		<li><a id="ctl00_TopNavBar_ArtLatestArts" class="fly" href="https://www.codeproject.com/script/Articles/Latest.aspx?at=1,3,7">Latest Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtLatestTips" class="fly" href="https://www.codeproject.com/script/Articles/Latest.aspx?at=6">Latest Tips/Tricks</a></li>
+		<li><a id="ctl00_TopNavBar_ArtTop" class="fly" href="https://www.codeproject.com/script/Articles/TopArticles.aspx?ta_so=5">Top Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtBeginner" class="fly" href="https://www.codeproject.com/search.aspx?sbo=kw?aidlst=152&sa_us=True">Beginner Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtBlogArticles" class="fly break" href="https://www.codeproject.com/script/Articles/BlogArticleList.aspx">Technical Blogs</a></li>
+		<li><a id="ctl00_TopNavBar_ArtGuide" class="fly" href="https://www.codeproject.com/info/Submit.aspx">Posting/Update Guidelines</a></li>
+		<li><a id="ctl00_TopNavBar_ArtHelpForum" class="fly" href="https://www.codeproject.com/Forums/1641/Article-Writing.aspx">Article Help Forum</a></li>
+		<li><a id="ctl00_TopNavBar_ArtCompetition" class="fly break" href="https://www.codeproject.com/script/Awards/CurrentCompetitions.aspx?cmpTpId=1">Article Competition</a></li>
+		<li><a id="ctl00_TopNavBar_ArtPostArticle" class="fly highlight1" href="https://www.codeproject.com/script/Articles/Submit.aspx">
+			<img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/write13.png" width="13px" height="13px"> Submit an article or tip
+			</a></li>
+		<li><a id="ctl00_TopNavBar_ArtPostBlog" class="fly highlight2" href="https://www.codeproject.com/script/Articles/BlogFeed.aspx">
+			<img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/write13.png" width="13px" height="13px"> Post your Blog
+			</a></li>		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+
+<li class="">
+<a id="ctl00_TopNavBar_Answers" href="https://www.codeproject.com/script/Answers/List.aspx?tab=active">
+    <span class="desktop-only tablet-only">quick answers</span><span class="mobile-only">Q&amp;A</span>
+</a>
+	<ul>
+		<li id="ctl00_TopNavBar_AQL"><a id="ctl00_TopNavBar_ArticleQuestion" class="fly highlight1" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#_comments">
+			<img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/write13.png" width="13px" height="13px"> Ask a Question about this 
+			article</a>
+		</li>
+
+		<li><a id="ctl00_TopNavBar_QAAsk" class="fly highlight2" href="https://www.codeproject.com/Questions/ask.aspx"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/write13.png" width="13px" height="13px"> Ask a Question</a></li>
+
+		
+		<li><a id="ctl00_TopNavBar_QAUnanswered" class="fly" href="https://www.codeproject.com/script/Answers/List.aspx?tab=unanswered">View Unanswered Questions</a></li>
+		<li><a id="ctl00_TopNavBar_QALatest" class="fly" href="https://www.codeproject.com/script/Answers/List.aspx?tab=active">View All Questions...</a></li>
+		
+				<li><a id="ctl00_TopNavBar_QATR_ctl00_Tag" class="fly" href="https://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=120" style="padding-left:30px">Linux questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl01_Tag" class="fly" href="https://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=81" style="padding-left:30px">C# questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl02_Tag" class="fly" href="https://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=85" style="padding-left:30px">ASP.NET questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl03_Tag" class="fly" href="https://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=4175" style="padding-left:30px">fabric questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl04_Tag" class="fly" href="https://www.codeproject.com/script/Answers/List.aspx?tab=active&alltags=true&tags=78" style="padding-left:30px">C++ questions</a></li>
+			
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+
+<li class=""><a id="ctl00_TopNavBar_Forums" href="https://www.codeproject.com/script/Forums/List.aspx">
+        <span class="desktop-only tablet-only">discussions</span><span class="mobile-only">forums</span>
+</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_MessageBoardsAll" class="fly" href="https://www.codeproject.com/script/Forums/List.aspx">All Message Boards...</a></li>
+		<li class=""><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1580997/Application-Lifecycle.aspx">Application Lifecycle<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="https://www.codeproject.com/Forums/1533717/Running-a-Business.aspx">Running a Business</a></li>
+<li><a class="fly" href="https://www.codeproject.com/Forums/1533716/Sales-Marketing.aspx">Sales / Marketing</a></li>
+<li><a class="fly" href="https://www.codeproject.com/Forums/1651/Collaboration-Beta-Testing.aspx">Collaboration / Beta Testing</a></li>
+<li><a class="fly" href="https://www.codeproject.com/Forums/3304/Work-Issues.aspx">Work  Issues</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/369270/Design-and-Architecture.aspx">Design and Architecture</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/12076/ASP-NET.aspx">ASP.NET</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1580226/JavaScript.aspx">JavaScript</a>
+</li>
+<li class=""><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1647/C-Cplusplus-MFC.aspx">C / C++ / MFC<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="https://www.codeproject.com/Forums/4486/ATL-WTL-STL.aspx">ATL /  WTL / STL</a></li>
+<li><a class="fly" href="https://www.codeproject.com/Forums/3785/Managed-Cplusplus-CLI.aspx">Managed C++/CLI</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1649/Csharp.aspx">C#</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1627782/Free-Tools.aspx">Free Tools</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1827460/Objective-C-and-Swift.aspx">Objective-C and Swift</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1725/Database.aspx">Database</a>
+</li>
+<li class=""><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/186301/Hardware-Devices.aspx">Hardware &amp; Devices<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="https://www.codeproject.com/Forums/1644/System-Admin.aspx">System Admin</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1606152/Hosting-and-Servers.aspx">Hosting and Servers</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1643/Java.aspx">Java</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1650/NET-Framework.aspx">.NET Framework</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1848626/Android.aspx">Android</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1876716/iOS.aspx">iOS</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/13695/Mobile.aspx">Mobile</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1540733/SharePoint.aspx">SharePoint</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1004257/Silverlight-WPF.aspx">Silverlight / WPF</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1646/Visual-Basic.aspx">Visual Basic</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1640/Web-Development.aspx">Web Development</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/suggestions.aspx">Site Bugs / Suggestions</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://www.codeproject.com/Forums/1652005/Spam-and-Abuse-Watch.aspx">Spam and Abuse Watch</a>
+</li>
+
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+<li class="desktop-only"><a id="ctl00_TopNavBar_Features" href="https://www.codeproject.com/Feature/">features</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_Comps" class="fly" href="https://www.codeproject.com/script/Awards/CurrentCompetitions.aspx?cmpTpId=1&awsac=true">Competitions</a></li>
+		<li><a id="ctl00_TopNavBar_News" class="fly" href="https://www.codeproject.com/script/News/List.aspx">News</a></li>
+		<li><a id="ctl00_TopNavBar_Insider" class="fly" href="https://www.codeproject.com/Feature/Insider/">The Insider Newsletter</a></li>
+    	<li><a id="ctl00_TopNavBar_DailyBuild" class="fly" href="https://www.codeproject.com/Feature/DailyBuild">The Daily Build Newsletter</a></li>
+		<li><a id="ctl00_TopNavBar_Newsletters" class="fly" href="https://www.codeproject.com/script/Mailouts/Archive.aspx?mtpid=1">Newsletter archive</a></li>
+		<li><a id="ctl00_TopNavBar_Surveys" class="fly" href="https://www.codeproject.com/script/Surveys/List.aspx">Surveys</a></li>
+		<li><a id="ctl00_TopNavBar_Showcase" class="fly" href="https://www.codeproject.com/KB/showcase/">Product Showcase</a></li>
+		<li><a id="ctl00_TopNavBar_Research" class="fly" href="https://www.codeproject.com/script/ResearchLibrary/Index.aspx">Research Library</a></li>
+
+		<li><a id="ctl00_TopNavBar_Stuff" class="fly" href="https://www.codeproject.com/Info/Stuff.aspx">CodeProject Stuff</a></li>
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+<li class=""><a id="ctl00_TopNavBar_Lounge" href="https://www.codeproject.com/Lounge.aspx">
+            <span class="desktop-only tablet-only">community</span><span class="mobile-only">lounge</span>
+</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_WhosWho" class="fly" href="https://www.codeproject.com/script/Membership/Profiles.aspx">Who's Who</a></li>
+		<li><a id="ctl00_TopNavBar_MVPs" class="fly break" href="https://www.codeproject.com/script/Awards/MVPWinners.aspx">Most Valuable Professionals</a></li>
+		
+
+		<li><a id="ctl00_TopNavBar_LoungeLnk" class="fly highlight2" href="https://www.codeproject.com/Lounge.aspx">The Lounge &nbsp;</a></li>
+		<li><a id="ctl00_TopNavBar_InsiderLnk" class="fly" href="https://www.codeproject.com/Insider.aspx">The Insider News</a></li>
+		<li><a id="ctl00_TopNavBar_WeirdWonderful" class="fly" href="https://www.codeproject.com/Feature/WeirdAndWonderful.aspx">The Weird &amp; The Wonderful</a></li>
+		<li><a id="ctl00_TopNavBar_SoapBoxLnk" class="fly" href="https://www.codeproject.com/Forums/1536756/The-Soapbox.aspx">The Soapbox</a></li>
+		<li><a id="ctl00_TopNavBar_PRLnk" class="fly break" href="https://www.codeproject.com/Forums/1738007/Press-Releases.aspx">Press Releases</a></li>
+
+		
+		<li class=""><a class="fly" href="https://www.codeproject.com/Forums/1580229/Hindi.aspx">Non-English Language
+			<span class="has-submenu">&gt;</span></a>
+		<ul>
+		<li><a class="fly" href="https://www.codeproject.com/Forums/1580229/Hindi.aspx">General Indian Topics</a></li>
+		<li><a class="fly" href="https://www.codeproject.com/Forums/1580230/Chinese.aspx">General Chinese Topics</a></li>
+		</ul>
+		</li><li class="last"></li>
+		
+	</ul>
+
+</li>
+
+
+<li class="desktop-only tablet-only" style="margin-left:20px"><a id="ctl00_TopNavBar_Help" href="https://www.codeproject.com/KB/FAQs/">help</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_HelpWhatIs" class="fly" href="https://www.codeproject.com/info/guide.aspx">What is 'CodeProject'?</a></li>
+		<li><a id="ctl00_TopNavBar_HelpGeneral" class="fly break" href="https://www.codeproject.com/KB/FAQs/">General FAQ</a></li>
+		<li><a id="ctl00_TopNavBar_HelpPostQuestion" class="fly break highlight2" href="https://www.codeproject.com/Questions/ask.aspx">Ask a Question</a></li>
+		<li><a id="ctl00_TopNavBar_HelpBugs" class="fly" href="https://www.codeproject.com/suggestions.aspx">Bugs and Suggestions</a></li>
+		<li><a id="ctl00_TopNavBar_HelpArticles" class="fly" href="https://www.codeproject.com/Forums/1641/Article-Writing.aspx">Article Help Forum</a></li>
+		<li><a id="ctl00_TopNavBar_HelpSiteMap" class="fly" href="https://www.codeproject.com/script/Content/SiteMap.aspx">Site Map</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAdvertise" class="fly" href="http://developermedia.com/">Advertise with us</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAboutAds" class="fly" href="https://www.codeproject.com/info/AboutOurAds.aspx">About our Advertising</a></li>
+		<li><a id="ctl00_TopNavBar_HelpJobs" class="fly" href="https://www.codeproject.com/info/Jobs/">Employment Opportunities</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAboutUs" class="fly" href="https://www.codeproject.com/info/about.aspx">About Us</a></li>
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+</ul>
+
+</div>
+    </div>
+	<div class="sub-headerbar-divider"></div>
+	</div>		
+	
+
+	<div id="A" class="container-content-wrap fixed"> 
+
+	<div itemscope="" itemtype="http://schema.org/Article" class="container-content"> 
+
+
+		<div class="clearfix">
+			<div class="container-breadcrumb float-left ">
+				<div><a href="https://www.codeproject.com/script/Content/SiteMap.aspx">Articles</a> » <a href="https://www.codeproject.com/Chapters/2/Web-Development.aspx">Web Development</a> » <a href="https://www.codeproject.com/KB/web-image/"><span itemprop="articleSection">Charts, Graphs and Images</span></a> » <a href="https://www.codeproject.com/KB/web-image/#General">General</a></div>
+			</div>
+
+			<div class="float-left">
+				
+			</div>
+
+			<div class="edit-links float-right">
+				
+
+
+ 
+&nbsp;
+
+
+
+
+
+
+
+
+
+
+			</div>
+
+			<div class="article-nav float-right">
+					
+		        
+		        
+					
+
+                
+				
+
+<a id="ctl00_ActionLinks_BookmarkMd_ImgBt" title="Bookmark" alternatetext="Bookmark" name="bm_697043_2" onclick="return bookmarkMe(697043,2,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=697043&amp;obtid=2&amp;bio=true&amp;bis=medium&#39;,&#39;medium&#39;);" href="https://www.codeproject.com/script/Bookmarks/Add.aspx?obid=697043&obtid=2&bio=true&bis=medium" style="display:inline-block;height:24px;width:24px;"><img title="Bookmark" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/bookmark24.png" alt="" style="border-width:0px;"></a>
+
+
+<span id="ctl00_ActionLinks_BookmarkMd_StatusMsg" class="tiny-text" style="display:none" name="bm_697043_2"></span>
+<a id="ctl00_ActionLinks_PrintMd" href="https://www.codeproject.com/Articles/697043/Making-Dashboards-with-Dc-js-Part-Graphing?display=Print">
+	<img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/print24.png" title="Print" width="24px" height="24px" style="border:0">
+</a>
+			</div>
+		</div>
+
+		<table class="extended container-article-parts" cellpadding="0" cellspacing="0">
+        <tbody><tr valign="top">
+		<td width="117px" class="article-wing-left">
+
+			<div id="ctl00_Nav" class="container-article-tabs stuck" style="position: fixed; top: 10px; left: 156.5px;">
+    			
+
+<div class="tabs">
+	<div class="selected">Article</div><div class="unselected"><a href="https://www.codeproject.com/script/Articles/ViewDownloads.aspx?aid=697043">Browse Code</a></div><div class="unselected"><a href="https://www.codeproject.com/script/Articles/Statistics.aspx?aid=697043">Stats</a></div><div class="unselected"><a href="https://www.codeproject.com/script/Articles/ListVersions.aspx?aid=697043">Revisions (10)</a></div><div class="unselected"><a href="https://www.codeproject.com/script/Articles/ListAlternatives.aspx?aid=697043">Alternatives</a></div>
+
+	<div class="unselected"><a href="https://www.codeproject.com/articles/697043/WebControls/#_comments" id="ctl00_ArticleTabs_CommentLink" class="anchorLink">Comments 
+        <span id="ctl00_ArticleTabs_CmtCnt">(16)</span></a>
+	</div>
+</div>	
+
+
+				<a id="ctl00_AddAlternative" title="Write a related article about upgrades or translate this into a different language." class="add-item" href="https://www.codeproject.com/script/Articles/SubmissionWizard.aspx?at=1&apid=697043">Add your own<br>alternative version</a>
+
+			    <div class="tags"> 
+                    <h4>Tagged as</h4>
+                    
+                    <div class="tags">
+<span class="t"><a href="https://www.codeproject.com/search.aspx?sbo=kw&aidlst=87">Javascript</a></span></div>
+			    </div>
+                
+
+                <div class="stats">
+                <h4>Stats</h4>
+                <div id="ctl00_ArtStats"><div class="stats"><div>74.4K views</div><div>19 bookmarked</div></div></div>
+                </div>
+
+                <div class="subdue padded-top" title="Date First posted">Posted 
+                    <span itemprop="datePublished" content="2013-12-20">20 Dec 2013</span></div>
+
+                
+			</div>
+
+		</td>
+		<td>
+			
+			<div id="AT" class="container-article  fixed"> 
+
+				<div class="article">
+
+					<form name="aspnetForm" method="post" action="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/Making Dashboards with Dc.js - Part 2  Graphing - CodeProject.html" id="aspnetForm" style="margin:0;padding:0">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="UAcGmvIm3Te1hFhXXqNbynezy2S1otYNAyr98Llg7gJgumyRFldEfe91j6EuGQfiQsdHwKNihzCr2OlmJ+RAx3ip4upgQAy5FiqP6WagFNd9Q96ZSSEA3lX8KAa9pluCUyQxrW2ESZjXYW9Cx+7swgPT2Sk8Po+JETa7msfcN48mcA1RKobPOB7P6NJt5znAJDfVI9l357krinIrVuKF3sBy5fsT0gRoT5K4TBaFYvKid39/AGmx7L9xwMSt0995ZfFUHIGz4sGIkKXEVcJ747vGY2qyam0alrLdsjqC4W68BSzwK6MbnLUQ+KC8PmdisF7VmJw2IbNAYZDmSFooHy4BLg5gTtV6o5np1hDEK/NEiiJtYKe9ck+pvUL2vG+LTy4QEVPoao7L4qKaLL3PmDSqVD6f3rAOD/TC838kZhwCZWx2w+7dkXW6ZylVa0Vk9fC56VVcRhFvD9xFpjz73pRSfZu3OrkhBOvOd1WKDd1ZSRyevGiGAZcBm0XuKFqOquyulfrk/XvA9UOT4T9RjTym6hV0GQklFTEg1B5kuYEAaXZ9NdfJNsxsJzLoJcWAqgMiILE4yX6j/F01vG70pfOctwyKHYp+j/LX34OcIVchJ0hBAsmITHekXfhDHb8DY9eQ30h77q7wgU2UuQmwxGl0/VFyHjnMYnQ6wruIYFmbmxbato99wvaj2/Yv4ypeDdS8GOLnmqqssTgM31mRW3Uo/fzPZOfAaVzJwG+kWbhU+qS1neIp9ucSvCsVPPxUoT5pjcPhOMovE23g91BaE30IElfTdNBmDA4QKPH2/zPGrkZ39fSlA1EyqhyPOwyynzN213f8WRCialzFb+1kgDba8GAjyvqyL28KTeyZgWG0B2uEOBc7HkWDlsHSClxv+F4QwyyDtPnrFaDipQ4y2+Pa1pTx+ZZHo5np5WNQcYZFsX5UnvJA+Rn2Ho5mzCPp9DUvFHT9PFDlMU0MVaVGX4uwcfafDi6AGyyGUoTSfIXYPu9pVyvixBEAkN7rRPDg71+slliBFW5C6cLK5zXW7I6hTvQdgBq1HvYNWpYMk1dA8e6BJUmb/Q29hfbE4gEYLDqjCxZAvII3DsX7Etq1VipZM8VP6RHYZ/PRuNCiMRfVohBRVdPrdT/LJsMq1hcTVpBYRBB9gjry1oUzEK1lN+jtJ9UDKjo0Q8wR1N2EmOcmKfkKB5CRDWJoV/5ziik7yqDH4zoeF5OttkFeBjriU7bGjPmFQY5s0p+UCDjy6qAQn58lN5wp9rlN0AeS2FzgR8RdqgTON2StkLsPdkvA8/lR288Z9e6z5/MyBzhCor5liETd0JPdQCVw/KT0uESvbz1ehab+r0WGAheOsUz2SO+h00njVwJhrY1D9PQfrxkqbvtWbz8bnwQeG5ByKD5sv5PrjhoiTat7VZJKCK5jUty4XHQ/8gtve8puzcaFDpafyHvSfoYckQT5TLi7dgWWRO/64szMTfFSG3k0PxVM9pEPCNoJA647ddBfQPr50Aybl90LD1Yy5cbmoyvPS/5nkbRZ3gTqSIkiBprUKmrsvsngJjcCz6tNkmZW5lcGY6wXHoktcSTwvzy4PDcwhr2x9Uf68iJGBJApOhW5qVIhGcSntgOHUCqFrFJGH8iMv6JGLSjuOMMfA9LpeeHZu8zvGjmEDGsWX6ZU6vwxVpdWd+NgOYyuSE53phVVvEOfo/5kKUw68a2Q3QDdtPPhqjYKm0xY3+LIRmH1f7Q/utgrvqBMQdSB4sE1JWymrAFP9LDs+8RcjS3n7qU9AwK24xgIAAEyt3tUlx4NuukWo6GbrLo+pmVvXk/tftJNRe3uuIHB4Igx7gytu1ZCvRuddItH73H0OGlKn2bqgrnbh/KiPLUt3V7vGZSBT93BVktvEApnEcwXH2tWVet7/SfixdOjmsCIGo8YuEe2Fi1qQTiIvuUlAVCMJggY8KhXNwvAzA1hbluGrKD2wBF98KRXuZHrM49ZcRomHPB/W757gc/OM+XmwFmsKTht2h99nZC+kdgAXVJKsET0IkBQCn4bsfqUR8KgH4ruvTvLnpA3KrcPWwbYXJoAZQa0OuHOQFrqzJQOKr0ungGf+NtLKvVbwG9VE3tFxPMpnSFz8G2pjBPaviDBeq/NF5+qjNaCsWj9sVTp9KDih0wNNolg9WcbkvtV61uSjxdUZUNo25yPpGdRvbiPX2HRIE7RfzLeWcC2trvnFOkdCmxu6ntlHR40Fx3dkn35TnT/gbfP/1LZZ5Xtj1ntLI+wB+Ttxfu14Ar2cFFxNae/V79AV0z4vOzc3ZRQ/APFwhCTBhrdHBrm9C8fFvDjPJLfs5Cn4EJ+5iRKK8ZTva8bO8PXWEB5baP2ovup0Kmos2Dzoe45dp/dsVsFX0o6J8yvZ1DRBrBiac5dtPEqgeBHROYg/xUkmnNk6yLOeDHIJUlgbTLuaUE/1vsSDjVyMeFbOABd2ORPnANdRHYuv0npvD7m8qLY1vhnQ/iO6fMVbvmf1xQLwqXkjBJfX3E4PLbGQwinC/YPNBj+UMqc94NJVqbZVJzxKkhYmEClkyHoYYtaQvQd7stG+fDmzPsmRUNB3cf3jGbjbfEsKmmWADh5IhJECGwMhmX0ptb9wiwP1W6OMKlYmdr11NJjpeQqgoLFGwaWF3roT4gptV0+HX/0sPC451KbibMTlr8uFKrRiQ==">
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="10C1FD69">
+</div>
+
+					
+					 
+					<div class="header">
+					    <a name="Main"></a>
+
+					    
+					    <a name="_articleTop" id="_articleTop"></a>
+					    <div class="title">
+					        <h1 id="ctl00_ArticleTitle" itemprop="name">Making Dashboards with Dc.js - Part 2: Graphing</h1> 
+					    </div>
+
+                        <div style="height:34px">
+					        
+					        <div class="entry float-left">
+                                <img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/65e127b6ea65738afdeae313700a0973.jpg" id="ctl00_avatar" class="float-left avatar">
+                                <div class="float-left">
+
+						            <span class="author"><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=3792090" rel="author"><span itemprop="author" itemscope="" itemtype="http://schema.org/Person"><span itemprop="name">The Myth</span></span></a></span>, 
+						            <span class="date" itemprop="dateModified" title="Date last updated" content="2014-01-21 14:44:00">
+							            21 Jan 2014</span>
+			
+                                    <a id="ctl00_LicenseLink" title="The Code Project Open License (CPOL)" class="license" href="http://www.codeproject.com/info/cpol10.aspx">CPOL</a><div id="ctl00_CurRat" class="tooltip anchorLink" style="cursor:pointer;margin-top: 5px" name="CurRat_697043">
+				
+							            
+
+<table cellpadding="0" cellspacing="0" class="small-text" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating"> 
+<tbody><tr>
+	
+	<td class="nowrap">
+
+		
+			<meta itemprop="bestRating" content="5"> 
+			<meta itemprop="worstRating" content="1">
+		
+
+		<span id="ctl00_ArticleRating_VI">
+		<div class="nowrap rating-stars-medium" style="height:18px;width:80px;position:relative;">
+	<div class="clipped align-left float-left" style="height:16px;width:79px;">
+		<img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/stars-fill-md.png" style="border-width:0px;">
+	</div><div class="clipped" style="height:16px;width:1px;position:relative;">
+		<img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/stars-empty-md.png" style="border-width:0px;position:absolute;top:0;right:0;">
+	</div>
+</div>
+		</span>
+
+		
+	</td>
+	
+	<td id="ctl00_ArticleRating_VR" class="nowrap">
+		&nbsp;
+		<span id="ctl00_ArticleRating_VotesR">&nbsp;<span itemprop="ratingValue" class="rating">4.96</span> (<span itemprop="ratingCount" class="count">12</span> votes)</span>
+		
+	</td>
+
+</tr>
+
+</tbody></table>
+
+
+							            <div id="ctl00_RB" class="speech-bubble-container-up">
+								            <div class="speech-bubble-up" style="width:150px !important">
+									                        
+<div>
+<table class="feature" width="100%" height="50px" title="Voting Distribution. Recent data only" cellpadding="0" cellspacing="0"><tbody><tr class="chart-row"><td class="chart-column"><span title="0 votes">1</span></td>
+<td class="chart-column"><span title="0 votes">2</span></td>
+<td class="chart-column"><span title="0 votes">3</span></td>
+<td class="chart-column"><div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pollcol.gif" width="20pxpx" height="4px" border="0px" alt="1 vote, 8.3%" title="1 vote, 8.3%"></div><span title="1 vote">4</span></td>
+<td class="chart-column"><div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pollcol.gif" width="20pxpx" height="50px" border="0px" alt="11 votes, 91.7%" title="11 votes, 91.7%"></div><span title="11 votes">5</span></td>
+</tr></tbody></table><div class="small-text align-center">4.96/5 - 12 votes</div><div class="small-text align-center subdue">μ 4.96, σ<sub>a</sub> 1.06 [<a href="https://www.codeproject.com/KB/FAQs/RatingReputationFAQ.aspx#noisefilter">?</a>]</div>
+</div>
+								            </div>
+								            <div class="speech-bubble-pointer-up">
+									            <div class="speech-bubble-pointer-up-inner"></div>
+								            </div>
+							            </div>
+						            </div>
+                                </div>
+					        </div>
+
+                            
+						    <div id="ctl00_RateArticleRow" class="float-right align-right voting-bar">
+						        <div id="ctl00_RateArticle_RateItemWrapper" class="small-text" name="RateItem_697043">
+
+	<table width="100%" cellpadding="0" cellspacing="0" class="small-text">
+	<tbody><tr>
+		<td id="ctl00_RateArticle_VoteResultDiv" class="rating-result align-right">
+			<span class="align-right"></span>
+			<img class="loaderImg" width="16px" alt="loading..." height="16px" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/animated_loading_blue.gif" style="display:none;"> 
+		</td>
+
+	
+		<td class="voteTbl" style="white-space:nowrap" align="right">
+			<table class="small-text">
+			<tbody><tr>
+				<td id="ctl00_RateArticle_RateText" class="rating-prompt">
+					Rate this:
+				</td>
+
+				
+				<td id="ctl00_RateArticle_VoteFormDiv" class="nowrap rating-stars-voter-large">
+					
+
+					<span id="ctl00_RateArticle_RB" class="tooltip ajaxHist radio voting">
+						<span id="ctl00_RateArticle_VoteRBL"><input id="ctl00_RateArticle_VoteRBL_0" type="radio" name="ctl00$RateArticle$VoteRBL" value="1" style="display: none;"><input id="ctl00_RateArticle_VoteRBL_1" type="radio" name="ctl00$RateArticle$VoteRBL" value="2" style="display: none;"><input id="ctl00_RateArticle_VoteRBL_2" type="radio" name="ctl00$RateArticle$VoteRBL" value="3" style="display: none;"><input id="ctl00_RateArticle_VoteRBL_3" type="radio" name="ctl00$RateArticle$VoteRBL" value="4" style="display: none;"><input id="ctl00_RateArticle_VoteRBL_4" type="radio" name="ctl00$RateArticle$VoteRBL" value="5" style="display: none;"></span> 
+
+						
+					<div class="rating-star-block"><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" rating="1" class="star outline" title="vote 1">vote 1</a><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" rating="2" class="star outline" title="vote 2">vote 2</a><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" rating="3" class="star outline" title="vote 3">vote 3</a><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" rating="4" class="star outline" title="vote 4">vote 4</a><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" rating="5" class="star outline" title="vote 5">vote 5</a></div></span>
+
+				</td>
+
+				
+				<td style="padding-left:5px">	
+					<input type="submit" name="ctl00$RateArticle$SubmitRateBtn" value="Vote!" id="ctl00_RateArticle_SubmitRateBtn" class="button" style="display: none;">
+				</td>
+			</tr>
+			</tbody></table>
+			
+		</td>
+	</tr>
+	</tbody></table>
+	<div class="hover-container">
+		
+        <div id="ctl00_RateArticle_RSU" class="rating-comment align-left float-right">
+            <div class="padded">
+            Please <a id="ctl00_RateArticle_SignUp" href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2farticles%2f697043%2fmaking-dashboards-with-dc-js-part-2-graphing">Sign up or sign in</a> to vote.
+            </div>
+        </div>
+	</div>
+</div>
+						    </div>
+						    	
+                        </div>
+
+   					    
+                        <div id="ctl00_description" class="summary" itemprop="headline">Graphing</div><span id="ctl00_thumbnailUrl" class="date" itemprop="image" content="https://www.codeproject.com/KB/web-image/697043/Thumb-697043.png"></span>			
+
+                    </div>
+                    
+					
+					
+
+					
+
+					
+					
+					
+
+						
+					
+
+					
+
+						
+						<div id="contentdiv" class="text" itemprop="articleBody">
+						
+
+
+
+<h2>Introduction</h2><p>
+		In the first part, we learned how to use Crossfilter to manipulate data arrays. In this part, we'll start to use dc.js to render charts and make a simple interactive dashboard. <br>
+	</p><h2>Background&nbsp;&nbsp;&nbsp;&nbsp;</h2><p>This is the&nbsp;second article of a 4 part series.&nbsp;You can find my other articles here: </p><ul><li>Part 1: <a href="http://www.codeproject.com/Articles/693841/Making-Dashboards-with-Dc-js-Part-1-Using-Crossfil">Using Crossfilter.js</a>&nbsp;</li><li>Part 2: <a href="http://www.codeproject.com/Articles/697043/Making-Dashboards-with-Dc-js-Part-2-Graphing">Graphing </a></li><li>Part 3: <a href="http://www.codeproject.com/Articles/703261/Making-Dashboards-with-Dc-js-Part-3-Tips-and-Trick">Tips and Tricks</a>&nbsp;&nbsp;</li><li>Part 4: <a href="http://www.codeproject.com/Articles/709735/Making-Dashboards-with-Dc-js-Part-4-Style">Style</a></li></ul>
+	<h2>Using the code&nbsp;</h2><p>
+		Now that we have some basics out of the way, let's get started by creating our first graph.&nbsp; I'll be using the latest dc.js 2.0 for the examples. When using d3.js, make sure you are using the following meta in your head tag or it might have trouble with some characters. Below are the inclusions. Since dc.js relies on d3 and crossfilter, we need to make sure we reference those too. I've added jquery since you never really know when you'll need it.&nbsp; Don't forget to add the dc stylesheet as well or your graphs will look a little weird.</p><div class="pre-action-link" id="premain391766" style="width:100%;display:block;"><span id="prehide391766" onclick="processCodeBlocks.togglePre(391766);">Hide</span>  &nbsp; <span id="copycode391766" onclick="return processCodeBlocks.copyCode(391766);">Copy Code</span></div><pre lang="jscript" id="pre391766" class="notranslate" style="margin-top: 0px;">&lt;meta http-equiv=<span class="code-string">"</span><span class="code-string">content-type"</span> content=<span class="code-string">"</span><span class="code-string">text/html; charset=UTF8"</span>&gt; </pre><div class="pre-action-link" id="premain454333" style="width:100%;display:block;"><span id="prehide454333" onclick="processCodeBlocks.togglePre(454333);">Hide</span>  &nbsp; <span id="copycode454333" onclick="return processCodeBlocks.copyCode(454333);">Copy Code</span></div><pre lang="jscript" id="pre454333" class="notranslate" style="margin-top: 0px;">&lt;script src=<span class="code-string">"</span><span class="code-string">https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"</span> type=<span class="code-string">"</span><span class="code-string">text/javascript"</span>&gt;<span class="code-keyword">&lt;/</span><span class="code-leadattribute">script</span>&gt;</pre><div class="pre-action-link" id="premain685688" style="width:100%;display:block;"><span id="prehide685688" onclick="processCodeBlocks.togglePre(685688);">Hide</span>  &nbsp; <span id="copycode685688" onclick="return processCodeBlocks.copyCode(685688);">Copy Code</span></div><pre lang="jscript" id="pre685688" class="notranslate" style="margin-top: 0px;">&lt;link rel=<span class="code-string">"</span><span class="code-string">stylesheet"</span> type=<span class="code-string">"</span><span class="code-string">text/css"</span> href=<span class="code-string">"</span><span class="code-string">./css/dc.css"</span> media=<span class="code-string">"</span><span class="code-string">screen"</span> /&gt; </pre><p>&nbsp;To illustrate a specific scenario, we're going start off with a specific data set which we'll change in part 3 when we start doing more advanced stuff.<br><br>The inspiration for this graph is everyday our servers get hit. We want to draw a simple line graph showing how many hits we get per day, some are valid (200s), some are redirects (302s) and some are broken links (404s). The way the data is layed out is very concise.&nbsp;</p><div class="pre-action-link" id="premain11199" style="width:100%;display:block;"><span id="prehide11199" onclick="processCodeBlocks.togglePre(11199);">Hide</span>  &nbsp; <span id="copycode11199" onclick="return processCodeBlocks.copyCode(11199);">Copy Code</span></div><pre lang="jscript" id="pre11199" class="notranslate" style="margin-top: 0px;"><span class="code-keyword">var</span> data = [
+		{date: <span class="code-string">"</span><span class="code-string">12/27/2012"</span>, http_404: <span class="code-digit">2</span>, http_200: <span class="code-digit">190</span>, http_302: <span class="code-digit">100</span>},
+		{date: <span class="code-string">"</span><span class="code-string">12/28/2012"</span>, http_404: <span class="code-digit">2</span>, http_200: <span class="code-digit">10</span>, http_302: <span class="code-digit">100</span>},
+		{date: <span class="code-string">"</span><span class="code-string">12/29/2012"</span>, http_404: <span class="code-digit">1</span>, http_200: <span class="code-digit">300</span>, http_302: <span class="code-digit">200</span>},
+		{date: <span class="code-string">"</span><span class="code-string">12/30/2012"</span>, http_404: <span class="code-digit">2</span>, http_200: <span class="code-digit">90</span>, http_302: <span class="code-digit">0</span>},
+		{date: <span class="code-string">"</span><span class="code-string">12/31/2012"</span>, http_404: <span class="code-digit">2</span>, http_200: <span class="code-digit">90</span>, http_302: <span class="code-digit">0</span>},
+		{date: <span class="code-string">"</span><span class="code-string">01/01/2013"</span>, http_404: <span class="code-digit">2</span>, http_200: <span class="code-digit">90</span>, http_302: <span class="code-digit">0</span>},
+		{date: <span class="code-string">"</span><span class="code-string">01/02/2013"</span>, http_404: <span class="code-digit">1</span>, http_200: <span class="code-digit">10</span>, http_302: <span class="code-digit">1</span>},
+		{date: <span class="code-string">"</span><span class="code-string">01/03/2013"</span>, http_404: <span class="code-digit">2</span>, http_200: <span class="code-digit">90</span>, http_302: <span class="code-digit">0</span>},
+		{date: <span class="code-string">"</span><span class="code-string">01/04/2013"</span>, http_404: <span class="code-digit">2</span>, http_200: <span class="code-digit">90</span>, http_302: <span class="code-digit">0</span>},
+		{date: <span class="code-string">"</span><span class="code-string">01/05/2013"</span>, http_404: <span class="code-digit">2</span>, http_200: <span class="code-digit">90</span>, http_302: <span class="code-digit">0</span>},
+		{date: <span class="code-string">"</span><span class="code-string">01/06/2013"</span>, http_404: <span class="code-digit">2</span>, http_200: <span class="code-digit">200</span>, http_302: <span class="code-digit">1</span>},
+		{date: <span class="code-string">"</span><span class="code-string">01/07/2013"</span>, http_404: <span class="code-digit">1</span>, http_200: <span class="code-digit">200</span>, http_302: <span class="code-digit">100</span>}
+		];
+        
+<span class="code-keyword">var</span> ndx = crossfilter(data); </pre><p>
+</p><p>Now when we start dealing with dates, we need to make sure dc.js knows it is a date. There are so many different ways to formulate a date, we need to tell it how to interpert the data. Here we loop through each entry in the array and set date as an actual date variable. You can see here for the parsing, some of d3.js makes its way through into our code through the d3.timeformat class. Since our data doesn't have a total entry, we're going to need to add one. I've added a print function so we can see what our new array looks like.:&nbsp;</p><div class="pre-action-link" id="premain848653" style="width:100%;display:block;"><span id="prehide848653" onclick="processCodeBlocks.togglePre(848653);">Hide</span>  &nbsp; <span id="copycode848653" onclick="return processCodeBlocks.copyCode(848653);">Copy Code</span></div><pre lang="jscript" id="pre848653" class="notranslate" style="margin-top: 0px;"><span class="code-keyword">var</span> parseDate = d3.time.format(<span class="code-string">"</span><span class="code-string">%m/%d/%Y"</span>).parse;</pre><div class="pre-action-link" id="premain127797" style="width:100%;display:block;"><span id="prehide127797" onclick="processCodeBlocks.togglePre(127797);">Hide</span>  &nbsp; <span id="copycode127797" onclick="return processCodeBlocks.copyCode(127797);">Copy Code</span></div><pre lang="jscript" id="pre127797" class="notranslate" style="margin-top: 0px;">data.forEach(<span class="code-keyword">function</span>(d) {
+	d.date = parseDate(d.date);
+	d.total= d.http_404+d.http_200+d.http_302;
+});
+print_filter(<span class="code-string">"</span><span class="code-string">data"</span>);  </pre><div class="pre-action-link" id="premain6" style="width:100%;display:block;"><span id="prehide6" onclick="processCodeBlocks.togglePre(6);">Hide</span>  &nbsp; <span id="copycode6" onclick="return processCodeBlocks.copyCode(6);">Copy Code</span></div><pre lang="text" style="color: white; margin-top: 0px; background-color: black;" id="pre6" class="notranslate">"data(12) = [
+	{"date":"2012-12-27T05:00:00.000Z","http_404":2,"http_200":190,"http_302":100,"total":292},
+	{"date":"2012-12-28T05:00:00.000Z","http_404":2,"http_200":10,"http_302":100,"total":112},
+	{"date":"2012-12-29T05:00:00.000Z","http_404":1,"http_200":300,"http_302":200,"total":501},
+	{"date":"2012-12-30T05:00:00.000Z","http_404":2,"http_200":90,"http_302":0,"total":92},
+	{"date":"2012-12-31T05:00:00.000Z","http_404":2,"http_200":90,"http_302":0,"total":92},
+	{"date":"2013-01-01T04:00:00.000Z","http_404":2,"http_200":90,"http_302":0,"total":92},
+	{"date":"2013-01-02T04:00:00.000Z","http_404":1,"http_200":10,"http_302":1,"total":12},
+	{"date":"2013-01-03T04:00:00.000Z","http_404":2,"http_200":90,"http_302":0,"total":92},
+	{"date":"2013-01-04T04:00:00.000Z","http_404":2,"http_200":90,"http_302":0,"total":92},
+	{"date":"2013-01-05T04:00:00.000Z","http_404":2,"http_200":90,"http_302":0,"total":92},
+	{"date":"2013-01-06T04:00:00.000Z","http_404":2,"http_200":200,"http_302":1,"total":203},
+	{"date":"2013-01-07T04:00:00.000Z","http_404":1,"http_200":200,"http_302":100,"total":301}
+]"  </pre><p>The dimension that we've been using with crossfilter will end up being our X-axis. Since we want our x-axis to be a timeline, we'll create a date dimension. For our y-axis, we want to show the total number of hits, for this we'll need to setup a key-value format which we can do with a group. </p><div class="pre-action-link" id="premain329711" style="width:100%;display:block;"><span id="prehide329711" onclick="processCodeBlocks.togglePre(329711);">Hide</span>  &nbsp; <span id="copycode329711" onclick="return processCodeBlocks.copyCode(329711);">Copy Code</span></div><pre lang="jscript" id="pre329711" class="notranslate" style="margin-top: 0px;"><span class="code-keyword">var</span> dateDim = ndx.dimension(<span class="code-keyword">function</span>(d) {<span class="code-keyword">return</span> d.date;});
+<span class="code-keyword">var</span> hits = dateDim.group().reduceSum(<span class="code-keyword">function</span>(d) {<span class="code-keyword">return</span> d.total;}); </pre><p>&nbsp;### TIP</p><p>&nbsp;Dc has a nice function so we can shorten the syntax up a bit by using dc.pluck instead of an inline function: </p><div class="pre-action-link" id="premain465863" style="width:100%;display:block;"><span id="prehide465863" onclick="processCodeBlocks.togglePre(465863);">Hide</span>  &nbsp; <span id="copycode465863" onclick="return processCodeBlocks.copyCode(465863);">Copy Code</span></div><pre lang="jscript" id="pre465863" class="notranslate" style="margin-top: 0px;"><span class="code-keyword">var</span> hits = dateDim.group().reduceSum(dc.pluck(<span class="code-string">'</span><span class="code-string">total'</span>)); </pre><p>###TIP</p><p>The last bit of data we need for our chart is the range for x-axis. For this, we want to get the min and max date in our array. We can do this by using the crossfilter functions to get the bottom value and the top value for the date column. <br>&nbsp;</p><div class="pre-action-link" id="premain381180" style="width:100%;display:block;"><span id="prehide381180" onclick="processCodeBlocks.togglePre(381180);">Hide</span>  &nbsp; <span id="copycode381180" onclick="return processCodeBlocks.copyCode(381180);">Copy Code</span></div><pre lang="jscript" id="pre381180" class="notranslate" style="margin-top: 0px;"><span class="code-keyword">var</span> minDate = dateDim.bottom(<span class="code-digit">1</span>)[<span class="code-digit">0</span>].date;
+<span class="code-keyword">var</span> maxDate = dateDim.top(<span class="code-digit">1</span>)[<span class="code-digit">0</span>].date;</pre><p>With the data set, we need to setup the chart itself. We need to setup a DOM element. This DOM element needs to load before all the JavaScript which means, it needs to be placed on the page first or you need to wrap the JavaScript code in something like JQuery so it only loads after the page full loads.</p><div class="pre-action-link" id="premain525016" style="width:100%;display:block;"><span id="prehide525016" onclick="processCodeBlocks.togglePre(525016);">Hide</span>  &nbsp; <span id="copycode525016" onclick="return processCodeBlocks.copyCode(525016);">Copy Code</span></div><pre lang="jscript" id="pre525016" class="notranslate" style="margin-top: 0px;">&lt;div id=<span class="code-string">"</span><span class="code-string">chart-line-hitsperday"</span>&gt;<span class="code-keyword">&lt;/</span><span class="code-leadattribute">div</span>&gt;</pre><p>&nbsp;Next we associate our chart with the DOM element. </p><div class="pre-action-link" id="premain19937" style="width:100%;display:block;"><span id="prehide19937" onclick="processCodeBlocks.togglePre(19937);">Hide</span>  &nbsp; <span id="copycode19937" onclick="return processCodeBlocks.copyCode(19937);">Copy Code</span></div><pre lang="C++" id="pre19937" class="notranslate" style="margin-top: 0px;">var hitslineChart  = dc.lineChart(<span class="code-string">"</span><span class="code-string">#chart-line-hitsperday"</span>); </pre><p> We set the charts dimension (x-axis), group (y-axis), and range&nbsp;</p><div class="pre-action-link" id="premain445904" style="width:100%;display:block;"><span id="prehide445904" onclick="processCodeBlocks.togglePre(445904);">Hide</span>  &nbsp; <span id="copycode445904" onclick="return processCodeBlocks.copyCode(445904);">Copy Code</span></div><pre lang="jscript" id="pre445904" class="notranslate" style="margin-top: 0px;">hitslineChart
+	.width(<span class="code-digit">500</span>).height(<span class="code-digit">200</span>)
+	.dimension(dateDim)
+	.group(hits)
+	.x(d3.time.scale().domain([minDate,maxDate])); </pre><p>&nbsp;And finally, we tell dc to render it.&nbsp;</p><div class="pre-action-link" id="premain444275" style="width:100%;display:block;"><span id="prehide444275" onclick="processCodeBlocks.togglePre(444275);">Hide</span>  &nbsp; <span id="copycode444275" onclick="return processCodeBlocks.copyCode(444275);">Copy Code</span></div><pre lang="jscript" id="pre444275" class="notranslate" style="margin-top: 0px;">dc.renderAll(); </pre><p>Beautiful isn't it? So you can see what the source code actually looks like and how it renders and behaves, I've created a jsfiddle. Just click on the image and you can see it fully working. &nbsp;</p><p><a href="http://jsfiddle.net/tvinci/e5gC2/15/"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/dc2.png"></a></p><p>&nbsp;You'll notice that you can't hover over a point in the graph to see its value. Instead you get a selector object. This is called a brush. By default, it is turned on. We can turn it off by adding the following to the chart attributes.:&nbsp;</p><div class="pre-action-link" id="premain124045" style="width:100%;display:block;"><span id="prehide124045" onclick="processCodeBlocks.togglePre(124045);">Hide</span>  &nbsp; <span id="copycode124045" onclick="return processCodeBlocks.copyCode(124045);">Copy Code</span></div><pre lang="jscript" id="pre124045" class="notranslate" style="margin-top: 0px;">.brushOn(<span class="code-keyword">false</span>)</pre><p>We can also give&nbsp;the yaxis a&nbsp;label:&nbsp;</p><div class="pre-action-link" id="premain539923" style="width:100%;display:block;"><span id="prehide539923" onclick="processCodeBlocks.togglePre(539923);">Hide</span>  &nbsp; <span id="copycode539923" onclick="return processCodeBlocks.copyCode(539923);">Copy Code</span></div><pre lang="jscript" id="pre539923" class="notranslate" style="margin-top: 0px;">.yAxisLabel(<span class="code-string">"</span><span class="code-string">Hits per day"</span>)  </pre><p><br>If you notice the dates, I purposefully had the data span two years. We're now going to add a pie chart to our dashboard that shows us the total hits for the year and then allow us to select the year. First we need to create a Year column for us to create a dimension on. We'll add it to our other column generations.&nbsp;</p><p>&nbsp;</p><div class="pre-action-link" id="premain737502" style="width:100%;display:block;"><span id="prehide737502" onclick="processCodeBlocks.togglePre(737502);">Hide</span>  &nbsp; <span id="copycode737502" onclick="return processCodeBlocks.copyCode(737502);">Copy Code</span></div><pre lang="jscript" id="pre737502" class="notranslate" style="margin-top: 0px;">data.forEach(<span class="code-keyword">function</span>(d) {
+	d.date = parseDate(d.date);
+	d.total= d.http_404+d.http_200+d.http_302;
+        d.Year=d.date.getFullYear();
+}); </pre><p>&nbsp;Next we create the dimension and then sum up the yearly totals.&nbsp;</p><div class="pre-action-link" id="premain53444" style="width:100%;display:block;"><span id="prehide53444" onclick="processCodeBlocks.togglePre(53444);">Hide</span>  &nbsp; <span id="copycode53444" onclick="return processCodeBlocks.copyCode(53444);">Copy Code</span></div><pre lang="jscript" id="pre53444" class="notranslate" style="margin-top: 0px;"><span class="code-keyword">var</span> yearDim  = ndx.dimension(<span class="code-keyword">function</span>(d) {<span class="code-keyword">return</span> +d.Year;});
+<span class="code-keyword">var</span> year_total = yearDim.group().reduceSum(<span class="code-keyword">function</span>(d) {<span class="code-keyword">return</span> d.total;});</pre><p>&nbsp;With this info, we can create the DOM object, its reference and graph the pie chart.&nbsp; You'll notice that the chart is of type pieChart. </p><div class="pre-action-link" id="premain659019" style="width:100%;display:block;"><span id="prehide659019" onclick="processCodeBlocks.togglePre(659019);">Hide</span>  &nbsp; <span id="copycode659019" onclick="return processCodeBlocks.copyCode(659019);">Copy Code</span></div><pre lang="jscript" id="pre659019" class="notranslate" style="margin-top: 0px;">&lt;div id=<span class="code-string">"</span><span class="code-string">chart-ring-year"</span>&gt;<span class="code-keyword">&lt;/</span><span class="code-leadattribute">div</span>&gt;</pre><p>&nbsp;<a href="http://jsfiddle.net/tvinci/Bra2H/7/"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/dc2b.png"></a></p><p>
+</p><p>
+</p><p>
+</p><p>The two charts are tied too each other through cross filter, so clicking a year will automatically filter the line graph with no extra code! Since we have all the data for the individual statuses, it seems a shame to waste that data. Let's enhance the chart a bit more. Instead of just a single total group, we'll create one for each status type:</p><div class="pre-action-link" id="premain998186" style="width:100%;display:block;"><span id="prehide998186" onclick="processCodeBlocks.togglePre(998186);">Hide</span>  &nbsp; <span id="copycode998186" onclick="return processCodeBlocks.copyCode(998186);">Copy Code</span></div><pre lang="jscript" id="pre998186" class="notranslate" style="margin-top: 0px;"><span class="code-keyword">var</span> status_200=dateDim.group().reduceSum(<span class="code-keyword">function</span>(d) {<span class="code-keyword">return</span> d.http_200;});
+<span class="code-keyword">var</span> status_302=dateDim.group().reduceSum(<span class="code-keyword">function</span>(d) {<span class="code-keyword">return</span> d.http_302;});
+<span class="code-keyword">var</span> status_404=dateDim.group().reduceSum(<span class="code-keyword">function</span>(d) {<span class="code-keyword">return</span> d.http_404;});</pre><p>We'll swap out the total with the status_200 group and stack the other groups on top. The second argument sets the label for the series, so we'll just shorten it to the status value itself. To make it look a little prettier, we'll switch it to an area chart by just setting the renderArea attribute to true. </p><p>To finish up, we'll also give it a legend. The legend needs a legend object, so we'll create one and position it in the top left corner. </p><div class="pre-action-link" id="premain442494" style="width:100%;display:block;"><span id="prehide442494" onclick="processCodeBlocks.togglePre(442494);">Hide</span>  &nbsp; <span id="copycode442494" onclick="return processCodeBlocks.copyCode(442494);">Copy Code</span></div><pre lang="jscript" id="pre442494" class="notranslate" style="margin-top: 0px;">hitslineChart
+   .width(<span class="code-digit">500</span>).height(<span class="code-digit">200</span>)
+   .dimension(dateDim)
+   .group(status_200,<span class="code-string">"</span><span class="code-string">200"</span>)
+   .stack(status_302,<span class="code-string">"</span><span class="code-string">302"</span>)
+   .stack(status_404,<span class="code-string">"</span><span class="code-string">404"</span>)   
+   .renderArea(<span class="code-keyword">true</span>)
+   .x(d3.time.scale().domain([minDate,maxDate]))
+   .brushOn(<span class="code-keyword">false</span>)
+   .legend(dc.legend().x(<span class="code-digit">50</span>).y(<span class="code-digit">10</span>).itemHeight(<span class="code-digit">13</span>).gap(<span class="code-digit">5</span>))
+   .yAxisLabel(<span class="code-string">"</span><span class="code-string">Hits per day"</span>);</pre><p>I should have made the data a little nicer, but you get the idea. :)&nbsp;</p><p> <a href="http://jsfiddle.net/tvinci/9h8L6/5/"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/dc4.png"></a> </p><p>We've covered two charts that interact with each other. However, dc.js isn't just about charts. It can also do tables. With most of the other libraries, a datatable is normally left out. This is another reason I like dc.js so much.</p><p>To create a table, we need to first create some structure for it, so it's a little different then just a simple div like the charts. However, chart titles - not to be confused with point labels also called titles, aren't included in the rendered divs either.</p><p>I've included a little bit of style on the encapsulating div so it doesn't overlap our charts. Then I've given our table a header and an id so we can have dc reference it.</p><div class="pre-action-link" id="premain362546" style="width:100%;display:block;"><span id="prehide362546" onclick="processCodeBlocks.togglePre(362546);">Hide</span>  &nbsp; <span id="copycode362546" onclick="return processCodeBlocks.copyCode(362546);">Copy Code</span></div><pre lang="jscript" id="pre362546" class="notranslate" style="margin-top: 0px;">&lt;div style=<span class="code-string">'</span><span class="code-string">clear:both;'</span>&gt;
+		&lt;table id=<span class="code-string">"</span><span class="code-string">dc-data-table"</span>&gt;
+			&lt;thead&gt;
+			&lt;tr <span class="code-keyword">class</span>=<span class="code-string">"</span><span class="code-string">header"</span>&gt;
+				&lt;th&gt;Day<span class="code-keyword">&lt;/</span><span class="code-leadattribute">th</span>&gt;</pre><p>Just like our previous dashboard elements, I've referenced the DOM object it is associated with and we give it a dimension and a group. In this instance, the group is used to organize the table data as you can see in the example. As far as I know, it is not possible to leave the grouping out and just have a flat datatable. The next attribute are the columns. You'll want to make sure the columns values line up with the values we've set in the header.</p><div class="pre-action-link" id="premain602001" style="width:100%;display:block;"><span id="prehide602001" onclick="processCodeBlocks.togglePre(602001);">Hide</span>  &nbsp; <span id="copycode602001" onclick="return processCodeBlocks.copyCode(602001);">Copy Code</span></div><pre lang="jscript" id="pre602001" class="notranslate" style="margin-top: 0px;"><span class="code-keyword">var</span> datatable   = dc.dataTable(<span class="code-string">"</span><span class="code-string">#dc-data-table"</span>);
+datatable
+    .dimension(dateDim)
+    .group(<span class="code-keyword">function</span>(d) {<span class="code-keyword">return</span> d.Year;})
+    <span class="code-comment">//</span><span class="code-comment"> dynamic columns creation using an array of closures
+</span>    .columns([
+        <span class="code-keyword">function</span>(d) { <span class="code-keyword">return</span> d.date.getDate() + <span class="code-string">"</span><span class="code-string">/"</span> + (d.date.getMonth() + <span class="code-digit">1</span>) + <span class="code-string">"</span><span class="code-string">/"</span> + d.date.getFullYear(); },
+        <span class="code-keyword">function</span>(d) {<span class="code-keyword">return</span> d.http_200;},
+        <span class="code-keyword">function</span>(d) {<span class="code-keyword">return</span> d.http_302;},
+        <span class="code-keyword">function</span>(d) {<span class="code-keyword">return</span> d.http_404;},        
+        <span class="code-keyword">function</span>(d) {<span class="code-keyword">return</span> d.total;}
+    ]);</pre><p>You should now be able to see the table render and react to updates in the chart!</p><p><a href="http://jsfiddle.net/tvinci/YEf5f/9/"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/dc5.png"></a> </p><p>&nbsp;</p><p>This covers some of the basics of dc.js. Stay tuned for part 3 where we cover some more advanced features.</p><h2>History&nbsp;&nbsp;&nbsp;</h2><p>
+		Keep a running update of any changes or improvements you've	made here.<br><br>
+	</p>
+
+
+						</div>
+						
+
+						<div class="float-right" style="margin:20px 0 0 10px;border:1px solid #ccc">
+						<div class="msg-300x250" data-format="300x250" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="Web-Development/Charts-Graphs-and-Images/General" data-loadonview="true" data-tags="Javascript,rating4.5"><noscript>&lt;a href="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Charts-Graphs-and-Images/General&amp;sz=300x250&amp;c=758807"&gt;&lt;img src="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Charts-Graphs-and-Images/General&amp;sz=300x250&amp;c=758807"  width="300px" height="250px" target="_blank"/&gt;&lt;/a&gt;</noscript><div id="div-gpt-ad-lqm.codeproject.site/adunblock-2" style="box-sizing: border-box; border: 0px; font-size: 0px;"><div id="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_0" title="3rd party ad content" name="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;"></iframe></div><iframe id="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_0__hidden__" title="" name="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_0__hidden__" width="0" height="0" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom; visibility: hidden; display: none;"></iframe></div><div id="div-gpt-ad-lqm.codeproject.site/adunblock-2" style="box-sizing: border-box; border: 0px; font-size: 0px;"></div></div>
+						</div>
+                        
+                        
+						
+						<h2>License</h2>
+						<div id="LicenseTerms"><p>This article, along with any associated source code and files, is licensed under <a href="http://www.codeproject.com/info/cpol10.aspx" rel="license">The Code Project Open License (CPOL)</a></p></div>
+						
+
+                        
+						<h2>Share</h2>
+				        <div class="share-list">
+					        
+
+
+
+<!-- Buttons start here. Copy this ul to your document. -->
+<ul class="rrssb-buttons clearfix rrssb-1">
+    <li class="email" data-initwidth="16.666666666666668" data-size="34" style="width: calc(50% - 84px);">
+
+        <a href="mailto:?subject=Making%20Dashboards%20with%20Dc.js%20-%20Part%202%3a%20Graphing%20-%20CodeProject&body=Here%27s%20an%20interesting%20article%20on%20for%20you%20on%20codeproject.com%0a%0ahttps%3a%2f%2fwww.codeproject.com%2farticles%2f697043%2fmaking-dashboards-with-dc-js-part-2-graphing%0a">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve"><g>
+                        <path d="M20.111 26.147c-2.336 1.051-4.361 1.401-7.125 1.401c-6.462 0-12.146-4.633-12.146-12.265 
+                            c0-7.94 5.762-14.833 14.561-14.833c6.853 0 11.8 4.7 11.8 11.252c0 5.684-3.194 9.265-7.399 
+                            9.3 c-1.829 0-3.153-0.934-3.347-2.997h-0.077c-1.208 1.986-2.96 2.997-5.023 2.997c-2.532 
+                            0-4.361-1.868-4.361-5.062 c0-4.749 3.504-9.071 9.111-9.071c1.713 0 3.7 0.4 4.6 0.973l-1.169 
+                            7.203c-0.388 2.298-0.116 3.3 1 3.4 c1.673 0 3.773-2.102 3.773-6.58c0-5.061-3.27-8.994-9.303-8.994c-5.957 
+                            0-11.175 4.673-11.175 12.1 c0 6.5 4.2 10.2 10 10.201c1.986 0 4.089-0.43 5.646-1.245L20.111 
+                            26.147z M16.646 10.1 c-0.311-0.078-0.701-0.155-1.207-0.155c-2.571 0-4.595 2.53-4.595 5.529c0 
+                            1.5 0.7 2.4 1.9 2.4 c1.441 0 2.959-1.828 3.311-4.087L16.646 10.068z"></path></g>
+                </svg>
+            </span>
+            <span class="text">email</span>
+        </a>
+    </li>
+    <li class="twitter" data-initwidth="16.666666666666668" data-size="47" style="width: calc(50% - 84px);">
+        <!-- Replace href with your Meta and URL information  -->
+        <a href="http://twitter.com/home?status=Making+Dashboards+with+Dc.js+-+Part+2%3a+Graphing+-+CodeProject+-+https%3a%2f%2fwww.codeproject.com%2farticles%2f697043%2fmaking-dashboards-with-dc-js-part-2-graphing" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                <path d="M24.253,8.756C24.689,17.08,18.297,24.182,9.97,24.62c-3.122,0.162-6.219-0.646-8.861-2.32
+                    c2.703,0.179,5.376-0.648,7.508-2.321c-2.072-0.247-3.818-1.661-4.489-3.638c0.801,0.128,1.62,0.076,2.399-0.155
+                    C4.045,15.72,2.215,13.6,2.115,11.077c0.688,0.275,1.426,0.407,2.168,0.386c-2.135-1.65-2.729-4.621-1.394-6.965
+                    C5.575,7.816,9.54,9.84,13.803,10.071c-0.842-2.739,0.694-5.64,3.434-6.482c2.018-0.623,4.212,0.044,5.546,1.683
+                    c1.186-0.213,2.318-0.662,3.329-1.317c-0.385,1.256-1.247,2.312-2.399,2.942c1.048-0.106,2.069-0.394,3.019-0.851
+                    C26.275,7.229,25.39,8.196,24.253,8.756z"></path>
+                </svg>
+            </span>
+            <span class="text">twitter</span>
+        </a>
+    </li>
+
+    <li class="facebook small" data-initwidth="16.666666666666668" data-size="58" style="width: 42px;">
+        <!-- Replace with your URL. For best results, make sure you page has the proper FB Open Graph tags in header: 
+        https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/ -->
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.codeproject.com%2farticles%2f697043%2fmaking-dashboards-with-dc-js-part-2-graphing" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                    <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434
+                        c0,2.427,2.181,4.608,4.608,4.608H14V17.379h-3.379v-4.608H14v-1.795c0-3.089,2.335-5.885,5.192-5.885h3.718v4.608h-3.726
+                        c-0.408,0-0.884,0.492-0.884,1.236v1.836h4.609v4.608h-4.609v10.446h4.916c2.422,0,4.608-2.188,4.608-4.608V4.783z"></path>
+                </svg>
+            </span>
+            <span class="text">facebook</span>
+        </a>
+    </li>
+    
+    <li class="linkedin small" data-initwidth="16.666666666666668" data-size="47" style="width: 42px;">
+        <!-- Replace href with your meta and URL information -->
+        <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.codeproject.com%2farticles%2f697043%2fmaking-dashboards-with-dc-js-part-2-graphing&title=Making+Dashboards+with+Dc.js+-+Part+2%3a+Graphing+-+CodeProject&summary=&source=codeproject.com" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                    <path d="M25.424,15.887v8.447h-4.896v-7.882c0-1.979-0.709-3.331-2.48-3.331c-1.354,0-2.158,0.911-2.514,1.803
+                        c-0.129,0.315-0.162,0.753-0.162,1.194v8.216h-4.899c0,0,0.066-13.349,0-14.731h4.899v2.088c-0.01,0.016-0.023,0.032-0.033,0.048
+                        h0.033V11.69c0.65-1.002,1.812-2.435,4.414-2.435C23.008,9.254,25.424,11.361,25.424,15.887z M5.348,2.501
+                        c-1.676,0-2.772,1.092-2.772,2.539c0,1.421,1.066,2.538,2.717,2.546h0.032c1.709,0,2.771-1.132,2.771-2.546
+                        C8.054,3.593,7.019,2.501,5.343,2.501H5.348z M2.867,24.334h4.897V9.603H2.867V24.334z"></path>
+                </svg>
+            </span>
+            <span class="text">linkedin</span>
+        </a>
+    </li>
+    <li class="reddit small" data-initwidth="16.666666666666668" data-size="37" style="width: 42px;">
+        <a href="http://www.reddit.com/submit?url=https%3a%2f%2fwww.codeproject.com%2farticles%2f697043%2fmaking-dashboards-with-dc-js-part-2-graphing&title=Making+Dashboards+with+Dc.js+-+Part+2%3a+Graphing+-+CodeProject">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve"><g>
+                <path d="M11.794 15.316c0-1.029-0.835-1.895-1.866-1.895c-1.03 0-1.893 0.865-1.893 1.895s0.863 1.9 1.9 1.9 C10.958 17.2 11.8 16.3 11.8 15.316z"></path>
+                <path d="M18.1 13.422c-1.029 0-1.895 0.864-1.895 1.895c0 1 0.9 1.9 1.9 1.865c1.031 0 1.869-0.836 1.869-1.865 C19.969 14.3 19.1 13.4 18.1 13.422z"></path>
+                <path d="M17.527 19.791c-0.678 0.678-1.826 1.006-3.514 1.006c-0.004 0-0.009 0-0.014 0c-0.004 0-0.01 0-0.015 0 
+                c-1.686 0-2.834-0.328-3.51-1.005c-0.264-0.265-0.693-0.265-0.958 0c-0.264 0.265-0.264 0.7 0 1 c0.943 0.9 2.4 1.4 
+                4.5 1.402c0.005 0 0 0 0 0c0.005 0 0 0 0 0c2.066 0 3.527-0.459 4.47-1.402 c0.265-0.264 0.265-0.693 0.002-0.958C18.221 
+                19.5 17.8 19.5 17.5 19.791z"></path><path d="M27.707 13.267c0-1.785-1.453-3.237-3.236-3.237c-0.793 0-1.518 0.287-2.082 
+                0.761c-2.039-1.295-4.646-2.069-7.438-2.219 l1.483-4.691l4.062 0.956c0.071 1.4 1.3 2.6 2.7 2.555c1.488 0 2.695-1.208 
+                2.695-2.695C25.881 3.2 24.7 2 23.2 2 c-1.059 0-1.979 0.616-2.42 1.508l-4.633-1.091c-0.344-0.081-0.693 0.118-0.803 
+                0.455l-1.793 5.7 C10.548 8.6 7.7 9.4 5.6 10.75C5.006 10.3 4.3 10 3.5 10.029c-1.785 0-3.237 1.452-3.237 3.2 c0 1.1 0.6 
+                2.1 1.4 2.69c-0.04 0.272-0.061 0.551-0.061 0.831c0 2.3 1.3 4.4 3.7 5.9 c2.299 1.5 5.3 2.3 8.6 2.325c3.228 0 6.271-0.825 
+                8.571-2.325c2.387-1.56 3.7-3.66 3.7-5.917 c0-0.26-0.016-0.514-0.051-0.768C27.088 15.5 27.7 14.4 27.7 13.267z M23.186 
+                3.355c0.74 0 1.3 0.6 1.3 1.3 c0 0.738-0.6 1.34-1.34 1.34s-1.342-0.602-1.342-1.34C21.844 4 22.4 3.4 23.2 3.355z M1.648 
+                13.3 c0-1.038 0.844-1.882 1.882-1.882c0.31 0 0.6 0.1 0.9 0.209c-1.049 0.868-1.813 1.861-2.26 2.9 C1.832 14.2 1.6 13.8 1.6 
+                13.267z M21.773 21.57c-2.082 1.357-4.863 2.105-7.831 2.105c-2.967 0-5.747-0.748-7.828-2.105 
+                c-1.991-1.301-3.088-3-3.088-4.782c0-1.784 1.097-3.484 3.088-4.784c2.081-1.358 4.861-2.106 7.828-2.106 c2.967 0 5.7 
+                0.7 7.8 2.106c1.99 1.3 3.1 3 3.1 4.784C24.859 18.6 23.8 20.3 21.8 21.57z M25.787 14.6 
+                c-0.432-1.084-1.191-2.095-2.244-2.977c0.273-0.156 0.59-0.245 0.928-0.245c1.035 0 1.9 0.8 1.9 1.9 
+                C26.354 13.8 26.1 14.3 25.8 14.605z"></path></g></svg>
+            </span>
+            <span class="text">reddit</span>
+        </a>
+    </li>
+    <li class="googleplus small" data-initwidth="16.666666666666668" data-size="51" style="width: 42px;">
+        <!-- Replace href with your meta and URL information.  -->
+        <a href="https://plus.google.com/share?url=https%3a%2f%2fwww.codeproject.com%2farticles%2f697043%2fmaking-dashboards-with-dc-js-part-2-graphing" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                    <g>
+                        <g>
+                            <path d="M14.703,15.854l-1.219-0.948c-0.372-0.308-0.88-0.715-0.88-1.459c0-0.748,0.508-1.223,0.95-1.663
+                                c1.42-1.119,2.839-2.309,2.839-4.817c0-2.58-1.621-3.937-2.399-4.581h2.097l2.202-1.383h-6.67c-1.83,0-4.467,0.433-6.398,2.027
+                                C3.768,4.287,3.059,6.018,3.059,7.576c0,2.634,2.022,5.328,5.604,5.328c0.339,0,0.71-0.033,1.083-0.068
+                                c-0.167,0.408-0.336,0.748-0.336,1.324c0,1.04,0.551,1.685,1.011,2.297c-1.524,0.104-4.37,0.273-6.467,1.562
+                                c-1.998,1.188-2.605,2.916-2.605,4.137c0,2.512,2.358,4.84,7.289,4.84c5.822,0,8.904-3.223,8.904-6.41
+                                c0.008-2.327-1.359-3.489-2.829-4.731H14.703z M10.269,11.951c-2.912,0-4.231-3.765-4.231-6.037c0-0.884,0.168-1.797,0.744-2.511
+                                c0.543-0.679,1.489-1.12,2.372-1.12c2.807,0,4.256,3.798,4.256,6.242c0,0.612-0.067,1.694-0.845,2.478
+                                c-0.537,0.55-1.438,0.948-2.295,0.951V11.951z M10.302,25.609c-3.621,0-5.957-1.732-5.957-4.142c0-2.408,2.165-3.223,2.911-3.492
+                                c1.421-0.479,3.25-0.545,3.555-0.545c0.338,0,0.52,0,0.766,0.034c2.574,1.838,3.706,2.757,3.706,4.479
+                                c-0.002,2.073-1.736,3.665-4.982,3.649L10.302,25.609z"></path>
+                            <polygon points="23.254,11.89 23.254,8.521 21.569,8.521 21.569,11.89 18.202,11.89 18.202,13.604 21.569,13.604 21.569,17.004
+                                23.254,17.004 23.254,13.604 26.653,13.604 26.653,11.89      "></polygon>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+            <span class="text">google+</span>
+        </a>
+    </li>
+    
+</ul>
+<!-- Buttons end here -->
+
+				        </div> 
+    			        
+
+
+						
+						<h2 id="ctl00_AboutHeading">About the Author</h2>
+						    
+
+
+<div class="author-wrapper">
+
+    <div class="pic-wrapper"> 
+        <img id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberPhoto" class="profile-pic" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/65e127b6ea65738afdeae313700a0973.jpg" style="border-width:0px;transform:rotate(0deg);">
+
+    </div>
+
+    <div class="container-member">  
+        <b><a id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberProfileLink" class="author" href="https://www.codeproject.com/Members/Member3792090">The Myth</a></b>
+
+        <table class="extended">
+        <tbody><tr>
+            <td rowspan="2" nowrap="" valign="middle">
+            
+            </td>
+            <td width="100%">
+                <div class="company">
+                    <span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberJobTitle"></span>
+	                <span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberCompany"></span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberLocation">United States <img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/US.gif" alt="United States" width="16px" height="11px"></span>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+    <div class="description">
+        I'm a Principal Performance Engineer who uses VB.Net, HTML, CSS, etc. to write automation tools and reports.
+
+        
+    </div>
+
+</div><br>
+						
+						
+
+						<div class="clearfix"></div>
+
+						<div style="padding-top:8px">
+							
+						</div>
+
+					
+
+				    
+					</form>
+
+				</div>
+
+				
+				<div class="bottom-promo"> 
+				    <div class="msg-728x90" data-format="728x90" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="Web-Development/Charts-Graphs-and-Images/General" data-loadonview="true" data-tags="Javascript,rating4.5,pos_bottom"><noscript>&lt;a href="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Charts-Graphs-and-Images/General&amp;sz=728x90&amp;c=758807"&gt;&lt;img src="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Charts-Graphs-and-Images/General&amp;sz=728x90&amp;c=758807"  width="728px" height="90px" target="_blank"/&gt;&lt;/a&gt;</noscript><div id="div-gpt-ad-lqm.codeproject.site/adunblock-3" style="box-sizing: border-box; border: 0px; font-size: 0px;"><div id="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_1__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_1" title="3rd party ad content" name="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_1" width="728" height="90" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;"></iframe></div><iframe id="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_1__hidden__" title="" name="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_1__hidden__" width="0" height="0" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom; visibility: hidden; display: none;"></iframe></div><div id="div-gpt-ad-lqm.codeproject.site/adunblock-3" style="box-sizing: border-box; border: 0px; font-size: 0px;"></div></div>
+				</div>
+				
+
+                
+        <h2 id="ctl00_AlsoRead_RelatedResults_ctl00_Header" class="also-read">You may also be interested in...</h2>
+        <table class="spaced content-list also-read">
+    
+	    <tbody><tr>
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl01_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl01_Thumbnail" href="https://www.codeproject.com/Articles/23/SAPrefs-Netscape-like-Preferences-Dialog"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/Thumb-23.gif" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl01_Link" href="https://www.codeproject.com/Articles/23/SAPrefs-Netscape-like-Preferences-Dialog">SAPrefs - Netscape-like Preferences Dialog</a></div>
+                
+            </div>
+        </td>
+	
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl02_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl02_Thumbnail" href="https://www.codeproject.com/Articles/609053/AngleSharp"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/Thumb-609053.png" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl02_Link" href="https://www.codeproject.com/Articles/609053/AngleSharp">AngleSharp</a></div>
+                
+            </div>
+        </td>
+	    </tr>
+	
+	    <tr>
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl03_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl03_Thumbnail" href="https://www.codeproject.com/Articles/47864/Generate-and-add-keyword-variations-using-AdWords"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/Thumb-47864.png" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl03_Link" href="https://www.codeproject.com/Articles/47864/Generate-and-add-keyword-variations-using-AdWords">Generate and add keyword variations using AdWords API</a></div>
+                
+            </div>
+        </td>
+	
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl04_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl04_Thumbnail" href="https://www.codeproject.com/Articles/12999/WTL-for-MFC-Programmers-Part-IX-GDI-Classes-Common"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/Thumb-12999.png" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl04_Link" href="https://www.codeproject.com/Articles/12999/WTL-for-MFC-Programmers-Part-IX-GDI-Classes-Common">WTL for MFC Programmers, Part IX - GDI Classes, Common Dialogs, and Utility Classes</a></div>
+                
+            </div>
+        </td>
+	    </tr>
+	
+	    <tr>
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl05_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl05_Thumbnail" href="https://www.codeproject.com/Articles/107/Window-Tabs-WndTabs-Add-In-for-DevStudio"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/Thumb-107.jpg" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl05_Link" href="https://www.codeproject.com/Articles/107/Window-Tabs-WndTabs-Add-In-for-DevStudio">Window Tabs (WndTabs) Add-In for DevStudio</a></div>
+                
+            </div>
+        </td>
+	
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl06_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl06_Thumbnail" href="https://www.codeproject.com/Articles/1449/OLE-DB-First-steps"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/article100x80.png" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl06_Link" href="https://www.codeproject.com/Articles/1449/OLE-DB-First-steps">OLE DB - First steps</a></div>
+                
+            </div>
+        </td>
+	    </tr>
+	
+		</tbody></table>
+	
+
+
+
+				
+				
+
+					<h2>Comments and Discussions</h2>
+					<a class="float-left" name="_comments" id="_comments">&nbsp;</a><div id="_MessageBoardctl00_MessageBoard" onclick="return SwitchMessage(event, null)">
+<table id="ForumTable" class="forum relaxed" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td class="header1 callout"><b>You must <a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2farticles%2f697043%2fmaking-dashboards-with-dc-js-part-2-graphing%3ffid%3d1849953">Sign In</a> to use this message board.</b></td>
+</tr><tr>
+<td><table width="100%" border="0" cellpadding="3px" cellspacing="0">
+<tbody><tr class="header1">
+<td colspan="2" style="white-space:nowrap;"><div class="container">
+<div class="float-right">
+<form action="https://www.codeproject.com/Search.aspx?sbo=fm" method="get" class="searchbar">
+<input type="hidden" name="fid" value="1849953"><input type="hidden" name="sbo" value="fm"><b>Search Comments </b><input type="search" class="search" name="qf">&nbsp;<input type="submit" value="Go" class="button">
+</form>
+</div>
+</div></td>
+</tr><tr class="header2">
+<td></td><td style="width:100%;"><div style="text-align:right;">
+<form action="https://www.codeproject.com/script/Forums/SetOptions.aspx?fid=1849953&floc=%2farticles%2f697043%2fmaking-dashboards-with-dc-js-part-2-graphing" method="get" style="margin:0;padding:0;">
+<input type="hidden" name="fid" value="1849953"><input type="hidden" name="currentQS" value="fid=1849953&amp;floc=%2farticles%2f697043%2fmaking-dashboards-with-dc-js-part-2-graphing"><input type="hidden" name="floc" value="/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Spacing<select size="1" class="dropdown" name="spc">
+<option selected="" value="Relaxed">Relaxed</option><option value="Compact">Compact</option><option value="Tight">Tight</option>
+</select>&nbsp;&nbsp;Layout<select size="1" class="dropdown" name="view">
+<option selected="" value="Normal">Normal</option><option value="Topic">Open Topics</option><option value="Expanded">Open All</option><option value="Thread">Thread View</option>
+</select>&nbsp;&nbsp;Per page<select size="1" class="dropdown" name="mpp">
+<option value="10">10</option><option selected="" value="25">25</option><option value="50">50</option>
+</select>&nbsp;&nbsp;&nbsp;<input type="submit" value="Update" name="SetOpt" class="button">
+</form>
+</div></td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><a name="xx0xx"></a><table border="0" cellpadding="2px" cellspacing="0" width="100%">
+<tbody><tr class="navbar">
+<td></td><td style="text-align:right;width:50%;"></td><td style="text-align:right;white-space:nowrap;"><span class="nav-link disabled">First</span> <span class="nav-link disabled">Prev</span> <span class="nav-link disabled">Next</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%" class="fixed-layout blank-background">
+<tbody><tr>
+<td><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" border="0" width="1px" height="5px" alt=""></td>
+</tr><tr id="F5207487_h0" class="header hover-row root">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="20px" class="indent"><a name="xx5207487xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_question.gif" alt="Question"></td><td class="subject hover-container"><a class="message-link" name="5207487" parent="0" thread="5207487" href="https://www.codeproject.com/Messages/5207487/I-have-question.aspx">I have question</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">Member 12355700</span><span class="date">27-Feb-16  5:29</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=12355700">Member 12355700</a></span></td><td class="date"><span>27-Feb-16  5:29&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F5207487_h1" class="content root selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:20px;"><div class="voteform vertical" ownerid="12355700" msgid="5207487" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="20px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2">Hello,<br>Thank you for this tutorial. <br>I met a trouble that this first graphic works very well, however the pizza chart and the table couldn't work. <br>I exactly copied the code and tried many times, but always got this message:<br><br><b> Uncaught TypeError: t.substring is not a function,            d3.min.js:1</b><br><br>from Chrome console. <br>I have no idea what happened.<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=5207487" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/5207487/I-have-question.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF5207487" data-ref="3_5207487" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F5218218_h0" class="header hover-row">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="38px" class="indent"><a name="xx5218218xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_answer.gif" alt="Answer"></td><td class="subject hover-container"><a class="message-link" name="5218218" parent="5207487" thread="5207487" href="https://www.codeproject.com/Messages/5218218/Re-I-have-question.aspx">Re: I have question</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">The Myth</span><span class="date">18-Mar-16  15:58</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=3792090">The Myth</a></span></td><td class="date"><span>18-Mar-16  15:58&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F5218218_h1" class="content selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:38px;"><div class="voteform vertical" ownerid="3792090" msgid="5218218" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="38px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2"><div class="parent"><a rel="nofollow" onclick="return SwitchMessage(null,5207487);" href="https://www.codeproject.com/Messages/5207487/I-have-question.aspx"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/arrow-up24.png" title="Go to Parent" style="width:16px;height:16px;border:0"></a></div>It helps if you have a fiddle with the issue. It could be the version of either the library or the d3 that your referencing, but I can't tell without an example. The versions I use in the example are probably a good 3 years old even though they still haven't updated dc.js to the latest version.<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=5207487" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/5218218/Re-I-have-question.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF5218218" data-ref="3_5218218" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F5090982_h0" class="header hover-row root">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="20px" class="indent"><a name="xx5090982xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_question.gif" alt="Question"></td><td class="subject hover-container"><a class="message-link" name="5090982" parent="0" thread="5090982" href="https://www.codeproject.com/Messages/5090982/Meteor-My-code-is-ok-doesnt-return-errors-but-i-ca.aspx">[Meteor] My code is ok, doesn't return errors, but i can't see any chart in my template</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">Member 11834245</span><span class="date">13-Jul-15  8:28</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=11834245">Member 11834245</a></span></td><td class="date"><span>13-Jul-15  8:28&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F5090982_h1" class="content root selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:20px;"><div class="voteform vertical" ownerid="11834245" msgid="5090982" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="20px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2">Hi everybody,<br>I'm new to this forum, Meteor, and Dc.js, and i want to add some charts in a project i'm working at, so i found this magnificient tutorial, i passed the first part without problems, but i face a problem in this 2nd part, because i have done everything but i can see no chart, there is no errors in the console, but nothing happen.<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=5090982" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/5090982/Meteor-My-code-is-ok-doesnt-return-errors-but-i-ca.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF5090982" data-ref="3_5090982" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F5199648_h0" class="header hover-row">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="38px" class="indent"><a name="xx5199648xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_answer.gif" alt="Answer"></td><td class="subject hover-container"><a class="message-link" name="5199648" parent="5090982" thread="5090982" href="https://www.codeproject.com/Messages/5199648/Re-Meteor-My-code-is-ok-doesnt-return-errors-but-i.aspx">Re: [Meteor] My code is ok, doesn't return errors, but i can't see any chart in my template</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">Member 4178843</span><span class="date">10-Feb-16  22:08</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=4178843">Member 4178843</a></span></td><td class="date"><span>10-Feb-16  22:08&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F5199648_h1" class="content selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:38px;"><div class="voteform vertical" ownerid="4178843" msgid="5199648" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="38px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2"><div class="parent"><a rel="nofollow" onclick="return SwitchMessage(null,5090982);" href="https://www.codeproject.com/Messages/5090982/Meteor-My-code-is-ok-doesnt-return-errors-but-i-ca.aspx"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/arrow-up24.png" title="Go to Parent" style="width:16px;height:16px;border:0"></a></div>Hi, Im also not seeing on the screen. Shouldn't the dc.renderAll() be called automatically? I can see anything using console.log before the line dc.renderAll(). Any idea?<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=5090982" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/5199648/Re-Meteor-My-code-is-ok-doesnt-return-errors-but-i.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF5199648" data-ref="3_5199648" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F5218216_h0" class="header hover-row">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="56px" class="indent"><a name="xx5218216xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_general.gif" alt="General"></td><td class="subject hover-container"><a class="message-link" name="5218216" parent="5199648" thread="5090982" href="https://www.codeproject.com/Messages/5218216/Re-Meteor-My-code-is-ok-doesnt-return-errors-but-i.aspx">Re: [Meteor] My code is ok, doesn't return errors, but i can't see any chart in my template</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">The Myth</span><span class="date">18-Mar-16  15:55</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=3792090">The Myth</a></span></td><td class="date"><span>18-Mar-16  15:55&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F5218216_h1" class="content selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:56px;"><div class="voteform vertical" ownerid="3792090" msgid="5218216" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="56px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2"><div class="parent"><a rel="nofollow" onclick="return SwitchMessage(null,5199648);" href="https://www.codeproject.com/Messages/5199648/Re-Meteor-My-code-is-ok-doesnt-return-errors-but-i.aspx"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/arrow-up24.png" title="Go to Parent" style="width:16px;height:16px;border:0"></a></div>It helps if you have a fiddle with the issue as an example, then I can try to figure out what the issue is. Do you see a table in the example fiddle that I show?<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=5090982" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/5218216/Re-Meteor-My-code-is-ok-doesnt-return-errors-but-i.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF5218216" data-ref="3_5218216" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4857874_h0" class="header hover-row root">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="20px" class="indent"><a name="xx4857874xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_question.gif" alt="Question"></td><td class="subject hover-container"><a class="message-link" name="4857874" parent="0" thread="4857874" href="https://www.codeproject.com/Messages/4857874/Very-helpful.aspx">Very helpful</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">Member 10935131</span><span class="date">9-Jul-14  4:04</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=10935131">Member 10935131</a></span></td><td class="date"><span>9-Jul-14  4:04&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4857874_h1" class="content root selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:20px;"><div class="voteform vertical" ownerid="10935131" msgid="4857874" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="20px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2">This is great tutorial to start with dc.js, thank you so much! <img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/smiley_smile.gif" align="top" alt="Smile | :)"> <br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=4857874" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/4857874/Very-helpful.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4857874" data-ref="3_4857874" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4827653_h0" class="header hover-row root">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="20px" class="indent"><a name="xx4827653xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_question.gif" alt="Question"></td><td class="subject hover-container"><a class="message-link" name="4827653" parent="0" thread="4827653" href="https://www.codeproject.com/Messages/4827653/Thank-you.aspx">Thank you</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">David Esteban Alarcón Flores</span><span class="date">22-May-14  11:47</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=10837942">David Esteban Alarcón Flores</a></span></td><td class="date"><span>22-May-14  11:47&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4827653_h1" class="content root selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:20px;"><div class="voteform vertical" ownerid="10837942" msgid="4827653" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="20px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2">Thank you for this tutorial. It was totally awesome! There are many d3 and dc tutorials out there, but none of them were as complete and clear like yours.<br><br>I guess this should be helpful for the cleaning of your tutorial -&gt; when you created the table, you missed the  line for 404 hits <img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/smiley_wink.gif" align="top" alt="Wink | ;)">  Also, dc does not support .pluck() anymore. (I've confirmed this exploring the dc object in the browser console)<br><br>Thank you again!<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=4827653" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/4827653/Thank-you.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4827653" data-ref="3_4827653" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4823656_h0" class="header hover-row root">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="20px" class="indent"><a name="xx4823656xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_question.gif" alt="Question"></td><td class="subject hover-container"><a class="message-link" name="4823656" parent="0" thread="4823656" href="https://www.codeproject.com/Messages/4823656/Line-Chart-Not-Rendering-Correctly.aspx">Line Chart Not Rendering Correctly</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">Member 10827309</span><span class="date">18-May-14  12:11</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=10827309">Member 10827309</a></span></td><td class="date"><span>18-May-14  12:11&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4823656_h1" class="content root selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:20px;"><div class="voteform vertical" ownerid="10827309" msgid="4823656" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="20px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2">Hello. Great tutorial, but I've been following along and can't seem to get my initial line chart to render correctly. Instead of getting the result in the JS Fiddle within this tutorial I get the following result: <a href="http://www.unc.edu/~shafferk/dc_test.html">http://www.unc.edu/~shafferk/dc_test.html</a>. You can view page source to take a look at my code to see if I'm maybe referencing some CSS incorrectly (that's the only thing I can think of that would be wrong since the functionality seems to be working at this point). Thanks for reading, any input would be greatly appreciated!<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=4823656" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/4823656/Line-Chart-Not-Rendering-Correctly.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4823656" data-ref="3_4823656" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4839638_h0" class="header hover-row">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="38px" class="indent"><a name="xx4839638xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_answer.gif" alt="Answer"></td><td class="subject hover-container"><a class="message-link" name="4839638" parent="4823656" thread="4823656" href="https://www.codeproject.com/Messages/4839638/Re-Line-Chart-Not-Rendering-Correctly.aspx">Re: Line Chart Not Rendering Correctly</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">Member 3792090</span><span class="date">11-Jun-14  1:41</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=3792090">Member 3792090</a></span></td><td class="date"><span>11-Jun-14  1:41&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4839638_h1" class="content selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:38px;"><div class="voteform vertical" ownerid="3792090" msgid="4839638" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="38px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2"><div class="parent"><a rel="nofollow" onclick="return SwitchMessage(null,4823656);" href="https://www.codeproject.com/Messages/4823656/Line-Chart-Not-Rendering-Correctly.aspx"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/arrow-up24.png" title="Go to Parent" style="width:16px;height:16px;border:0"></a></div>Yup, it is definitely your CSS. If you reference <a href="http://tvinci.github.io/webs/css/dc.css">http://tvinci.github.io/webs/css/dc.css</a>[<a href="http://tvinci.github.io/webs/css/dc.css" target="_blank" title="New Window">^</a>] then it seems to work ok. I wonder if they changed it in the  new version. I don't remember having to alter it. If so, just download mine and use it or compare the two to see what has changed.<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=4823656" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/4839638/Re-Line-Chart-Not-Rendering-Correctly.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4839638" data-ref="3_4839638" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4811197_h0" class="header hover-row root">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="20px" class="indent"><a name="xx4811197xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_question.gif" alt="Question"></td><td class="subject hover-container"><a class="message-link" name="4811197" parent="0" thread="4811197" href="https://www.codeproject.com/Messages/4811197/Question.aspx">Question</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">Member 10448384</span><span class="date">30-Apr-14  18:33</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=10448384">Member 10448384</a></span></td><td class="date"><span>30-Apr-14  18:33&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4811197_h1" class="content root selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:20px;"><div class="voteform vertical" ownerid="10448384" msgid="4811197" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="20px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2">It's seem I have problem in display part. I couldn't display the graph.<br><br>Any idea what is happening? I do link all the 3 js file and css file. Thank you for help<br><br>When I look at the web console, it display reference error of d3 and dc.<br><br><div class="modified">modified  30-Apr-14 23:55pm.</div><br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=4811197" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/4811197/Question.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4811197" data-ref="3_4811197" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4818255_h0" class="header hover-row">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="38px" class="indent"><a name="xx4818255xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_answer.gif" alt="Answer"></td><td class="subject hover-container"><a class="message-link" name="4818255" parent="4811197" thread="4811197" href="https://www.codeproject.com/Messages/4818255/Re-Question.aspx">Re: Question</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">Member 3792090</span><span class="date">11-May-14  8:27</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=3792090">Member 3792090</a></span></td><td class="date"><span>11-May-14  8:27&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4818255_h1" class="content selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:38px;"><div class="voteform vertical" ownerid="3792090" msgid="4818255" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="38px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2"><div class="parent"><a rel="nofollow" onclick="return SwitchMessage(null,4811197);" href="https://www.codeproject.com/Messages/4811197/Question.aspx"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/arrow-up24.png" title="Go to Parent" style="width:16px;height:16px;border:0"></a></div>Make sure you put the meta in and that the dc.js and other files are in the correct directories. If you do a jsfiddle example, I can help solve the issue.:<br>&lt;meta http-equiv="content-type" content="text/html; charset=UTF8"&gt;<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=4811197" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/4818255/Re-Question.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4818255" data-ref="3_4818255" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4748101_h0" class="header hover-row root">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="20px" class="indent"><a name="xx4748101xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_bug.gif" alt="Bug"></td><td class="subject hover-container"><a class="message-link" name="4748101" parent="0" thread="4748101" href="https://www.codeproject.com/Messages/4748101/Thanks-plus-bugfix.aspx">Thanks + bugfix</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">Stephen Larson</span><span class="date">30-Jan-14  3:09</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=10559857">Stephen Larson</a></span></td><td class="date"><span>30-Jan-14  3:09&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4748101_h1" class="content root selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:20px;"><div class="voteform vertical" ownerid="10559857" msgid="4748101" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="20px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2">Great article<br><br>A couple bugs in your code blocks. First:<br><br>You might want to add the following to your first code block:<br><br><div class="pre-action-link" id="premain121047" style="width:100%;display:block;"><span id="prehide121047" onclick="processCodeBlocks.togglePre(121047);">Hide</span>  &nbsp; <span id="preShrink121047" onclick="processCodeBlocks.shrinkExpand(121047);">Shrink</span> <img id="preimg121047" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/arrow-up-16.png" style="height:16px;width:16px" onclick="processCodeBlocks.shrinkExpand(121047);">  &nbsp; <span id="copycode121047" onclick="return processCodeBlocks.copyCode(121047);">Copy Code</span></div><pre lang="xml" style="margin-top: 0px;" id="pre121047" class="notranslate"><span class="code-keyword">&lt;</span><span class="code-leadattribute">meta</span> <span class="code-attribute">http-equiv</span><span class="code-keyword">="</span><span class="code-keyword">content-type"</span> <span class="code-attribute">content</span><span class="code-keyword">="</span><span class="code-keyword">text/html; charset=UTF8"</span><span class="code-keyword">&gt;</span>
+<span class="code-keyword">&lt;</span><span class="code-leadattribute">/head</span><span class="code-keyword">&gt;</span>
+<span class="code-keyword">&lt;</span><span class="code-leadattribute">link</span> <span class="code-attribute">rel</span><span class="code-keyword">="</span><span class="code-keyword">stylesheet"</span> <span class="code-attribute">type</span><span class="code-keyword">="</span><span class="code-keyword">text/css"</span> <span class="code-attribute">href</span><span class="code-keyword">="</span><span class="code-keyword">./css/dc.css"</span> <span class="code-attribute">media</span><span class="code-keyword">="</span><span class="code-keyword">screen"</span> <span class="code-keyword">/</span><span class="code-keyword">&gt;</span></pre><br><br>The meta tag addresses a problem with funky characters in d3.js.  Without it, chrome was freaking out.<br>The explicit reference to dc.css is used in your jsfiddle example, but doesn't appear anywhere in the tutorial.<br><br>Second: <br><br>In your third code block down you have this for the first line:<br><br><div class="pre-action-link" id="premain461642" style="width:100%;display:block;"><span id="prehide461642" onclick="processCodeBlocks.togglePre(461642);">Hide</span>  &nbsp; <span id="preShrink461642" onclick="processCodeBlocks.shrinkExpand(461642);">Shrink</span> <img id="preimg461642" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/arrow-up-16.png" style="height:16px;width:16px" onclick="processCodeBlocks.shrinkExpand(461642);">  &nbsp; <span id="copycode461642" onclick="return processCodeBlocks.copyCode(461642);">Copy Code</span></div><pre id="pre461642" class="notranslate" style="margin-top: 0px;"><span class="code-keyword">var</span> parseDate = d3.time.format(<span class="code-string">"</span><span class="code-string">%m/%d/%Y"</span>).parse;&lt;br /&gt;data.forEach(function(d) {</pre><br><br>There's a &lt;br /&gt; in there that shouldn't be.<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=4748101" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/4748101/Thanks-plus-bugfix.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4748101" data-ref="3_4748101" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4748659_h0" class="header hover-row">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="38px" class="indent"><a name="xx4748659xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_general.gif" alt="General"></td><td class="subject hover-container"><a class="message-link" name="4748659" parent="4748101" thread="4748101" href="https://www.codeproject.com/Messages/4748659/Re-Thanks-plus-bugfix.aspx">Re: Thanks + bugfix</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">Member 3792090</span><span class="date">30-Jan-14  12:28</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=3792090">Member 3792090</a></span></td><td class="date"><span>30-Jan-14  12:28&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4748659_h1" class="content selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:38px;"><div class="voteform vertical" ownerid="3792090" msgid="4748659" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="38px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2"><div class="parent"><a rel="nofollow" onclick="return SwitchMessage(null,4748101);" href="https://www.codeproject.com/Messages/4748101/Thanks-plus-bugfix.aspx"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/arrow-up24.png" title="Go to Parent" style="width:16px;height:16px;border:0"></a></div>Thanks, that's a good point. I've definitely run into that d3.js error before. CP loves putting in line breaks everywhere, I usually have to do a replace all from the html source to try to catch them all. They should now be fixed.<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=4748101" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/4748659/Re-Thanks-plus-bugfix.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4748659" data-ref="3_4748659" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4731291_h0" class="header hover-row root">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="20px" class="indent"><a name="xx4731291xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_question.gif" alt="Question"></td><td class="subject hover-container"><a class="message-link" name="4731291" parent="0" thread="4731291" href="https://www.codeproject.com/Messages/4731291/Link-to-part.aspx">Link to part 1?</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">Dave Cross</span><span class="date">3-Jan-14  7:02</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=23746">Dave Cross</a></span></td><td class="date"><span>3-Jan-14  7:02&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4731291_h1" class="content root selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:20px;"><div class="voteform vertical" ownerid="23746" msgid="4731291" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="20px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2">Would be nice.<br><div class="signature">Dave Cross</div><br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=4731291" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/4731291/Link-to-part.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4731291" data-ref="3_4731291" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4741279_h0" class="header hover-row">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="38px" class="indent"><a name="xx4741279xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_answer.gif" alt="Answer"></td><td class="subject hover-container"><a class="message-link" name="4741279" parent="4731291" thread="4731291" href="https://www.codeproject.com/Messages/4741279/Re-Link-to-part.aspx">Re: Link to part 1?</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">Member 3792090</span><span class="date">20-Jan-14  6:31</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-member-16.gif" title="member" alt="member" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=3792090">Member 3792090</a></span></td><td class="date"><span>20-Jan-14  6:31&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4741279_h1" class="content selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:38px;"><div class="voteform vertical" ownerid="3792090" msgid="4741279" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="38px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2"><div class="parent"><a rel="nofollow" onclick="return SwitchMessage(null,4731291);" href="https://www.codeproject.com/Messages/4731291/Link-to-part.aspx"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/arrow-up24.png" title="Go to Parent" style="width:16px;height:16px;border:0"></a></div>Thanks for the comment! The part 1 link is in the Background section, but I've made a new version which links to all 4 parts of the series to make it easier to navigate.<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=4731291" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/4741279/Re-Link-to-part.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4741279" data-ref="3_4741279" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4727045_h0" class="header hover-row root">
+<td class="subject-line normal " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td width="20px" class="indent"><a name="xx4727045xx"></a><img height="16px" width="16px" align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_general.gif" alt="General"></td><td class="subject hover-container"><a class="message-link" name="4727045" parent="0" thread="4727045" href="https://www.codeproject.com/Messages/4727045/Very-Helpful.aspx">Very Helpful</a> <a onclick="return Pin(this);" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#" title="Click to pin message"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/pin.png" border="0" align="top" alt="Pin" width="13px" height="13px"></a><div class="mobile-only">
+	<span class="author">Riverama</span><span class="date">23-Dec-13  10:23</span>
+</div></td><td class="icon"><img border="0" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/icn-pro-16.png" title="professional" alt="professional" height="16px"></td><td class="author"><span><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=6782845">Riverama</a></span></td><td class="date"><span>23-Dec-13  10:23&nbsp;</span></td>
+</tr>
+</tbody></table></td>
+</tr><tr id="F4727045_h1" class="content root selected" style="display:none;">
+<td class="normal" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td class="indent align-right" style="width:20px;"><div class="voteform vertical" ownerid="6782845" msgid="4727045" votingtype="GoodOrBad">
+
+</div><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" height="1px" width="20px" alt=""></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+<tbody><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td colspan="2">Great article, 5 stars in my book!<br><br>btw, you can 'flatten' the datatable by assigning a new property to the array with the same value set to all rows, then you can simply group by that property on the datatable definition. (for instance a 'status' field set to 1)<br><br>Thanks!<br></td>
+</tr><tr class="footer" style="vertical-align:top;">
+<td><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=/articles/697043/making-dashboards-with-dc-js-part-2-graphing">Sign In</a>·<wbr><a href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&tid=4727045" title="View Thread">View&nbsp;Thread</a>·<wbr><a href="https://www.codeproject.com/Messages/4727045/Very-Helpful.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4727045" data-ref="3_4727045" class="rating-label" style="white-space:nowrap;"></span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/t(1).gif" border="0" width="1px" height="5px" alt=""></td>
+</tr><tr>
+<td><table width="100%" cellpadding="2px" cellspacing="0">
+<tbody><tr class="footer">
+<td><span class="last-visit desktop-only tablet-only">Last Visit: 31-Dec-99  19:00 &nbsp; &nbsp; Last Update: 1-Jan-17  17:52</span></td><td><a rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953">Refresh</a></td><td style="text-align:right;white-space:nowrap;"><input id="_mbnUrl" type="hidden" value="/articles/697043/making-dashboards-with-dc-js-part-2-graphing?fid=1849953&amp;fr=17"><span class="nav-link selected">1</span></td>
+</tr>
+</tbody></table></td>
+</tr>
+</tbody></table>
+</div><p class="small-text"><img align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_general.gif" width="16px" height="16px" alt="General"> General &nbsp;&nbsp; <img align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_news.gif" width="16px" height="16px" alt="News"> News &nbsp;&nbsp; <img align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_idea.gif" width="16px" height="16px" alt="Suggestion"> Suggestion &nbsp;&nbsp; <img align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_question.gif" width="16px" height="16px" alt="Question"> Question &nbsp;&nbsp; <img align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_bug.gif" width="16px" height="16px" alt="Bug"> Bug &nbsp;&nbsp; <img align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_answer.gif" width="16px" height="16px" alt="Answer"> Answer &nbsp;&nbsp; <img align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_joke.gif" width="16px" height="16px" alt="Joke"> Joke &nbsp;&nbsp; <img align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_kudos.gif" width="16px" height="16px" alt="Praise"> Praise &nbsp;&nbsp; <img align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_rant.gif" width="16px" height="16px" alt="Rant"> Rant &nbsp;&nbsp; <img align="top" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/msg_admin.gif" width="16px" height="16px" alt="Admin"> Admin &nbsp;&nbsp; </p><p class="small-text">Use Ctrl+Left/Right to switch messages, Ctrl+Up/Down to switch threads, Ctrl+Shift+Left/Right to switch pages.</p>
+				
+
+			</div>
+			
+		</td>
+		<td width="170px" class="article-wing-right">
+			<div id="ctl00_RightSideBar" class="container-article-info">
+
+                <div id="RHSticky" class="container-article-info-sticky stuck" style="position: fixed; top: 10px; left: 1024.5px;">
+        			
+
+<div class="article-summary">
+
+    
+
+    
+
+</div>
+
+				    
+
+				    <div style="width:160px;margin: 10px auto;">
+					    <div class="msg-160x600" data-format="160x600" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="Web-Development/Charts-Graphs-and-Images/General" data-tags="Javascript,rating4.5"><noscript>&lt;a href="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Charts-Graphs-and-Images/General&amp;sz=160x600&amp;c=697196"&gt;&lt;img src="https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Charts-Graphs-and-Images/General&amp;sz=160x600&amp;c=697196"  width="160px" height="600px" target="_blank"/&gt;&lt;/a&gt;</noscript><div id="div-gpt-ad-lqm.codeproject.site/adunblock-4" style="box-sizing: border-box; border: 0px; font-size: 0px;"><div id="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_2__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_2" title="3rd party ad content" name="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_2" width="160" height="600" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;"></iframe></div><iframe id="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_2__hidden__" title="" name="google_ads_iframe_/6839/lqm.codeproject.site/adunblock_2__hidden__" width="0" height="0" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom; visibility: hidden; display: none;"></iframe></div><div id="div-gpt-ad-lqm.codeproject.site/adunblock-4" style="box-sizing: border-box; border: 0px; font-size: 0px;"></div></div>
+				    </div>
+
+                    
+
+				    
+
+				    
+
+				    
+
+                    <div class="anchorLink gototop" id="gototop">
+                        <a id="ctl00_GoToTop" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing#_articleTop">Go to top</a>
+                    </div>
+
+				</div>
+
+			</div>
+		</td>
+		</tr></tbody></table>
+
+		
+		<div class="theme1-background" style="height:2px" id="stickyStop"></div>
+
+		<div class="extended tiny-text">
+			<div class="row">
+				<div class="float-left">
+					<a id="ctl00_PermaLink" itemprop="url" href="https://www.codeproject.com/Articles/697043/Making-Dashboards-with-Dc-js-Part-Graphing">Permalink</a> | 
+					<a id="ctl00_AdvertiseLink" href="http://developermedia.com/">Advertise </a> |
+					<a id="ctl00_PrivacyLink" href="https://www.codeproject.com/info/privacy.aspx">Privacy</a> |
+                    <a id="ctl00_TermsOfUseLink" href="https://www.codeproject.com/info/TermsOfUse.aspx">Terms of Use</a> |
+					<a id="ctl00_Mobile">Mobile</a>
+					<br>
+								
+					
+					Web01 |
+					2.8.161229.1 |
+					Last Updated 21 Jan 2014								
+				</div>
+
+                <div id="ctl00_GoogleTranslate" class="translate float-left"><div class="skiptranslate goog-te-gadget" dir="ltr"><div id=":0.targetLanguage" class="goog-te-gadget-simple" style="white-space: nowrap;"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/cleardot.gif" class="goog-te-gadget-icon" alt="" style="background-image: url(https://translate.googleapis.com/translate_static/img/te_ctrl3.gif); background-position: -65px 0px;"><span style="vertical-align: middle;"><a role="menu" class="goog-te-menu-value" href="javascript:void(0)"><span>Sélectionner une langue</span><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/cleardot.gif" alt="" width="1" height="1"><span style="border-left-width: 1px; border-left-style: solid; border-left-color: rgb(187, 187, 187);">​</span><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/cleardot.gif" alt="" width="1" height="1"><span style="color: rgb(118, 118, 118);">▼</span></a></span></div></div></div>      
+
+				<div class="float-right align-right">
+					Article Copyright 2013 by The Myth<br>Everything else
+					Copyright © <a href="mailto:webmaster@codeproject.com">CodeProject</a>, 1999-2017 <br>
+				</div>
+
+				
+
+
+<div class="page-width">
+Layout: <a id="ctl00_PageWidth_FixedT" title="Fixed width layout" rel="nofollow" class=" active" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?PageFlow=FixedWidth">fixed</a>
+|
+<a id="ctl00_PageWidth_FluidT" title="Fluid layout" rel="nofollow" href="https://www.codeproject.com/articles/697043/making-dashboards-with-dc-js-part-2-graphing?PageFlow=Fluid">fluid</a>
+</div>
+
+
+
+			</div>
+		</div>
+		
+
+		<br clear="all">
+		
+			
+
+	</div> 
+	</div>
+</div><script async="" type="text/javascript" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/gpt.js"></script>
+
+
+<img id="ctl00_Audience" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/DFPAudiencePixel" style="border-width:0px;height:1px;width:1px;">
+
+
+
+<script type="text/javascript" language="Javascript" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/article.min.js"></script>
+<script type="text/javascript" language="Javascript" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/element.js"></script>
+<script type="text/javascript" language="Javascript" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/navbar.min.js"></script>
+<script type="text/javascript" language="Javascript" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/Notifications.min.js"></script>
+<script type="text/javascript" language="Javascript" src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/MemberProfilePopup.min.js"></script>
+<script type="text/javascript" language="Javascript">//<![CDATA[
+$(document).ready(function () { processCodeBlocks.Initialise('#contentdiv'); });
+function googleTranslateElementInit() {  new google.translate.TranslateElement({   pageLanguage: 'en',   layout: google.translate.TranslateElement.InlineLayout.SIMPLE,   autoDisplay: false,   gaTrack: true,   gaId: 'UA-1735123-1'},  'ctl00_GoogleTranslate');}
+$(document).ready(function() { anchorAnimate();
+$('#RHSticky').sticky($('#stickyStop'));
+$('#ctl00_Nav').sticky($('#stickyStop'));
+});
+$(document).ready(function() {   $('.alert-bar').fadeIn('slow');   $('.alert-bar a.close-notify').click(function() {      $('.alert-bar').fadeOut('fast');        return false;    });});
+$(function ()
+                {
+                    $('.oauth').click(function () {
+                        $this = $(this);
+                        href = $this.attr('href');
+                        var myWindow = window.open(href, 'popup',
+                                    'width=800,height=600,location=0,menubar=0,resizeable=0,scrollbars=0,toolbar=0');
+                        myWindow.focus();
+                        var timer = setInterval(function () {
+                                        if (myWindow.closed) {
+                                            clearInterval(timer);
+                                            // window.location.reload(); // May do a POST reload, shows a warning
+                                            window.location = window.location; // force a GET reload
+                                        }
+                                    }, 200);
+                        return false;
+                    });
+                });
+var oSrchFlt = false, oSrchBox=false,srchBoxFoc=false;
+$(document).ready(function() {
+ if(InitWatermark)InitWatermark('sb_tb', 'Search for articles, questions, tips');
+ var sbar = $('#sb_tb'); 
+ var sfilter = $('#SearchFilter');
+ if (sbar && sfilter) {
+  sfilter.removeClass('popup'); sfilter.hide(); sfilter.removeClass('open');
+  sbar.blur(function() {
+ if (!oSrchFlt) {sfilter.hide(); sfilter.removeClass('open');}
+ srchBoxFoc=false;
+ });
+  sbar.focus(function() {
+ oSrchFlt=false; srchBoxFoc=true;
+ sfilter.show(); sfilter.addClass('open');
+ });
+  sbar.mouseleave(function() { oSrchBox=false; });
+  sbar.mouseover(function() { oSrchBox=true; });
+  sfilter.mouseleave(function() { oSrchFlt=false; if (!srchBoxFoc&&!oSrchBox) { sfilter.hide(); sfilter.removeClass('open'); }});
+  sfilter.mouseover(function() { oSrchFlt=true; });
+ }
+});
+$('#clear-rate_ctl00_RateArticle_RSU').click(function () {    $('#ctl00_RateArticle_RSU').hide(); return false;});$("#ctl00_RateArticle_RateItemWrapper")   .removeClass("container-rating")   .hover( function() { $('#ctl00_RateArticle_RSU').fadeIn('fast'); },            function() { $('#ctl00_RateArticle_RSU').fadeOut('fast'); } );
+function PostBack_ctl00_RateArticle_RateItemWrapper() {
+  return rateItem(697043,2,1,true,true,0,'LargeStars');
+}
+
+                        function getVotesHistogram(objectId, objectTypeId, containerId, loadingId) {
+                            if (!$('#' + containerId).attr('alreadyRequested')){
+                                $.ajax({
+                                    url: '/script/Ratings/Ajax/Histogram.aspx?obid=' + objectId + '&obtid='+objectTypeId,
+                                    success: function (data) {
+                                        $('#' + containerId).html(data);
+                                        $('#' + loadingId).hide();
+                                    }
+                                });
+                                $('#' + containerId).attr('alreadyRequested', 'true');
+                            }
+                        }
+$(document).ready(function() {   new starRating('#ctl00_RateArticle_VoteFormDiv', PostBack_ctl00_RateArticle_RateItemWrapper,'ctl00_RateArticle');
+  $('#ctl00_RateArticle_RB').mouseenter(function() {     getVotesHistogram(697043,2   ,'ctl00_RateArticle_Histogram','ctl00_RateArticle_Loading');  })})
+$(document).ready(function() { $('#ctl00_RateArticle_SubmitRateBtn').hide(); });
+$(document).ready(function() { $('#ctl00_RateArticle_SubmitRateBtn').hide(); });function ChkRtctl00_RateArticle(){}
+
+forumDir = '/script/Forums/';
+staticServer = 'https://codeproject.global.ssl.fastly.net';
+allowReporting = false;
+allowRating = false;
+allowRatingDisplay = true;
+var smoothScroll = true;
+Selected        = -1;
+oldTitle        = document.title;
+minMessageScore = 1;
+minMessageScore = 5;
+abuseScore      = -2;
+spamScore       = -1;
+getRatingUrl    = '/script/Ratings/Ajax/GetRatings.aspx';
+getRatingRefKey = 'obrs';
+
+
+//]]>
+</script>
+
+
+
+<style type="text/css">.copied::after {  position: absolute;  display: inline-block;  content: 'copied'; color: #fff; background-color: #f90;  border-radius: 3px; padding:1px 3px; opacity: 0;  will-change: opacity, transform; animation: showcopied 1.5s ease; } @keyframes showcopied { 0% { opacity: 0; transform: translateX(-100%); } 70% { opacity: 1; transform: translateX(0); } 100% { opacity: 0; } } </style><canvas id="cv1" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><canvas id="cv2" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><div id="MemberProfilePopupDiv" class="raised box" style="display: none; position: absolute;"></div><div id="MemberProfilePopupDiv" class="raised box" style="display: none; position: absolute;"></div><div id="MemberProfilePopupDiv" class="raised box" style="display: none; position: absolute;"></div><style type="text/css">.copied::after {  position: absolute;  display: inline-block;  content: 'copied'; color: #fff; background-color: #f90;  border-radius: 3px; padding:1px 3px; opacity: 0;  will-change: opacity, transform; animation: showcopied 1.5s ease; } @keyframes showcopied { 0% { opacity: 0; transform: translateX(-100%); } 70% { opacity: 1; transform: translateX(0); } 100% { opacity: 0; } } </style><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="./Making Dashboards with Dc.js - Part 2  Graphing - CodeProject_files/translate_24dp.png" width="20" height="20" alt="Google Traduction"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Texte d'origine</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Proposer une meilleure traduction</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div><div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div><iframe frameborder="0" class="goog-te-menu-frame skiptranslate" style="visibility: visible; box-sizing: content-box; width: 984px; height: 263px; display: none;"></iframe></body></html>
