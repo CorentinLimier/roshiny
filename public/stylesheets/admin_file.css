@@ -1,0 +1,10 @@
+#data_viz div{
+	padding-top: 10px;
+}
+
+.border{
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+	display: inline-block;
+}

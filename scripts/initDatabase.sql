@@ -63,7 +63,6 @@ create table parameter_file (
 
 insert into parameter_file values ("enginePath", 1);
 insert into parameter_file values ("scenariosPath", 2);
-*/
 
 create table scenario (
   id                            integer not null,
@@ -75,7 +74,6 @@ create table scenario (
   constraint pk_scenario primary key (id)
 );
 
-/*
 create table run (
   id                            integer not null,
   scenario_id                   integer,
@@ -94,3 +92,23 @@ create table column_csv (
   constraint pk_column_csv primary key (id)
 );
 */
+
+create table chart (
+  id                            integer not null,
+  data_file_id                  integer,
+  type_chart                    varchar(255),
+  legend                        varchar(255),
+  position                      integer,
+  height                        integer,
+  width                         integer,
+  abs_column                    integer,
+  abs_title                     varchar(255),
+  abs_type                      varchar(255),
+  ord_column                    integer,
+  ord_title                     varchar(255),
+  ord_type                      varchar(255),
+  date_format                   varchar(255),
+  brush                         integer(1),
+  constraint pk_chart primary key (id)
+);
+

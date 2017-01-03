@@ -1,4 +1,4 @@
-@(settings: Map[String, String], dataFile: DataFile, datain: List[DataFile], dataout: List[DataFile], columns: List[ColumnCsv])
+@(settings: Map[String, String], dataFile: DataFile, datain: List[DataFile], dataout: List[DataFile], columns: List[ColumnCsv], charts: List[Chart])
 
 <!--
 MIT License
@@ -24,6 +24,7 @@ See LICENSE file at root of project for more informations
 		<link href="@routes.Assets.at("libs/font-awesome/css/font-awesome.min.css")" rel="stylesheet">
 		<link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet">
 		<link href="@routes.Assets.at("stylesheets/sidebar.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("stylesheets/admin_file.css")" rel="stylesheet">
 
 		<script src="@routes.Assets.at("libs/jquery/jquery.min.js")"></script>
 		<script src="@routes.Assets.at("libs/bootstrap/js/bootstrap.min.js")"></script>
@@ -98,7 +99,88 @@ See LICENSE file at root of project for more informations
 			}
 			@if(dataFile.dataViz){
 			<div id="data_viz" @if(!dataFile.csvViz){class="tab-pane fade in active"}else{class="tab-pane fade"}>
-				DATA VIZ
+				<form action="/admin/configure/add_chart?dataFileId=@dataFile.id" method="post" class="form-inline">
+					<h2>Ajouter un graphique</h2>
+					<div>
+						<label for="type_chart">Type du graphique:</label>
+						<select id="type_chart" name="type_chart" class="form-control">
+							<option>Line chart</option>
+							<option>Bar chart</option>
+							<option>Pie chart</option>
+							<option>Number chart</option>
+						</select>
+					</div>
+					<div>
+						<label for="name_chart">Légende</label>
+						<input id="name_chart" type="text" name="name_chart" class="form-control" required>
+					</div>
+					<div>
+						<label for="height_chart">Position: </label>
+						<input id="position_chart" type="number" name="position_chart" class="form-control" value="@charts.size" required min="1" max="99">
+					</div>
+					<div>
+						<label for="height_chart">Hauteur (px): </label>
+						<input id="height_chart" type="number" name="height_chart" class="form-control" value="400" required min="0" max="9999">
+						<label for="width_chart">Largeur (%): </label>
+						<input id="width_chart" type="number" name="width_chart" class="form-control" value="100" required min="0" max="100">
+					</div>
+					<div id="abscisse_chart">
+						<label for="abs_col_chart">Colonne de l'abscisse: </label>
+						<input id="abs_col_chart" type="number" name="abs_col_chart" class="form-control" min="0" max="999">
+						<span id="abs_title">
+						<label for="abs_name_chart">Titre: </label>
+						<input id="abs_name_chart" type="text" name="abs_name_chart" class="form-control">
+						</span>
+						<span id="abs_type">
+						<label for="abs_type_chart">Type: </label>
+						<select id="abs_type_chart" name="abs_type_chart" class="form-control">
+							<option>String</option>
+							<option>Date</option>
+							<option>Number</option>
+						</select>
+						</span>
+						<span id="abs_format">
+						<label for="abs_format_chart">Format: </label>
+						<input id="abs_format_chart" type="text" name="abs_format_chart" class="form-control" value="%Y-%m-%d %H:%m">
+						</span>
+					</div>
+					<div id="ordinate_chart">
+						<label for="ord_col_chart">Colonne de l'ordonnée: </label>
+						<input id="ord_col_chart" type="number" name="ord_col_chart" class="form-control" min="0" max="999">
+						<span id="ord_title">
+						<label for="ord_name_chart">Titre: </label>
+						<input id="ord_name_chart" type="text" name="ord_name_chart" class="form-control">
+						</span>
+						<span id="ord_type">
+						<label for="ord_type_chart">Type: </label>
+						<select id="ord_type_chart" name="ord_type_chart" class="form-control">
+							<option>String</option>
+							<option>Number</option>
+						</select>
+						</span>
+					</div>
+					<div id="brush">
+						<label for="brush_chart">Brush</label>
+						<input id="brush_chart" type="checkbox" name="brush_chart" class="checkbox form-control">
+					</div>
+					<button type="submit" class="btn btn-default">Ajouter</button>
+				</form>
+				<h2>Liste des graphiques</h2>
+				<form action="/admin/configure/update_charts?dataFileId=@dataFile.id" method="post">
+					<div>
+					<!--
+					@for(chart <- charts){
+						--><span id="@chart.id" style="height:@(chart.height)px;width: @(chart.width)%" class="border">
+							<input type="hidden" name="chart_id[]" value="@chart.id">
+							<input type="text" name="chart_delete[]" class="deleted_chart" value="false">
+							<i class="fa fa-minus delete_chart"></i> @chart.typeChart "@chart.legend"<br />
+						   	Position : <input type="number" name="chart_position[]" value="@chart.position" required min=1 max=99>
+						</span><!--
+					}
+					-->
+					</div>
+					<button type="submit" class="btn btn-default">Valider les modifications</button>
+				</form>
 			</div>
 			}
 			</div>

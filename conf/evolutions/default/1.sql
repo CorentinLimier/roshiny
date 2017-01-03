@@ -3,6 +3,25 @@
 
 # --- !Ups
 
+create table chart (
+  id                            integer autoincrement not null,
+  data_file_id                  integer,
+  type_chart                    varchar(255),
+  legend                        varchar(255),
+  position                      integer,
+  height                        integer,
+  width                         integer,
+  abs_column                    integer,
+  abs_title                     varchar(255),
+  abs_type                      varchar(255),
+  ord_column                    integer,
+  ord_title                     varchar(255),
+  ord_type                      varchar(255),
+  date_format                   varchar(255),
+  brush                         integer(1),
+  constraint pk_chart primary key (id)
+);
+
 create table column_csv (
   id                            integer autoincrement not null,
   data_file_id                  integer,
@@ -76,6 +95,9 @@ create table user (
   constraint pk_user primary key (id)
 );
 
+alter table chart add constraint fk_chart_data_file_id foreign key (data_file_id) references data_file (id) on delete restrict on update restrict;
+create index ix_chart_data_file_id on chart (data_file_id);
+
 alter table column_csv add constraint fk_column_csv_data_file_id foreign key (data_file_id) references data_file (id) on delete restrict on update restrict;
 create index ix_column_csv_data_file_id on column_csv (data_file_id);
 
@@ -95,6 +117,9 @@ create index ix_user_role_id on user (role_id);
 
 # --- !Downs
 
+alter table chart drop constraint if exists fk_chart_data_file_id;
+drop index if exists ix_chart_data_file_id;
+
 alter table column_csv drop constraint if exists fk_column_csv_data_file_id;
 drop index if exists ix_column_csv_data_file_id;
 
@@ -110,6 +135,8 @@ drop index if exists ix_scenario_user_id;
 
 alter table user drop constraint if exists fk_user_role_id;
 drop index if exists ix_user_role_id;
+
+drop table if exists chart;
 
 drop table if exists column_csv;
 

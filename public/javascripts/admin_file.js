@@ -57,9 +57,17 @@ See LICENSE file at root of project for more informations
 		trButton.before(newTR);
 	}
 
+	var deleteChart = function(button){
+		var span = button.closest("span");
+		span.find(".deleted_chart").prop('value', 'true');
+		span.hide();
+	}
+
 	// Wait until dom is ready
 	$(function(){
 		$(".add-row").on('click', function(e){addColumnRow($(this))});
 		$(".delete-row").on('click', function(e){deleteRow($(this))});
+		$(".deleted_chart").hide();
+		$(".delete_chart").on('click', function(e){deleteChart($(this))});
 	});
 }());
