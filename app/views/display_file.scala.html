@@ -153,9 +153,9 @@ See LICENSE file at root of project for more informations
 			</div>
 			}
 			@if(dataFile.dataViz){
-			<div id="data_viz" class="tab-pane fade">
+			<div id="data_viz" class="">
 				@for(chart <- charts){
-					<div id="@chart.id">
+					<div id="chart-@chart.id">
 					</div>
 				}
 			</div>

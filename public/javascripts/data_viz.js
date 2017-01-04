@@ -6,14 +6,112 @@ See LICENSE file at root of project for more informations
 
 (function() {
 	'use strict';
+	var data, ndx, page_width;
 
 	var loadData = function(){
 		var file_content = $("#display").find("textarea").text();
 		if(ignoreHeader == "true"){
 			file_content = file_content.substring(file_content.indexOf("\n") + 1);
 		}
+
 		data = d3.dsv(csvDelimiter).parseRows(file_content);
+		ndx = crossfilter(data);
+
+		data.forEach(function(d) {
+			for(var i=0; i < charts.length; i++){
+				if(charts[i].absType == "Date"){
+					var parseDate = d3.time.format(charts[i].dateFormat).parse;
+					charts[i].newAbsColumn = d.push(parseDate(d[charts[i].absColumn])) -1;
+				}
+				if(charts[i].ordType == "Date"){
+					var parseDate = d3.time.format(charts[i].dateFormat).parse;
+					charts[i].newOrdColumn = d.push(parseDate(d[charts[i].ordColumn])) -1;
+				}
+				if(charts[i].absType == "Number"){
+					charts[i].newAbsColumn = d.push(parseFloat(d[charts[i].absColumn])) -1;
+				}
+				if(charts[i].ordType == "Number"){
+					charts[i].newOrdColumn = d.push(parseFloat(d[charts[i].ordColumn])) -1;
+				}
+			}
+		}); 
+		for(var i=0; i < charts.length; i++){
+			if(charts[i].newAbsColumn !== undefined){
+				charts[i].absColumn = charts[i].newAbsColumn;
+			}
+			if(charts[i].newOrdColumn !== undefined){
+				charts[i].ordColumn = charts[i].newOrdColumn;
+			}
+		}
 		console.log(data);
+	}
+
+	var createDims = function(){
+		for(var i=0; i < charts.length; i++){
+			charts[i].dim = ndx.dimension(function(d) {return d[charts[i].ordColumn];});
+			if(charts[i].ordType == "String"){
+				charts[i].group = charts[i].dim.group().reduceSum(function(d) {return 1;}); 
+			}
+			else{
+				charts[i].group = charts[i].dim.group().reduceSum(function(d) {return 1;}); 
+				//charts[i].group = charts[i].dim.group().reduceSum(function(d) {return d[charts[i].ordColumn];}); 
+			}
+		}
+	}
+
+	var displayLineChart = function(chart){
+		var dcChart = dc.lineChart("#chart-"+chart.id); 
+		var min, max;
+
+		console.log(chart.absColumn);
+		console.log(chart.ordColumn);
+
+		var dim = ndx.dimension(function(d) {return d[chart.absColumn];});
+		var group = dim.group().reduceSum(function(d){return d[chart.ordColumn];}); 
+
+		if(chart.absType == "Date"){
+			min = dim.bottom(1)[0][chart.absColumn];
+			max = dim.top(1)[0][chart.absColumn];
+		}
+
+		dcChart	
+			.width(chart.width * page_width / 100).height(chart.height)
+			.dimension(dim)
+			.legend(dc.legend().x(80).y(20).itemHeight(13).gap(5))
+			.group(chart.group)
+			.yAxisLabel(chart.ordTitle)  
+			.xAxisLabel(chart.absTitle)  
+			.x(d3.time.scale().domain([min,max]));
+	}
+
+	var displayBarChart = function(chart){
+	}
+
+	var displayPieChart = function(chart){
+		var yearDim  = ndx.dimension(function(d) {return d[2];});
+
+		var year_total = yearDim.group().reduceSum(function(d) {return d[charts[1].ordColumn];});
+		var pieYearChart = dc.pieChart("#chart-2"); 
+		pieYearChart
+			.width(300)
+			.height(300)
+			.dimension(yearDim)
+			.group(year_total);
+	}
+
+	var displayCharts = function(){
+		for(var i=0; i < charts.length; i++){
+			if(charts[i].typeChart == "Line chart"){
+				displayLineChart(charts[i]);
+			}
+			if(charts[i].typeChart == "Bar chart"){
+				displayBarChart(charts[i]);
+			}
+			if(charts[i].typeChart == "Pie chart"){
+				//displayPieChart(charts[i]);
+			}
+		}
+		dc.renderAll(); 
 	}
 
 	var printChartModels = function(){
@@ -38,8 +136,9 @@ See LICENSE file at root of project for more informations
 	}
 
 	$(function(){
+		page_width = $("#page-content-wrapper").width();
 		loadData();
-		console.log($("#page-content-wrapper").width());
+		createDims();
+		displayCharts();
 	});
 }());
-var data;
