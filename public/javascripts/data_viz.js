@@ -61,42 +61,117 @@ See LICENSE file at root of project for more informations
 
 	var displayLineChart = function(chart){
 		var dcChart = dc.lineChart("#chart-"+chart.id); 
-		var min, max;
-
-		console.log(chart.absColumn);
-		console.log(chart.ordColumn);
-
 		var dim = ndx.dimension(function(d) {return d[chart.absColumn];});
-		var group = dim.group().reduceSum(function(d){return d[chart.ordColumn];}); 
+		var group, min, max, chart_x, brush;
+
+		if(chart.brush == "true"){
+			brush = true
+		}
+		else{
+			brush = false
+		}
+
+		if(chart.ordType == "String"){
+			group = dim.group().reduceSum(function(d) {return 1});
+		}
+		else{
+			group = dim.group().reduceSum(function(d){return d[chart.ordColumn];}); 
+		}
+
+		min = dim.bottom(1)[0][chart.absColumn];
+		max = dim.top(1)[0][chart.absColumn];
 
 		if(chart.absType == "Date"){
-			min = dim.bottom(1)[0][chart.absColumn];
-			max = dim.top(1)[0][chart.absColumn];
+			chart_x = d3.time.scale().domain([min,max]);
+		}
+		else{
+			chart_x = d3.scale.linear().domain([min,max]);
 		}
 
 		dcChart	
-			.width(chart.width * page_width / 100).height(chart.height)
+			.width(chart.width * page_width / 100)
+			.height(chart.height)
 			.dimension(dim)
+			.brushOn(brush)
 			.legend(dc.legend().x(80).y(20).itemHeight(13).gap(5))
-			.group(chart.group)
+			.group(group, chart.ordTitle)
 			.yAxisLabel(chart.ordTitle)  
 			.xAxisLabel(chart.absTitle)  
-			.x(d3.time.scale().domain([min,max]));
+			.x(chart_x);
 	}
 
 	var displayBarChart = function(chart){
+		var dcChart = dc.barChart("#chart-"+chart.id); 
+		var dim = ndx.dimension(function(d) {return d[chart.absColumn];});
+		var group, min, max, chart_x, brush;
+		var parseDate = d3.time.format(chart.dateFormat);
+
+		if(chart.ordType == "String"){
+			group = dim.group().reduceSum(function(d) {return 1});
+		}
+		else{
+			group = dim.group().reduceSum(function(d){return d[chart.ordColumn];}); 
+		}
+
+		dcChart	
+			.width(chart.width * page_width / 100)
+			.height(chart.height)
+			.dimension(dim)
+			.legend(dc.legend().x(80).y(20).itemHeight(13).gap(5))
+			.group(group, chart.ordTitle)
+			.yAxisLabel(chart.ordTitle)  
+			.xAxisLabel(chart.absTitle)  
+			.xUnits(dc.units.ordinal)
+			.x(d3.scale.ordinal().domain(data.map(function(d){return d[chart.absColumn]})));
+
+		if(chart.absType == "Date"){
+			dcChart.xAxis().tickFormat(parseDate);
+		}
 	}
 
 	var displayPieChart = function(chart){
-		var yearDim  = ndx.dimension(function(d) {return d[2];});
+		var dcChart = dc.pieChart("#chart-"+chart.id); 
+		var dim = ndx.dimension(function(d) {return d[chart.absColumn];});
+		var group;
+		var parseDate = d3.time.format(chart.dateFormat);
 
-		var year_total = yearDim.group().reduceSum(function(d) {return d[charts[1].ordColumn];});
-		var pieYearChart = dc.pieChart("#chart-2"); 
-		pieYearChart
-			.width(300)
-			.height(300)
-			.dimension(yearDim)
-			.group(year_total);
+		if(chart.ordType == "String"){
+			group = dim.group().reduceSum(function(d) {return 1});
+		}
+		else{
+			group = dim.group().reduceSum(function(d){return d[chart.ordColumn];}); 
+		}
+
+		dcChart	
+			.width(chart.width * page_width / 100)
+			.height(chart.height)
+			.dimension(dim)
+			.group(group);
+
+		if(chart.absType == "Date"){
+			dcChart.label(function(d){return parseDate(d.key);});
+		}
+	}
+
+	var displayNumberChart = function(chart){
+		var dcChart = dc.numberDisplay("#chart-"+chart.id); 
+		var group;
+		var dim = ndx.dimension(function(d) {return 1;});
+		if(chart.ordType == "String"){
+			group = dim.group().reduceSum(function(d) {return 1});
+		}
+		else{
+			group = dim.group().reduceSum(function(d){return d[chart.ordColumn];}); 
+		}
+
+		dcChart
+			.group(group)
+			.formatNumber(d3.format(".g"))
+			.html({
+				one: chart.legend + ": %number",
+				some: chart.legend + ": %number",
+				none: chart.legend + ": %number"
+				})
 	}
 
 	var displayCharts = function(){
@@ -108,10 +183,14 @@ See LICENSE file at root of project for more informations
 				displayBarChart(charts[i]);
 			}
 			if(charts[i].typeChart == "Pie chart"){
-				//displayPieChart(charts[i]);
+				displayPieChart(charts[i]);
+			}
+			if(charts[i].typeChart == "Number chart"){
+				displayNumberChart(charts[i]);
 			}
 		}
 		dc.renderAll(); 
+		$("#link_dataviz").trigger("click");
 	}
 
 	var printChartModels = function(){
@@ -136,9 +215,8 @@ See LICENSE file at root of project for more informations
 	}
 
 	$(function(){
-		page_width = $("#page-content-wrapper").width();
+		page_width = $("#page-content-wrapper").width() - 20;
 		loadData();
-		createDims();
 		displayCharts();
 	});
 }());

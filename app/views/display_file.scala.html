@@ -14,7 +14,7 @@ See LICENSE file at root of project for more informations
 
 		<meta name="description" content="Scénario @scenario.name Fichier @dataFile.name">
 		<meta name="author" content="Corentin Limier">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+		<link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
 
 		<title>@settings("projectName") scénario @scenario.name fichier @dataFile.name</title>
 
@@ -84,10 +84,10 @@ See LICENSE file at root of project for more informations
 				charts.push(newChart);
 			}
 		</script>
-		@if(dataFile.csvViz){
+		@if(dataFile.csvViz && !columns.isEmpty){
 			<script src="@routes.Assets.at("javascripts/csv_viz.js")"></script>
 		}
-		@if(dataFile.dataViz){
+		@if(dataFile.dataViz && (new java.io.File(settings("scenariosPath") +"/"+ scenario.id +"/"+ dataFile.file.path).exists)){
 			<script src="@routes.Assets.at("javascripts/data_viz.js")"></script>
 		}
 	</head>
@@ -107,7 +107,7 @@ See LICENSE file at root of project for more informations
 			<ul id="tablist" class="nav nav-tabs" role="tablist">
 				@if(dataFile.dataViz){
 				<li role="presentation" class="active">
-					<a href="#data_viz" aria-controls="data_viz" role="tab" data-toggle="tab">Dataviz</a>
+					<a id="link_dataviz" href="#data_viz" aria-controls="data_viz" role="tab" data-toggle="tab">Dataviz</a>
 				</li>
 				}
 				@if(dataFile.csvViz){
@@ -153,9 +153,12 @@ See LICENSE file at root of project for more informations
 			</div>
 			}
 			@if(dataFile.dataViz){
-			<div id="data_viz" class="">
+			<div id="data_viz" class="tab-pane fade in active">
 				@for(chart <- charts){
-					<div id="chart-@chart.id">
+				<div id="chart-@chart.id" @if(chart.typeChart == "Number chart"){style="float: none"}>
+						@if(chart.typeChart != "Number chart"){
+							<div class="legend">@chart.legend</div>
+						}
 					</div>
 				}
 			</div>

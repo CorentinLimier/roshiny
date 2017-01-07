@@ -8,3 +8,8 @@ See LICENSE file at root of project for more informations
 	height: 60%;
 	width: 90%;
 }
+
+.legend{
+	text-align: center;
+	text-decoration: underline;
+}

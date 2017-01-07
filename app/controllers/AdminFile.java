@@ -168,10 +168,14 @@ public class AdminFile extends Controller {
 			chart.position = form.get().position_chart;
 			chart.height = form.get().height_chart;
 			chart.width = form.get().width_chart;
-			chart.absColumn = form.get().abs_col_chart;
+			if(form.get().abs_col_chart != null){
+				chart.absColumn = form.get().abs_col_chart - 1;
+			}
 			chart.absTitle = form.get().abs_name_chart;
 			chart.absType = form.get().abs_type_chart;
-			chart.ordColumn = form.get().ord_col_chart;
+			if(form.get().ord_col_chart != null){
+				chart.ordColumn = form.get().ord_col_chart - 1;
+			}
 			chart.ordTitle = form.get().ord_name_chart;
 			chart.ordType = form.get().ord_type_chart;
 			chart.dateFormat = form.get().abs_format_chart;

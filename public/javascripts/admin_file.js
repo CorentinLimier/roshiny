@@ -63,11 +63,52 @@ See LICENSE file at root of project for more informations
 		span.hide();
 	}
 
+	var showOrHideFormat = function(){
+		if($("#abs_type_chart").val() == "Date"){
+			$("#abs_format").show();
+		}
+		else{
+			$("#abs_format").hide();
+		}
+	}
+
+	var updateForm = function(){
+		$("#add_chart").find("*").show();
+		$("#ord_type_chart").val("String");
+		showOrHideFormat();
+		var typeChart = $("#type_chart").val();
+		if(typeChart == "Line chart" || typeChart == "Bar chart"){
+			$("#labels_column").hide();
+			$("#values_column").hide();
+		}
+		if(typeChart != "Line chart"){
+			$("#brush").hide();
+		}
+		if(typeChart == "Pie chart" || typeChart == "Number chart"){
+			$("#abscisse_column").hide();
+			$("#ordinate_column").hide();
+			$("#abs_title").hide();
+			$("#ord_title").hide();
+		}
+		if(typeChart == "Number chart"){
+			$("#size").hide();
+			$("#abscisse_chart").hide();
+			$("#ord_type").hide();
+			$("#ord_type_chart").val("Number");
+			$("#height_chart").val(50);
+			$("#width_chart").val(100);
+		}
+	}
+
 	// Wait until dom is ready
 	$(function(){
 		$(".add-row").on('click', function(e){addColumnRow($(this))});
 		$(".delete-row").on('click', function(e){deleteRow($(this))});
 		$(".deleted_chart").hide();
 		$(".delete_chart").on('click', function(e){deleteChart($(this))});
+		$("#abs_type_chart").change(showOrHideFormat);
+		$("#type_chart").change(updateForm);
+		showOrHideFormat();
+		updateForm();
 	});
 }());

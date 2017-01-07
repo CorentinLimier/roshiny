@@ -4,7 +4,6 @@ Copyright (c) 2016 Corentin Limier
 See LICENSE file at root of project for more informations
 */
 
-/*
 create table role (
   id                            integer not null,
   name                          varchar(255),
@@ -110,4 +109,3 @@ create table chart (
   brush                         integer(1),
   constraint pk_chart primary key (id)
 );
-*/
